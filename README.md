@@ -2,8 +2,6 @@
 
 # Project Title : Shopisthan
 
-Simple overview of use/purpose.
-
 ## Description
 
 We are building a social commerce for small vendors, so that it is easy for them to sell online.
