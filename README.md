@@ -29,19 +29,10 @@ If you still have any questions please connect @debasmita or [@sameer-qureshi](h
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
+ex. [@sameer-qureshi](https://github.com/Sameer-Qureshi)  
+ex. [@Debasmita]()
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the Shopisthan India Private Limited.
 
-## Acknowledgments
