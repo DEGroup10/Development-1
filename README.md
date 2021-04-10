@@ -21,20 +21,9 @@ We are building a social commerce for small vendors, so that it is easy for them
 * React.js : https://youtu.be/Ke90Tje7VS0
 * Start a Ecommerce Project: https://youtu.be/tvdFYmJEaw4
 
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
-
 ## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+If you still have any questions please connect @debasmita or @sameer-qureshi
 
 ## Authors
 
