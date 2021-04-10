@@ -23,7 +23,7 @@ We are building a social commerce for small vendors, so that it is easy for them
 
 ## Help
 
-If you still have any questions please connect @debasmita or @sameer-qureshi
+If you still have any questions please connect @debasmita or [@sameer-qureshi](https://github.com/Sameer-Qureshi)
 
 ## Authors
 
