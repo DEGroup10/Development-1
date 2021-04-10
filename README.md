@@ -15,8 +15,11 @@ We are building a social commerce for small vendors, so that it is easy for them
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* for better understanding of the how to install watch below mentioned video's on youtube.
+* GIT : https://youtu.be/8JJ101D3knE
+* Node.js : https://youtu.be/TlB_eWDSMt4
+* React.js : https://youtu.be/Ke90Tje7VS0
+* Start a Ecommerce Project: https://youtu.be/tvdFYmJEaw4
 
 ### Executing program
 
