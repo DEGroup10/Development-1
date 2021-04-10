@@ -11,7 +11,6 @@ We are building a social commerce for small vendors, so that it is easy for them
 ### Dependencies
 
 * Required an understanding of GIT/GITBASH, MongoDB, Node.js, Express.js,Redux.js and React.js along with all the dependency which is required.
-* ex. Windows 10
 
 ### Installing
 
