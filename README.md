@@ -22,14 +22,14 @@ We are building a social commerce for small vendors, so that it is easy for them
 
 ## Help
 
-If you still have any questions please connect @debasmita or [@sameer-qureshi](https://github.com/Sameer-Qureshi)
+If you still have any questions please connect [@debasmita](https://github.com/DebasmitaPriyadarshini) or [@sameer-qureshi](https://github.com/Sameer-Qureshi)
 
 ## Authors
 
 Contributors names and contact info
 
 ex. [@sameer-qureshi](https://github.com/Sameer-Qureshi)  
-ex. [@Debasmita]()
+ex. [@Debasmita](https://github.com/DebasmitaPriyadarshini)
 
 ## License
 
