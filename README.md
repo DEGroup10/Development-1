@@ -1,22 +1,18 @@
 # Shopisthan India Private Limited
 
-## Installation
-Install Node.js from https://nodejs.org/en/
-Install Gitbash from https://git-scm.com/downloads
-
-# Project Title
+# Project Title : Shopisthan
 
 Simple overview of use/purpose.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+We are building a social commerce for small vendors, so that it is easy for them to sell online.
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
+* Required an understanding of GIT/GITBASH, MongoDB, Node.js, Express.js,Redux.js and React.js along with all the dependency which is required.
 * ex. Windows 10
 
 ### Installing
