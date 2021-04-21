@@ -1,6 +1,6 @@
 const User = require('../../models/admin/user/auth')
 const jwt = require('jsonwebtoken')
-// const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 exports.signup = (req, res) => {
     User.findOne({ email: req.body.email })
@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
                 email,
                 password
             } = req.body;
-            // const hash_password = await bcrypt.hash(password, 10);
+            const hash_password = await bcrypt.hash(password, 10);
             const _user = new User({
                 firstName,
                 lastName,
@@ -40,8 +40,6 @@ exports.signup = (req, res) => {
             })
         });
 }
-
-
 
 exports.signin = (req, res) => {
     User.findOne({ email: req.body.email })
