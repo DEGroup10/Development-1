@@ -6,13 +6,17 @@ const mongoose = require('mongoose');
 
 //routes
 const adminRoutes = require('./routes/admin/auth');
+const storeRoutes = require('./routes/store/store');
+const categoryRoutes = require('./routes/admin/category')
+const productRoutes = require('./routes/store/product');
 const userRoutes = require('./routes/admin/user/auth');
+
 
 
 // environment variable 
 env.config();
 
-//mongodb connection
+// mongodb connection
 mongoose.connect(
     `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@e-commcluster.m62kr.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
     {
@@ -26,6 +30,10 @@ mongoose.connect(
 
 app.use(express.json());
 app.use('/api',adminRoutes);
+app.use('/api',storeRoutes);
+app.use('/api',categoryRoutes);
+app.use('/api',productRoutes);
+
 app.use('/api',userRoutes);
 
 app.listen(process.env.PORT,()=>{
