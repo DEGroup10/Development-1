@@ -8,14 +8,14 @@ import { isUserLoggedIn } from "./actions";
 import Signup from "./containers/Singup";
 
 function App() {
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
+  // const auth = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (!auth.authenticate) {
-      dispatch(isUserLoggedIn());
-    }
-  }, [auth.authenticate]);
+  // useEffect(() => {
+  //   if (!auth.authenticate) {
+  //     dispatch(isUserLoggedIn());
+  //   }
+  // }, [auth.authenticate]);
 
   return (
     <div className="App">
