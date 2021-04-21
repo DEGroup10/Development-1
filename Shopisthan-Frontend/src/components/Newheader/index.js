@@ -14,9 +14,9 @@ import {
   DropdownMenu
 } from '../MaterialUI';
 import {useDispatch, useSelector} from 'react-redux';
-import { userLogin } from '../../actions';
+import { login } from '../../actions';
 import { Link, Router,  BrowserRouter, NavLink} from 'react-router-dom';
-import { signout } from "../../actions";
+
 
 /**
 * @author
@@ -31,13 +31,9 @@ const HomeNavbar = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector(state=> state.auth);
 
-  const login = () =>{
-    dispatch(userLogin({email,password}))
+  const userLogin = () =>{
+    dispatch(login({email,password}))
  }
-
- const logout = () => {
-  dispatch(signout());
-}
 
  const renderLoggedInMenu  = () =>{
     return (
@@ -62,7 +58,7 @@ const HomeNavbar = (props) => {
           { label: 'Rewards', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
           { label: 'Notifications', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null,onClick:{logout} }
+          { label: 'Logout', href: '', icon: null }
         ]}
         
       />
@@ -115,14 +111,14 @@ const HomeNavbar = (props) => {
 
                 <MaterialInput 
                   type="text"
-                  placeholder='Email'
+                  label="Enter Email/Enter Mobile Number"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <MaterialInput 
                   type="password"
-                  placeholder='Password'
+                  label="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   // rightElement={<a href="#">Forgot?</a>}
@@ -135,7 +131,8 @@ const HomeNavbar = (props) => {
                   style={{
                     margin:'40px 0 20px 0'
                   }}
-                  onClick={login}/>
+                  onClick={userLogin}
+                />
                 
                    <p>OR</p>
                    <MaterialButton 
