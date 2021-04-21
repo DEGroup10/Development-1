@@ -2,6 +2,7 @@ const Cart = require("../../models/admin/user/cart");
 
 exports.addItemToCart = (req, res) => {
  
+
  Cart.findOne({ user: req.user._id })
  .exec((error, cart) => {
     if (error) return res.status(400).json({ error });
