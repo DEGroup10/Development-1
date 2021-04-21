@@ -63,7 +63,7 @@ const Signup = (props) => {
             placeholder="Password"
             value={password}
             type="password"
-            onChange={(e) => setPassword(e.target.password)}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           <button variant="primary" type="submit">

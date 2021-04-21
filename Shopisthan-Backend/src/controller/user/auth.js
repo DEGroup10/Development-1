@@ -21,7 +21,7 @@ exports.signup = (req, res) => {
                 firstName,
                 lastName,
                 email,
-                password,
+                hash_password,
                 username: firstName+lastName,
                 role: 'user'
             });

@@ -14,7 +14,6 @@ const userRoutes = require('./routes/admin/user/auth');
 const cartRoutes = require('./routes/admin/user/cart');
 
 
-
 // environment variable 
 env.config();
 
@@ -36,7 +35,6 @@ app.use('/api',adminRoutes);
 app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',productRoutes);
-
 app.use('/api',userRoutes);
 app.use('/api', cartRoutes);
 

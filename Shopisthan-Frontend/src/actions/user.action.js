@@ -39,7 +39,7 @@ export const userSignup = (user) => {
     let res;
     try {
       dispatch({ type: authConstants.SIGNUP_REQUEST });
-      res = await axios.post(`/signup`, user);
+      res = await axios.post(`/user/signup`, user);
       if (res.status === 201) {
         dispatch({ type: authConstants.SIGNUP_SUCCESS });
         const { token, user } = res.data;
@@ -73,7 +73,7 @@ export const userLogin = (user) => {
 
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGIN_REQUEST });
-    const res = await axios.post(`/signin`, {
+    const res = await axios.post(`/user/signin`, {
       ...user
     });
 

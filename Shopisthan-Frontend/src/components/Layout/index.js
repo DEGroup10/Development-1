@@ -2,6 +2,7 @@ import React from 'react'
 // import Header from '../Header'
 import MenuHeader from '../MenuHeader'
 import Header from '../Header'
+import HomeNavbar from '../Newheader'
 
 /**
 * @author
@@ -11,7 +12,7 @@ import Header from '../Header'
 const Layout = (props) => {
     return (
         <>
-            <Header />
+            <HomeNavbar />
             <MenuHeader />
             {props.children}
         </>

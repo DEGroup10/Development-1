@@ -34,7 +34,6 @@ const HomeNavbar = (props) => {
   const login = () =>{
     dispatch(userLogin({email,password}))
  }
-
  const logout = () => {
   dispatch(signout());
 }
