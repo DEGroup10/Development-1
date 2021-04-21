@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom'
 import './style.css';
+// import flipkartLogo from '../../images/logo/flipkart.png';
+// import goldenStar from '../../images/logo/golden-star.png';
 import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
 import { 
   Modal,
@@ -29,9 +31,9 @@ const Header = (props) => {
   }
   
   useEffect(()=>{
-   if(auth.authenticate){
+  //  if(auth.authenticate){
 
-   }
+  //  }
   },[auth.authenticate]);
 
   const renderLoggedInMenu  = () =>{
@@ -40,7 +42,7 @@ const Header = (props) => {
       <DropdownMenu
         menu={
           <a className = "fullName" 
-          onClick={() => setLoginModal(true)}
+          // onClick={() => setLoginModal(true)}
           >
             {auth.user.fullName}
           </a>
