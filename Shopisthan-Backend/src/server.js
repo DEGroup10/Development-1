@@ -9,6 +9,7 @@ const adminRoutes = require('./routes/admin/auth');
 const storeRoutes = require('./routes/store/store');
 const categoryRoutes = require('./routes/admin/category')
 const productRoutes = require('./routes/store/product');
+const userRoutes = require('./routes/admin/user/auth');
 
 
 
@@ -33,6 +34,7 @@ app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',productRoutes);
 
+app.use('/api',userRoutes);
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
