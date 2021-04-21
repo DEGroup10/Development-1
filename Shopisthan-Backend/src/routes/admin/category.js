@@ -5,7 +5,7 @@ const { addCategory, getCategories } = require('../../controller/admin/category'
 const router = express.Router();
 
 
-router.post('/category/create',requireSignin,adminMiddleware,addCategory)
-router.get('/category/getcategory',getCategories)
+// router.post('/category/create',requireSignin,adminMiddleware,addCategory)
+// router.get('/category/getcategory',getCategories)
 
 module.exports = router;

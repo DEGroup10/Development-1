@@ -12,7 +12,6 @@ const productRoutes = require('./routes/store/product');
 const userRoutes = require('./routes/admin/user/auth');
 
 
-
 // environment variable 
 env.config();
 
@@ -33,7 +32,6 @@ app.use('/api',adminRoutes);
 app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',productRoutes);
-
 app.use('/api',userRoutes);
 
 app.listen(process.env.PORT,()=>{
