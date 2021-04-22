@@ -5,6 +5,8 @@ import HomeIcon from '../../img/homeicon.jpg';
 import ExploreIcon from '../../img/explore-icon.svg';
 import ProfilePic from '../../img/profile-pic.jpeg';
 import Notification from '../../img/notfi.png';
+import Cart from '../../img/cart-icon.svg';
+import Shopisthan__logo_bolte from '../../img/shopisthan_logo_bolte.png';
 import './style.css';
 import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
 import { 
@@ -52,8 +54,6 @@ const HomeNavbar = (props) => {
         menus={[
           { label: 'My Profile', href: '', icon: null },
           { label: 'Cart', href: '', icon: null },
-          { label: 'SuperCoin Zone', href: '', icon: null },
-          { label: 'Flipkart Plus Zone', href: '', icon: null },
           { label: 'Orders', href: '', icon: null },
           { label: 'Wishlist', href: '', icon: null },
           { label: 'My Chats', href: '', icon: null },
@@ -80,7 +80,7 @@ const HomeNavbar = (props) => {
        }
        menus={[
         //  { label: 'My Profile', href: '', icon: null },
-         { label: 'Flipkart Plus Zone', href: '', icon: null },
+         { label: 'Shopisthan About us', href: '', icon: null },
          { label: 'Orders', href: '', icon: null },
          { label: 'Wishlist', href: '', icon: null },
          { label: 'Rewards', href: '', icon: null },
@@ -106,8 +106,9 @@ const HomeNavbar = (props) => {
               <div className="authContainer">
           <div className="row">
             <div className="leftspace">
+            <img src={Shopisthan__logo_bolte} alt="Logo" />
               <h2>Login</h2>
-              <p>Get access to your Orders, Wishlist and Recommendations</p>
+              <p>Wellcom to Shopisthan, We strive to have a positive impact on customers, small businesses, the economy, and communities.</p>
             </div>
             <div className="rightspace">
           
@@ -201,7 +202,7 @@ const HomeNavbar = (props) => {
               { label: 'Download App', href: '', icon: null }
             ]}
           />
-          <div>
+           <div className="Navbar__menuItem">
             {/* <a className="cart">
               <IoIosCart />
               <span style={{ margin: '0 10px' }}>Cart</span>
@@ -209,8 +210,8 @@ const HomeNavbar = (props) => {
           </div>
         </div>
             <div className="Navbar__menuItem">
-                     <img  height='30' width='30' src={HomeIcon} alt="Home" />
-                    <div>Home</div>
+                     <img  height='30' width='30' src={Cart} alt="Home" />
+                    <div>Cart</div>
                 </div>
                 <img className="Navbar__profilPic" src={ProfilePic} alt="Profile Pic"  />
             
