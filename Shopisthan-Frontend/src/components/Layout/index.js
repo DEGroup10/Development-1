@@ -13,7 +13,7 @@ const Layout = (props) => {
     return (
         <>
             <HomeNavbar />
-            <MenuHeader />
+            
             {props.children}
         </>
     )
