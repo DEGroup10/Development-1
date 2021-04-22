@@ -6,3 +6,4 @@ const { requireSignin, userMiddleware } = require("../../../common-middleware");
 router.post("/user/cart/addtocart", requireSignin, userMiddleware , addItemToCart);
 
 module.exports = router;
+    
