@@ -1,0 +1,22 @@
+import React from 'react'
+// import Header from '../Header'
+import MenuHeader from '../MenuHeader'
+import Header from '../Header'
+import HomeNavbar from '../Newheader'
+
+/**
+* @author
+* @function Layout
+**/
+
+const Layout = (props) => {
+    return (
+        <>
+            <HomeNavbar />
+            
+            {props.children}
+        </>
+    )
+}
+
+export default Layout
