@@ -6,8 +6,18 @@ const slugify = require('slugify')
 exports.createProduct = (req, res) => {
 
     const {
-        name, price, description, category, quantity, createdBy
+        name, price, description, category, quantity, createdBy,ParCategory
     } = req.body;   
+
+    let productPictures = [];
+
+    if (req.files.length > 0) {
+        productPictures = req.files.map(file => {
+
+            return { img: file.filename }
+        });
+
+    }
 
    
     const product = new Product({
@@ -16,8 +26,10 @@ exports.createProduct = (req, res) => {
         price,
         quantity,
         description,
+        productPictures,
         category,
         createdBy: req.store._id,
+        ParCategory
 
     });
 

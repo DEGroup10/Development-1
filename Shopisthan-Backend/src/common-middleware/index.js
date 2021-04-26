@@ -17,6 +17,10 @@ exports.requireSignin = (req, res, next) => {
   }
   else{
 
+  }
+
+}
+
 
 exports.requireSignin = (req, res, next) => {
  
@@ -30,7 +34,7 @@ exports.requireSignin = (req, res, next) => {
 
   next();
 
-  console.log(token);
+  // console.log(token);
 };
 
 exports.userMiddleware = (req,res,next)=>{
@@ -42,12 +46,13 @@ exports.userMiddleware = (req,res,next)=>{
 }
 
 
-exports.adminMiddleware = (req,res,next)=>{
+// exports.adminMiddleware = (req,res,next)=>{
 
-  if(req.user.role !== 'admin'){
-    return res.status(400).json({message:" Admin Access denied"})
-};
+//   if(req.user.role !== 'admin'){
+//     return res.status(400).json({message:" Admin Access denied"})
+// };
 
+// }
 
 
 exports.adminMiddleware = (req,res,next)=>{
@@ -81,9 +86,8 @@ exports.storeMiddleware = (req,res,next)=>{
 
   if(req.store.role !== "store") {
     return res.status(400).json({message:" Store Access denied"})
-   
 
-  }
+}
   next();
   
 }

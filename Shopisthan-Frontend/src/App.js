@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          {/* <Route path="/" exact component={HomePage} /> */}
           <Route path="/signup" exact component={Signup} />
           <Route path="/:slug" component={ProductListPage} />
         </Switch>

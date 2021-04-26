@@ -53,6 +53,7 @@ exports.signin = (req, res) => {
                 if (admin.authenticate(req.body.password) && admin.role === 'admin') {
                     const token = jwt.sign({ _id: admin._id, role: admin.role }, process.env.JWT_SECRET);
                     const { _id, firstName, lastName, email, role, fullName } = admin;
+                    res.cookie('token', token);
                     res.status(200).json({
                         token,
                         admin: {
@@ -69,6 +70,15 @@ exports.signin = (req, res) => {
                 return res.status(400).json({ message: "Something went worng" })
             }
         })
+}
+
+
+
+exports.signout = (req, res) => {
+    res.clearCookie('token');
+    res.status(200).json({
+        message: 'SignOut Successfully...!'
+    })
 }
 
 
