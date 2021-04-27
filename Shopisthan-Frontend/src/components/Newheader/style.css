@@ -9,6 +9,7 @@
     box-shadow: 0px 4px 6px rgba(226, 226, 226, 0.35);
     position: fixed;
     z-index: 50;
+    margin: 0 auto;   
   }
   
   .Navbar__items {
