@@ -25,10 +25,14 @@ const shopSchema = new mongoose.Schema({
           trim: true,
           unique: true,
       },
-      hash_password:{
-          type: String,
-          required: true
-      },
+    //   hash_password:{
+    //       type: String,
+    //       required: true
+    //   },
+    password:{
+        type: String,
+        required: true
+    },
       shopCategory:{
           type: String,
           trim: true,
@@ -61,17 +65,39 @@ const shopSchema = new mongoose.Schema({
 
 
 
-  shopSchema.virtual('password')
-.set(function(password){
-   this.hash_password = bcrypt.hashSync(password, 10);
-});
+// shopSchema.virtual('password')
+// .set(function(password){
+//    this.hash_password = bcrypt.hashSync(password, 12);
+// });
+
+// shopSchema.pre('save',async function(next){
+//     if(this.isModified('password')){
+//         this.password = bcrypt.hash(this.password,12)
+//     }
+//     next();
+// })
+
+// shopSchema.virtual('password')
+// .set(function(password){
+//    this.hash_password = bcrypt.genSalt(10,(err,salt)=>{
+//        if(err){
+//            console.log('sever error');
+//        }else{
+//         bcrypt.hash(password,salt,(err,hash)=>{
+//             if(err){
+                
+//             }
+//         })
+//        }
+//    })
+// });
 
 
 
-shopSchema.methods = {
-    authenticate : function(password){
-        return bcrypt.compareSync(password, this.hash_password);
-    }
-}
+// shopSchema.methods = {
+//     authenticate : function(password){
+//         return bcrypt.compareSync(password, this.hash_password);
+//     }
+// }
 
 module.exports = mongoose.model('Store',shopSchema);
