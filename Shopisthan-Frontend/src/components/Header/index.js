@@ -8,8 +8,10 @@ import {
   MaterialButton,
   DropdownMenu
 } from '../MaterialUI';
+import Shopisthan__logo_bolte from '../../img/shopisthan_logo_bolte.png';
+import Shopisthan__logo from '../../img/shopisthan-logo.png'
 import {useDispatch, useSelector} from 'react-redux';
-import { login } from '../../actions';
+import { login, signout, userLogin } from '../../actions';
 
 /**
 * @author
@@ -22,17 +24,22 @@ const Header = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const auth = useSelector(state=> state.auth)
+  const auth = useSelector(state=> state.auth);
 
-  const userLogin = () =>{
-     dispatch(login({email,password}))
-  }
-  
-  useEffect(()=>{
+  const login = () =>{
+    dispatch(userLogin({email,password}))
+ }
+
+ const logout = () => {
+   dispatch(signout());
+ }
+
+ useEffect(() => {
    if(auth.authenticate){
-
+     setLoginModal(false)
    }
-  },[auth.authenticate]);
+ }, [auth.authenticate])
+
 
   const renderLoggedInMenu  = () =>{
     return (
@@ -46,9 +53,8 @@ const Header = (props) => {
           </a>
         }
         menus={[
-          { label: 'My Profile', href: '', icon: null },
-          { label: 'SuperCoin Zone', href: '', icon: null },
-          { label: 'Flipkart Plus Zone', href: '', icon: null },
+          { label: 'My Profile', href: '/myprofile', icon: null },
+          { label: 'Cart', href: '', icon: null },
           { label: 'Orders', href: '', icon: null },
           { label: 'Wishlist', href: '', icon: null },
           { label: 'My Chats', href: '', icon: null },
@@ -56,7 +62,7 @@ const Header = (props) => {
           { label: 'Rewards', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
           { label: 'Notifications', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null }
+          { label: 'Logout', href: '', icon: null, onClick:logout}
         ]}
         
       />
@@ -73,17 +79,16 @@ const Header = (props) => {
         </a>
       }
       menus={[
-        { label: 'My Profile', href: '', icon: null },
-        { label: 'Flipkart Plus Zone', href: '', icon: null },
-        { label: 'Orders', href: '', icon: null },
-        { label: 'Wishlist', href: '', icon: null },
-        { label: 'Rewards', href: '', icon: null },
-        { label: 'Gift Cards', href: '', icon: null },
+        { label: 'Shopisthan About us', href: '', icon: null },
+         { label: 'Orders', href: '', icon: null },
+         { label: 'Wishlist', href: '', icon: null },
+         { label: 'Rewards', href: '', icon: null },
+         { label: 'Gift Cards', href: '', icon: null },
       ]}
       firstMenu={
         <div className="firstmenu">
           <NavLink to="/signup" className="nav-link" >Signup</NavLink>
-          <span>New Customer?</span>
+          <span>New User?</span>
         </div>
       }
     />
@@ -99,22 +104,23 @@ const Header = (props) => {
         <div className="authContainer">
           <div className="row">
             <div className="leftspace">
+            <img src={Shopisthan__logo_bolte} alt="Logo" />
               <h2>Login</h2>
-              <p>Get access to your Orders, Wishlist and Recommendations</p>
+              <p>Wellcom to Shopisthan, We strive to have a positive impact on customers, small businesses, the economy, and communities.</p>
             </div>
             <div className="rightspace">
           
 
                 <MaterialInput 
                   type="text"
-                  label="Enter Email/Enter Mobile Number"
+                  placeholder='Enter Your Email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <MaterialInput 
                   type="password"
-                  label="Enter Password"
+                  placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   // rightElement={<a href="#">Forgot?</a>}
@@ -127,7 +133,7 @@ const Header = (props) => {
                   style={{
                     margin:'40px 0 20px 0'
                   }}
-                  onClick={userLogin}
+                  onClick={login}
                 />
                 
                    <p>OR</p>
@@ -147,46 +153,39 @@ const Header = (props) => {
       </Modal>
       <div className="subHeader">
         <div className="logo">
-          <a href="">
-            <img
-            //  src={flipkartLogo} 
-             className="logoimage" alt="" />
+          <a href="/">
+          <img src={Shopisthan__logo} alt="Shopisthan Logo" />
           </a>
-          <a style={{ marginTop: '-10px' }}>
-            <span className="exploreText">Explore</span>
-            <span className="plusText">Plus</span>
-            <img 
-            // src={goldenStar}
-             className="goldenStar" alt="" />
-          </a>
+          <a style={{ marginTop: '-10px', marginLeft: '125px' }}>
+            <span className="exploreText">India pvt Ltd</span>
+            </a>
         </div>
         <div style={{
           padding: '0 10px'
         }}>
-          <div className="searchInputContainer">
-            <input
-              className="searchInput"
-              placeholder={'search for products, brands and more'}
-            />
-            <div className="searchIconContainer">
-              <IoIosSearch style={{
-                color: '#2874f0'
-              }} />
+          <div className="Navbar__search" style={{ marginLeft: '-600px'
+           }}>
+                <div class=".Navbar__wrapper">
+                   <div class=".Navbar__searchBar" >
+                        <input id="searchQueryInput"
+                        type="text"
+                        name="searchQueryInput"
+                        placeholder="Search"
+                       />
+                        {/* <button id="searchQuerySubmit"
+                        type="submit"
+                        name="searchQuerySubmit">
+                            <img alt="Search" src={SearchIcon}/>
+                        </button> */}
+                    </div>
+                </div>
             </div>
-
-          </div>
         </div>
         <div className="rightMenu">
           {auth.authenticate ? 
            renderLoggedInMenu() :  renderNonLoggedInMenu() 
           }
           <DropdownMenu
-            menu={
-              <a className="more">
-                <span>More</span>
-                <IoIosArrowDown />
-              </a>
-            }
             menus={[
               { label: 'Notification Preference', href: '', icon: null },
               { label: 'Sell on flipkart', href: '', icon: null },
@@ -201,12 +200,12 @@ const Header = (props) => {
               <span style={{ margin: '0 10px' }}>Cart</span>
             </a>
           </div>
+
         </div>
 
       </div>
     </div>
   )
-
 }
 
 export default Header

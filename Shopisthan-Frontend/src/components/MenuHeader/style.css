@@ -16,7 +16,7 @@ padding: 0;
  display: flex;
  margin: 0 50px;
  position: relative;
- margin-top: 40px;
+ /* margin-top: 40px; */
 }
 
 .menuHeader > ul > li > span{
@@ -25,9 +25,9 @@ padding: 0;
  cursor: pointer;
  padding: 0 20px;
  font-size: 14px;
- margin-top: 39px;
+ /* margin-top: 39px; */
  box-shadow: 0 2px 2px -2px #333;
- border:  1px solid #918f8f;
+ /* border:  1px solid #918f8f; */
 }
 
 .menuHeader > ul > li > span:hover{

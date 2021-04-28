@@ -6,16 +6,24 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn } from "./actions";
 import Signup from "./containers/Singup";
+import Myprofile from "./containers/MyProfile";
+import ProductDetailsPage from "./containers/ProductDetailsPage";
+import CartPage from "./containers/CartPage/index";
+import { updateCart } from "./actions/cart.action";
 
 function App() {
-  // const dispatch = useDispatch();
-  // const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
 
-  // useEffect(() => {
-  //   if (!auth.authenticate) {
-  //     dispatch(isUserLoggedIn());
-  //   }
-  // }, [auth.authenticate]);
+  useEffect(() => {
+    if (!auth.authenticate) {
+      dispatch(isUserLoggedIn());
+    }
+  }, [auth.authenticate]);
+
+  useEffect(() => {
+    dispatch(updateCart());
+  }, [auth.authenticate]);
 
   return (
     <div className="App">
@@ -23,7 +31,11 @@ function App() {
         <Switch>
           {/* <Route path="/" exact component={HomePage} /> */}
           <Route path="/signup" exact component={Signup} />
+          <Route path="/cart" exact component={CartPage} />
+          <Route path="/myprofile" component={Myprofile} />
+          <Route path="/:productSlug/:productId/p" component={ProductDetailsPage} />
           <Route path="/:slug" component={ProductListPage} />
+         
         </Switch>
       </Router>
     </div>
