@@ -43,9 +43,9 @@ const Store = (props) => {
                                 <td>{store.shopPhoneNo}</td>
                                 <td>{store.shopEmail}</td>
                                 <td>{store.shopAddress}</td>
-                                {/* <td>{product.description}</td> */}
-                                {/* <td>{store.category.name}</td> */}
-                                {/* <td>{store.createdBy.username}</td> */}
+                          
+                                <td>{store.shopCategory.name}</td>
+                                <td>{store.createdBy.username}</td>
                                 
 
                                 

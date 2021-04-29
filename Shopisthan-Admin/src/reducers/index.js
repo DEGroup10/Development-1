@@ -11,7 +11,7 @@ import storeReducers from './store.reducers';
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    // user: userReducer,
+    user: userReducer,
     category: categoryReducer,
     product: productReducer,
     order: orderReducer,

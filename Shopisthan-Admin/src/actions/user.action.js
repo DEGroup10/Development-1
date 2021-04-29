@@ -5,10 +5,10 @@ import { userContants } from "./constants";
 
 export const signup = (user) => {
 
-  console.log(user);
+  // console.log(user);
 
 
-  return async (dispatch) => {
+  return async dispatch => {
     dispatch({ type: userContants.USER_REGISTER_REQUEST });
     const res = await axiosIntance.post(`/admin/signup`, {
       ...user

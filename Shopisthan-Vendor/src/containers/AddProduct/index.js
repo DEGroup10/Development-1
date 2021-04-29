@@ -1,10 +1,16 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../actions/product.action';
 // import { addShop } from '../../actions/store.action';
 import { Layout } from '../../components/Layout';
 import Input from '../../components/UI/Input';
+import { Redirect } from "react-router-dom";
+
+
+
+
+
 
 
 
@@ -24,7 +30,20 @@ const AddProduct = (props) =>{
 
     const store = useSelector(state=> state.auth.store)
     const category = useSelector(state => state.category);
+    const product = useSelector(state => state.product);
     const dispatch = useDispatch();
+
+    if (product.loading) {
+      return <Redirect to={`/storeProducts`} />;
+     
+    }
+
+    // useEffect(()=>{
+    //   if(!product.loading){
+    //     console.log("Wjwe");
+    //     return <Redirect to={`/`} />
+    //   }
+    // },[product.loading])
     
    const storeCategory = store.shopCategory;
 
@@ -40,6 +59,9 @@ const AddProduct = (props) =>{
         e.target.files[0]
     ]);
 }
+
+
+
 
 const createProduct = (e)=>{
     e.preventDefault();
@@ -63,21 +85,11 @@ const createProduct = (e)=>{
        for (let pic of productPictures) {
            from.append('productPictures', pic); 
        }
-
-    //       const product = {
-    //           name,
-    //           quantity,
-    //           price,
-    //           description,
-    //           productPictures,
-    //           category:categoryId,
-    //           ParCategory:parCategoryId
-    //       }
-         
    
    
        dispatch(addProduct(from))
 
+  
 
   }
 

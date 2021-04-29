@@ -20,19 +20,28 @@ import { storeContants } from "./constants"
 // }
 
 export const addShop = (shop) =>{
-    // /shop/create
-//    console.log(from);
-console.log(shop);
-    return async dispatch => {
+  
+
+    return async (dispatch) => {
+
+        dispatch({ type: storeContants.ADD_NEW_STORE_REQUEST})
         const res = await axiosIntance.post(`/shop/create`, {
             ...shop
         });
         if(res.status === 201){
+
             const {store} =  res.data;
-            console.log(store);
+            dispatch({
+                 type: storeContants.ADD_NEW_STORE_SUCCESS,
+                   payload: { stores:store }
+                   });
+           
         }else{
             const {error} =  res.data;
-             console.log(error);
+            dispatch({
+                type: storeContants.ADD_NEW_STORE_FAILURE,
+                  payload: { error }
+        });
         }
         
       }

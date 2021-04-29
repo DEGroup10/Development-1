@@ -115,8 +115,9 @@ exports.storeData = async (req, res) => {
     const categories = await Category.find({}).exec();
    
     const storeProducts = await Product.find({createdBy:req.store._id})
-        .select('_id name price quantity slug description productPictures category createdBy')
+        .select('_id name price quantity slug description productPictures category ParCategory createdBy')
         .populate({path: 'category', select: '_id name'})
+        .populate({path: 'ParCategory', select: '_id name'})
         .exec();
     res.status(200).json({
         categories,

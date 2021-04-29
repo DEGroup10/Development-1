@@ -32,7 +32,7 @@ exports.initialData = async (req, res) => {
     const categories = await Category.find({}).exec();
     const stores = await store.find({})
     .select('_id userName shopName shopType shopEmail shopCategory shopPhoneNo shopAddress createdBy')
-    // .populate({path: 'shopCategory', select: '_id name'})
+    .populate({path: 'shopCategory', select: '_id name'})
     .populate({path:'createdBy',select: '_id username'})
     .exec();
     const products = await Product.find({})
