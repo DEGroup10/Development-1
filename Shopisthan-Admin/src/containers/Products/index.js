@@ -102,15 +102,18 @@ const Products = (props) => {
                     {
                         product.products.length > 0 ?
                             product.products.map((product,index)=>
-                                <tr onClick={() => showProductDetailsModal(product)} key={product._id}>
+                                <tr
+                                //  onClick={() => showProductDetailsModal(product)} 
+                                 key={product._id}
+                                 >
                                     <td>{index + 1}</td>
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
                                     <td>{product.quantity}</td>
-                                    {/* <td>{product.category._id}</td> */}
+                                    <td>{product.category.name}</td>
                                     {/* <td>{product.description}</td> */}
                                     {/* <td>{product.category.name}</td> */}
-                                    {/* <td>{product.createdBy.shopName}</td> */}
+                                    <td>{product.createdBy.shopName}</td>
                                     
 
                                     
@@ -274,7 +277,7 @@ const Products = (props) => {
                     <Col md={12}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <h3>Products</h3>
-                            <button onClick={handleShow}>Add</button>
+                            {/* <button onClick={handleShow}>Add</button> */}
                         </div>
                     </Col>
                 </Row>

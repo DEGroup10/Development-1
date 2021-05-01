@@ -2,6 +2,9 @@ import React from 'react'
 import { Layout } from '../../components/Layout'
 import {NavLink} from 'react-router-dom'
 import { Container, Row, Col, Table } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { getStoreData } from '../../actions/storedata.action'
+
 
 /**
 * @author
@@ -10,51 +13,63 @@ import { Container, Row, Col, Table } from 'react-bootstrap'
 
 const Product = (props) => {
 
+    //  const dispatch = useDispatch();  
 
-    // const renderProducts = () => {
-    //     return (
-    //         <Table style={{ fontSize: 12 }} responsive="sm">
-    //             <thead>
-    //                 <tr>
-    //                     <th>#</th>
-    //                     <th>Name</th>
-    //                     <th>Price</th>
-    //                     <th>Quanitiy </th>
-    //                     {/* <th>Description</th> */}
-    //                     {/* <th>Product Pictures</th> */}
-    //                     <th>Category</th>
-    //                     <th>Shop Name</th>
+    // dispatch(getStoreData());
+  
+    const product = useSelector(state => state.product);
 
-    //                 </tr>
-    //             </thead>
-    //             <tbody>
 
-    //                 {
-    //                     product.products.length > 0 ?
-    //                         product.products.map((product,index)=>
-    //                             <tr onClick={() => showProductDetailsModal(product)} key={product._id}>
-    //                                 <td>{index + 1}</td>
-    //                                 <td>{product.name}</td>
-    //                                 <td>{product.price}</td>
-    //                                 <td>{product.quantity}</td>
-    //                                 {/* <td>{product.category._id}</td> */}
-    //                                 {/* <td>{product.description}</td> */}
-    //                                 {/* <td>{product.category.name}</td> */}
-    //                                 <td>{product.createdBy.shopName}</td>
+    const renderProducts = () => {
+        return (
+            <Table style={{ fontSize: 12 }} responsive="sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quanitiy </th>
+                        {/* <th>Description</th> */}
+                        {/* <th>Product Pictures</th> */}
+                        <th>Category</th>
+                        <th>Product Category</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        product.products.length > 0 ?
+                            product.products.map((product,index)=>
+
+                        
+                                <tr 
+                           
+                                key={product._id}
+                                >
+                                    <td>{index + 1}</td>
+                                    <td>{product.name}</td>
+                                    <td>{product.price}</td>
+                                    <td>{product.quantity}</td>
+                                    <td>{product.ParCategory.name}</td>
+                                    <td>{product.category.name}</td>
+                                  
+                                    {/* <td>{product.category.name}</td> */}
+                                    {/* <td>{product.createdBy.shopName}</td> */}
                                     
 
                                     
-    //                             </tr>
-    //                         ):null
-    //                 }
+                                </tr>
+                            ):null
+                    }
 
 
 
-    //             </tbody>
-    //         </Table>
-    //     )
+                </tbody>
+            </Table>
+        )
 
-    // }
+    }
 
      
 
@@ -74,7 +89,7 @@ const Product = (props) => {
 
                 <Row>
                     <Col>
-                        {/* {renderProducts()} */}
+                        {renderProducts()}
                     </Col>
                 </Row>
             </Container>

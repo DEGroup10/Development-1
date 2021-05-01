@@ -34,9 +34,7 @@ const shopSchema = new mongoose.Schema({
         required: true
     },
       shopCategory:{
-          type: String,
-          trim: true,
-          required: true
+        type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
           
       },
       shopPhoneNo:{

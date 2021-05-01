@@ -28,6 +28,7 @@ const Signin = (props) => {
     dispatch(login(user));
     // dispatch(login(user));
   };
+  
 
   if (auth.authenticate) {
     return <Redirect to={`/`} />;

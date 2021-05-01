@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addShop } from '../../actions/store.action';
 import { Layout } from '../../components/Layout';
 import Input from '../../components/UI/Input';
+import { Redirect } from "react-router-dom";
+import { getInitialData } from '../../actions';
 
 
 
@@ -20,13 +22,33 @@ const AddStore = (props) =>{
     const [shopAddress, setShopAddress] = useState('');
     const [shopPassword, setShopPassword] = useState('');
 
+
+          //  const addedStore = useSelector(state=> state.store);
+        
+          //  if(addedStore.loading){
+          //   return (<Redirect to={`/`} />);
+
+          //  }
+
+         
     
 
 
 
     const category = useSelector(state => state.category);
+    const addedStore = useSelector(state=> state.store);
     const dispatch = useDispatch();
     
+           if(addedStore.loading){  
+
+            dispatch(getInitialData());
+            return (<Redirect to={`/store`} />);
+            
+          
+          
+
+           }
+
  
 
 
@@ -57,21 +79,7 @@ const AddStore = (props) =>{
          from.append('shopCategory', categoryId);
          from.append('shopPhoneNo', shopPhNo);
          from.append('shopAddress', shopAddress);
-        //  "userName":"efeggerwef",
-        //  "shopName":"wefregwe",
-        //  "shopType":"efwe",
-        //  "shopEmail":"abfcdwq11q212121121@gmail.com",
-        //  "password":"1234567890",
-        //  "shopCategory":"efwefwefwf",
-        //  "shopPhoneNo":"12243324545",
-        //  "shopAddress":"wqefwe fw efwe"
-            // console.log("wdwed:",from);
-            // const user = {
-            //   firstName,
-            //   lastName,
-            //   email,
-            //   password
-            // };
+        
 
             const shop= {
               userName,
