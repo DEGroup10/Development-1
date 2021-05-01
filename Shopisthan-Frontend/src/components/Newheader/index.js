@@ -16,9 +16,9 @@ import {
   DropdownMenu
 } from '../MaterialUI';
 import {useDispatch, useSelector} from 'react-redux';
-import { userLogin, signout } from '../../actions';
+import { userLogin } from '../../actions';
 import { Link, Router,  BrowserRouter, NavLink} from 'react-router-dom';
-
+import { signout } from "../../actions";
 
 /**
 * @author
@@ -36,16 +36,9 @@ const HomeNavbar = (props) => {
   const login = () =>{
     dispatch(userLogin({email,password}))
  }
-
  const logout = () => {
-   dispatch(signout());
- }
-
- useEffect(() => {
-   if(auth.authenticate){
-     setLoginModal(false)
-   }
- }, [auth.authenticate])
+  dispatch(signout());
+}
 
  const renderLoggedInMenu  = () =>{
     return (
@@ -59,7 +52,7 @@ const HomeNavbar = (props) => {
           </a>
         }
         menus={[
-          { label: 'My Profile', href: '/myprofile', icon: null },
+          { label: 'My Profile', href: '', icon: null },
           { label: 'Cart', href: '', icon: null },
           { label: 'Orders', href: '', icon: null },
           { label: 'Wishlist', href: '', icon: null },
@@ -68,7 +61,7 @@ const HomeNavbar = (props) => {
           { label: 'Rewards', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
           { label: 'Notifications', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null, onClick:logout}
+          { label: 'Logout', href: '', icon: null,onClick:{logout} }
         ]}
         
       />
