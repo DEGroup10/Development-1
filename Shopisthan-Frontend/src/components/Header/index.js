@@ -1,152 +1,215 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom'
-import './style.css';
-import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
-import { 
+import React, { useEffect, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import "./style.css";
+import { IoIosArrowDown, IoIosCart, IoIosSearch } from "react-icons/io";
+import {
   Modal,
   MaterialInput,
   MaterialButton,
-  DropdownMenu
-} from '../MaterialUI';
-import Shopisthan__logo_bolte from '../../img/shopisthan_logo_bolte.png';
-import Shopisthan__logo from '../../img/shopisthan-logo.png'
-import {useDispatch, useSelector} from 'react-redux';
-import { login, signout, userLogin } from '../../actions';
+  DropdownMenu,
+} from "../MaterialUI";
+import Shopisthan__logo_bolte from "../../img/shopisthan_logo_bolte.png";
+import Shopisthan__logo from "../../img/shopisthan-logo.png";
+import Wishlist__logo from "../../img/newwishlistlogo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin, signout, signup as _signup } from "../../actions";
 
 /**
-* @author
-* @function Header
-**/
+ * @author
+ * @function Header
+ **/
 
 const Header = (props) => {
-
   const [loginModal, setLoginModal] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [signup, setSignup] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const auth = useSelector(state=> state.auth);
+  const auth = useSelector((state) => state.auth);
 
-  const login = () =>{
-    dispatch(userLogin({email,password}))
- }
+  const cart = useSelector((state) => state.cart);
 
- const logout = () => {
-   dispatch(signout());
- }
+  const userSignup = () => {
+    const user = { firstName, lastName, email, password };
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      return;
+    }
 
- useEffect(() => {
-   if(auth.authenticate){
-     setLoginModal(false)
-   }
- }, [auth.authenticate])
+    dispatch(_signup(user));
+  };
 
+  const login = () => {
+    if (signup) {
+      userSignup();
+    } else {
+      dispatch(userLogin({ email, password }));
+    }
+  };
 
-  const renderLoggedInMenu  = () =>{
+  const logout = () => {
+    dispatch(signout());
+  };
+
+  useEffect(() => {
+    if (auth.authenticate) {
+      setLoginModal(false);
+    }
+  }, [auth.authenticate]);
+
+  const renderLoggedInMenu = () => {
     return (
-  
       <DropdownMenu
         menu={
-          <a className = "fullName" 
-          onClick={() => setLoginModal(true)}
+          <a
+            href="/myprofile"
+            className="fullName"
+            onClick={() => setLoginModal(false)}
           >
             {auth.user.fullName}
           </a>
         }
         menus={[
-          { label: 'My Profile', href: '/myprofile', icon: null },
-          { label: 'Cart', href: '', icon: null },
-          { label: 'Orders', href: '', icon: null },
-          { label: 'Wishlist', href: '', icon: null },
-          { label: 'My Chats', href: '', icon: null },
-          { label: 'Coupons', href: '', icon: null },
-          { label: 'Rewards', href: '', icon: null },
-          { label: 'Gift Cards', href: '', icon: null },
-          { label: 'Notifications', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null, onClick:logout}
+          { label: "My Profile", href: "/myprofile", icon: null },
+          { label: "Cart", href: "/cart", icon: null },
+          {
+            label: "Orders",
+            href: "/account/orders",
+            icon: null,
+            onClick: () => {
+              !auth.authenticate && setLoginModal(true);
+            },
+          },
+          
+          { label: "Wishlist", href: "", icon: null },
+          { label: "My Chats", href: "", icon: null },
+          { label: "Coupons", href: "", icon: null },
+          { label: "Rewards", href: "", icon: null },
+          { label: "Gift Cards", href: "", icon: null },
+          { label: "Notifications", href: "", icon: null },
+          { label: "Logout", href: "", icon: null, onClick: logout },
         ]}
-        
       />
-     ) ;
-
-  }
-  const renderNonLoggedInMenu =() =>{
-   return (
-  
-    <DropdownMenu
-      menu={
-        <a className="loginButton" onClick={() => setLoginModal(true)}>
-          Login
-        </a>
-      }
-      menus={[
-        { label: 'Shopisthan About us', href: '', icon: null },
-         { label: 'Orders', href: '', icon: null },
-         { label: 'Wishlist', href: '', icon: null },
-         { label: 'Rewards', href: '', icon: null },
-         { label: 'Gift Cards', href: '', icon: null },
-      ]}
-      firstMenu={
-        <div className="firstmenu">
-          <NavLink to="/signup" className="nav-link" >Signup</NavLink>
-          <span>New User?</span>
-        </div>
-      }
-    />
-   ) ;
-  }
+    );
+  };
+  const renderNonLoggedInMenu = () => {
+    return (
+      <DropdownMenu
+        menu={
+          <a className="loginButton" onClick={() => setLoginModal(true)}>
+            Login
+          </a>
+        }
+        menus={[
+          { label: "Shopisthan About us", href: "", icon: null },
+          {
+            label: "Orders",
+            href: "/account/orders",
+            icon: null,
+            onClick: () => {
+              !auth.authenticate && setLoginModal(true);
+            },
+          },
+          {
+            label: "Wishlist",
+            href: "",
+            icon: null,
+            onClick: () => {
+              !auth.authenticate && setLoginModal(true);
+            },
+          },
+          { label: "Rewards", href: "", icon: null },
+          { label: "Gift Cards", href: "", icon: null },
+        ]}
+        firstMenu={
+          <div className="firstmenu">
+            <span>New Customer?</span>
+            <a
+              onClick={() => {
+                setLoginModal(true);
+                setSignup(true);
+              }}
+              style={{ color: "#2874f0" }}
+            >
+              Sign Up
+            </a>
+          </div>
+        }
+      />
+    );
+  };
 
   return (
     <div className="header">
-      <Modal 
-        visible={loginModal}
-        onClose={() => setLoginModal(false)}
-      >
+      <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
         <div className="authContainer">
           <div className="row">
             <div className="leftspace">
-            <img src={Shopisthan__logo_bolte} alt="Logo" />
-              <h2>Login</h2>
-              <p>Wellcom to Shopisthan, We strive to have a positive impact on customers, small businesses, the economy, and communities.</p>
+              <img
+                style={{ width: 70, height: 70 }}
+                src={Shopisthan__logo_bolte}
+                alt="Shopisthan Logo"
+              />
+              <h2 style={{ marginTop: 10 }}>Login</h2>
+              <p style={{ fontSize: 15, marginTop: 10 }}>
+                An effort to give everyone a Commerce Store – even if you are
+                selling from home or from multiple locations.
+              </p>
             </div>
             <div className="rightspace">
-          
+              <div
+                className="loginInputContainer"
+                style={{ width: 250, marginTop: 20}}
+              >
+                {auth.error && (
+                  <div style={{ color: "red", fontSize: 12 }}>{auth.error}</div>
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                )}
 
-                <MaterialInput 
+                <MaterialInput
                   type="text"
-                  placeholder='Enter Your Email'
+                  label="Email/Mobile Number"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-
-                <MaterialInput 
+                <MaterialInput
                   type="password"
-                  placeholder="Enter Password"
+                  label="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   // rightElement={<a href="#">Forgot?</a>}
                 />
-               
-                <MaterialButton 
-                  title="Login"
+                <MaterialButton
+                  title={signup ? "Register" : "Login"}
                   bgColor="#fb641b"
                   textColor="#ffffff"
                   style={{
-                    margin:'40px 0 20px 0'
+                    margin: "40px 0 20px 0",
                   }}
                   onClick={login}
                 />
-                
-                   <p>OR</p>
-                   <MaterialButton 
-                  title="Request OTP"
-                  bgColor="#ffffff"
-                  textColor="#2874f0"
-                  style={{
-                    margin:'20px 0'
-                  }}
-                />
-                
-
+              </div>
             </div>
           </div>
         </div>
@@ -154,58 +217,72 @@ const Header = (props) => {
       <div className="subHeader">
         <div className="logo">
           <a href="/">
-          <img src={Shopisthan__logo} alt="Shopisthan Logo" />
+            <img src={Shopisthan__logo} alt="Shopisthan Logo" />
           </a>
-          <a style={{ marginTop: '-10px', marginLeft: '125px' }}>
+          <a style={{ marginTop: "-10px", marginLeft: "125px" }}>
             <span className="exploreText">India pvt Ltd</span>
-            </a>
+          </a>
         </div>
-        <div style={{
-          padding: '0 10px'
-        }}>
-          <div className="Navbar__search" style={{ marginLeft: '-600px'
-           }}>
-                <div class=".Navbar__wrapper">
-                   <div class=".Navbar__searchBar" >
-                        <input id="searchQueryInput"
-                        type="text"
-                        name="searchQueryInput"
-                        placeholder="Search"
-                       />
-                        {/* <button id="searchQuerySubmit"
+        <div
+          style={{
+            padding: "0 10px",
+          }}
+        >
+          <div
+            className="Navbar__search"
+            style={{ width: "25rem", marginRight: 50 }}
+          >
+            <div class=".Navbar__wrapper">
+              <div class=".Navbar__searchBar">
+                <input
+                  id="searchQueryInput"
+                  type="text"
+                  name="searchQueryInput"
+                  placeholder="Search"
+                  style={{ width: "25rem" }}
+                />
+                {/* <button id="searchQuerySubmit"
                         type="submit"
                         name="searchQuerySubmit">
                             <img alt="Search" src={SearchIcon}/>
                         </button> */}
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
         <div className="rightMenu">
-          {auth.authenticate ? 
-           renderLoggedInMenu() :  renderNonLoggedInMenu() 
-          }
+          <div>
+            <a href="/">
+              <img
+                src={Wishlist__logo}
+                style={{ height: 30, width: 30, marginLeft: 20 }}
+                alt="Shopisthan Logo"
+              />
+              <span style={{ margin: "0 10px", fontSize: 15 }}>Wishlist</span>
+            </a>
+          </div>
+          {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
           <DropdownMenu
             menus={[
-              { label: 'Notification Preference', href: '', icon: null },
-              { label: 'Sell on flipkart', href: '', icon: null },
-              { label: '24x7 Customer Care', href: '', icon: null },
-              { label: 'Advertise', href: '', icon: null },
-              { label: 'Download App', href: '', icon: null }
+              { label: "Notification Preference", href: "", icon: null },
+              { label: "Sell on flipkart", href: "", icon: null },
+              { label: "24x7 Customer Care", href: "", icon: null },
+              { label: "Advertise", href: "", icon: null },
+              { label: "Download App", href: "", icon: null },
             ]}
           />
           <div>
-            <a className="cart">
+            <a className="cart" href="/cart">
               <IoIosCart />
-              <span style={{ margin: '0 10px' }}>Cart</span>
+              <span style={{ margin: "0 10px", textDecorationLine: false }}>
+                Cart
+              </span>
             </a>
           </div>
-
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

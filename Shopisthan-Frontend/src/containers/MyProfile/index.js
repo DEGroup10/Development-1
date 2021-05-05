@@ -21,14 +21,16 @@ const MyProfile = (props) => {
   <Card.Body>
     <Card.Title></Card.Title>
     <Card.Text>
+    <span> 
+    FirstName : : 
     {auth.user.firstName}
+    </span>
     </Card.Text>
     <Card.Text>
     {auth.user.lastName}
     </Card.Text>
     <Button variant="primary">Update Profile</Button>
   </Card.Body>
-  <Card.Footer className="text-muted">2 days ago</Card.Footer>
 </Card>
    
   )

@@ -9,6 +9,8 @@ import { MaterialButton } from "../../components/MaterialUI";
 import { addToCart } from "../../actions/cart.action";
 import "./style.css";
 import { generatePublicUrl } from "../../urlConfig";
+import { WhatsappShareButton } from "react-share";
+import { WhatsappIcon } from "react-share";
 
 /**
  * @author
@@ -16,6 +18,7 @@ import { generatePublicUrl } from "../../urlConfig";
  */
 
 const ProductDetailsPage = (props) => {
+  let currentUrl = window.location.href;
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
 
@@ -46,6 +49,7 @@ const ProductDetailsPage = (props) => {
                   src={generatePublicUrl(
                     product.productDetails.productPictures[0].img
                   )}
+                
                 />
               </div>
             ))}
@@ -166,11 +170,15 @@ const ProductDetailsPage = (props) => {
                 >
                   {product.productDetails.description}
                 </span>
-              </p>  
+              </p>
               <div className="share-btn-container">
-                <a href="/">
-                  <i className="fab fa-facebook"></i>
-                </a>
+               <WhatsappShareButton
+               title={product.productDetails.name}
+               separator=" "
+               url={currentUrl}>
+                 <WhatsappIcon logoFillColor="green" round={true}>
+                 </WhatsappIcon>
+               </WhatsappShareButton>
               </div>
             </div>
           </div>

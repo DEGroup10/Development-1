@@ -1,4 +1,4 @@
-const Cart = require("../../models/admin/user/cart");
+const Cart = require("../../models/user/cart");
 
 function runUpdate(condition, updateData) {
     return new Promise((resolve, reject) => {

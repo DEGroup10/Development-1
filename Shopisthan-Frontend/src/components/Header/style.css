@@ -175,3 +175,10 @@
   align-items: center;
   gap: 0.45rem;
 }
+
+.LoginInputContainer{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30px;
+  margin: 40px 0;
+}

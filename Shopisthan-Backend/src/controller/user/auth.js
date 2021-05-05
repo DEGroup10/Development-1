@@ -1,4 +1,4 @@
-const User = require('../../models/admin/user/auth')
+const User = require('../../models/user/auth')
 const jwt = require('jsonwebtoken')
 
 exports.signup = (req, res) => {
