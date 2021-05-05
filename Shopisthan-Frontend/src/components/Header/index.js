@@ -13,6 +13,7 @@ import Shopisthan__logo from "../../img/shopisthan-logo.png";
 import Wishlist__logo from "../../img/newwishlistlogo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, signout, signup as _signup } from "../../actions";
+import Cart from '../UI/Cart'
 
 /**
  * @author
@@ -82,9 +83,9 @@ const Header = (props) => {
             label: "Orders",
             href: "/account/orders",
             icon: null,
-            onClick: () => {
-              !auth.authenticate && setLoginModal(true);
-            },
+            // onClick: () => {
+            //   !auth.authenticate && setLoginModal(true);
+            // },
           },
           
           { label: "Wishlist", href: "", icon: null },
@@ -273,7 +274,7 @@ const Header = (props) => {
           />
           <div>
             <a className="cart" href="/cart">
-              <IoIosCart />
+            <Cart count={Object.keys(cart.cartItems).length}  />
               <span style={{ margin: "0 10px", textDecorationLine: false }}>
                 Cart
               </span>
