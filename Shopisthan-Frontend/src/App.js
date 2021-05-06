@@ -5,7 +5,13 @@ import ProductListPage from "./containers/ProductListPage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isUserLoggedIn } from "./actions";
-import Signup from "./containers/Singup";
+import Myprofile from "./containers/MyProfile";
+import ProductDetailsPage from "./containers/ProductDetailsPage";
+import CartPage from "./containers/CartPage/index";
+import { updateCart } from "./actions/cart.action";
+import CheckoutPage from "./containers/CheckoutPage";
+import OrderDetailsPage from "./containers/OrdersPage";
+import OrderPage from "./containers/OrdersPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,12 +23,25 @@ function App() {
     }
   }, [auth.authenticate]);
 
+  useEffect(() => {
+    dispatch(updateCart());
+  }, [auth.authenticate]);
+
   return (
     <div className="App">
       <Router>
         <Switch>
-          {/* <Route path="/" exact component={HomePage} /> */}
-          <Route path="/signup" exact component={Signup} />
+          //{/* <Route path="/" exact component={HomePage} /> */}
+          //<Route path="/signup" exact component={Signup} />
+          <Route path="/" exact component={HomePage} />
+          <Route path="/cart" exact component={CartPage} />
+          <Route path="/checkout" exact component={CheckoutPage} />
+          <Route path="/account/orders" exact component={OrderPage} />
+          <Route path="/myprofile" exact component={Myprofile} />
+          <Route
+            path="/:productSlug/:productId/p"
+            component={ProductDetailsPage}
+          />
           <Route path="/:slug" component={ProductListPage} />
         </Switch>
       </Router>
