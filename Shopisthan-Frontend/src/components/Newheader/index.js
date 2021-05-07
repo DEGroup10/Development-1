@@ -5,6 +5,8 @@ import HomeIcon from '../../img/homeicon.jpg';
 import ExploreIcon from '../../img/explore-icon.svg';
 import ProfilePic from '../../img/profile-pic.jpeg';
 import Notification from '../../img/notfi.png';
+import Cart from '../../img/cart-icon.svg';
+import Shopisthan__logo_bolte from '../../img/shopisthan_logo_bolte.png';
 import './style.css';
 import { IoIosArrowDown, IoIosCart, IoIosSearch } from 'react-icons/io';
 import { 
@@ -14,7 +16,7 @@ import {
   DropdownMenu
 } from '../MaterialUI';
 import {useDispatch, useSelector} from 'react-redux';
-import { login } from '../../actions';
+import { userLogin, signout } from '../../actions';
 import { Link, Router,  BrowserRouter, NavLink} from 'react-router-dom';
 
 
@@ -31,9 +33,19 @@ const HomeNavbar = (props) => {
   const dispatch = useDispatch();
   const auth = useSelector(state=> state.auth);
 
-  const userLogin = () =>{
-    dispatch(login({email,password}))
+  const login = () =>{
+    dispatch(userLogin({email,password}))
  }
+
+ const logout = () => {
+   dispatch(signout());
+ }
+
+ useEffect(() => {
+   if(auth.authenticate){
+     setLoginModal(false)
+   }
+ }, [auth.authenticate])
 
  const renderLoggedInMenu  = () =>{
     return (
@@ -47,10 +59,8 @@ const HomeNavbar = (props) => {
           </a>
         }
         menus={[
-          { label: 'My Profile', href: '', icon: null },
+          { label: 'My Profile', href: '/myprofile', icon: null },
           { label: 'Cart', href: '', icon: null },
-          { label: 'SuperCoin Zone', href: '', icon: null },
-          { label: 'Flipkart Plus Zone', href: '', icon: null },
           { label: 'Orders', href: '', icon: null },
           { label: 'Wishlist', href: '', icon: null },
           { label: 'My Chats', href: '', icon: null },
@@ -58,7 +68,7 @@ const HomeNavbar = (props) => {
           { label: 'Rewards', href: '', icon: null },
           { label: 'Gift Cards', href: '', icon: null },
           { label: 'Notifications', href: '', icon: null },
-          { label: 'Logout', href: '', icon: null }
+          { label: 'Logout', href: '', icon: null, onClick:logout}
         ]}
         
       />
@@ -77,7 +87,7 @@ const HomeNavbar = (props) => {
        }
        menus={[
         //  { label: 'My Profile', href: '', icon: null },
-         { label: 'Flipkart Plus Zone', href: '', icon: null },
+         { label: 'Shopisthan About us', href: '', icon: null },
          { label: 'Orders', href: '', icon: null },
          { label: 'Wishlist', href: '', icon: null },
          { label: 'Rewards', href: '', icon: null },
@@ -103,22 +113,23 @@ const HomeNavbar = (props) => {
               <div className="authContainer">
           <div className="row">
             <div className="leftspace">
+            <img src={Shopisthan__logo_bolte} alt="Logo" />
               <h2>Login</h2>
-              <p>Get access to your Orders, Wishlist and Recommendations</p>
+              <p>Wellcom to Shopisthan, We strive to have a positive impact on customers, small businesses, the economy, and communities.</p>
             </div>
             <div className="rightspace">
           
 
                 <MaterialInput 
                   type="text"
-                  label="Enter Email/Enter Mobile Number"
+                  placeholder='Email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <MaterialInput 
                   type="password"
-                  label="Enter Password"
+                  placeholder='Password'
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   // rightElement={<a href="#">Forgot?</a>}
@@ -131,8 +142,7 @@ const HomeNavbar = (props) => {
                   style={{
                     margin:'40px 0 20px 0'
                   }}
-                  onClick={userLogin}
-                />
+                  onClick={login}/>
                 
                    <p>OR</p>
                    <MaterialButton 
@@ -199,7 +209,7 @@ const HomeNavbar = (props) => {
               { label: 'Download App', href: '', icon: null }
             ]}
           />
-          <div>
+           <div className="Navbar__menuItem">
             {/* <a className="cart">
               <IoIosCart />
               <span style={{ margin: '0 10px' }}>Cart</span>
@@ -207,8 +217,8 @@ const HomeNavbar = (props) => {
           </div>
         </div>
             <div className="Navbar__menuItem">
-                     <img  height='30' width='30' src={HomeIcon} alt="Home" />
-                    <div>Home</div>
+                     <img  height='30' width='30' src={Cart} alt="Home" />
+                    <div>Cart</div>
                 </div>
                 <img className="Navbar__profilPic" src={ProfilePic} alt="Profile Pic"  />
             
