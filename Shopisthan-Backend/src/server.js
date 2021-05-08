@@ -9,12 +9,12 @@ const path = require('path');
 //routes
 const adminRoutes = require('./routes/admin/auth');
 const storeRoutes = require('./routes/store/store');
-// const categoryRoutes = require('./routes/category')
+const categoryRoutes = require('./routes/category')
 // const productRoutes = require('./routes/product');
 // const userRoutes = require('./routes/admin/user/auth');
 // const cartRoutes = require('./routes/admin/user/cart');
 const initialDataRoutes = require('./routes/admin/initialData')
-const categoryRoutes = require('./routes/admin/category')
+//const categoryRoutes = require('./routes/admin/category')
 const productRoutes = require('./routes/store/product');
 const userRoutes = require('./routes/user/auth');
 const cartRoutes = require('./routes/user/cart');
