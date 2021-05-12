@@ -252,14 +252,19 @@ const Header = (props) => {
           </div>
         </div>
         <div className="rightMenu">
-          <div>
+          <div style={{  marginLeft: -20 }}>
             <a href="/">
               <img
                 src={Wishlist__logo}
-                style={{ height: 30, width: 30, marginLeft: 20 }}
+                style={{ height: 30, width: 30, marginLeft: 0 }}
                 alt="Shopisthan Logo"
               />
               <span style={{ margin: "0 10px", fontSize: 15 }}>Wishlist</span>
+            </a>
+          </div>
+          <div>
+            <a href="/ExploreStore">
+              <span style={{ margin: "0 10px", fontSize: 15 }}>Explore Store</span>
             </a>
           </div>
           {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
