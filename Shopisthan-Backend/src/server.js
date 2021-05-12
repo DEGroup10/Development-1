@@ -39,7 +39,7 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-app.use('/public', express.static(path.join(__dirname, 'uploads')));
+app.use('/public', express.static(path.join(__dirname, 'upload')));
 app.use('/api',adminRoutes);
 app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);

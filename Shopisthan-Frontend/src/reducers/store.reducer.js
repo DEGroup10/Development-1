@@ -1,5 +1,3 @@
-
-
 import { storeContants } from "../actions/constants";
 
 const initialState = {
@@ -21,8 +19,8 @@ export default (state = initialState, action) => {
          case storeContants.ADD_NEW_STORE_REQUEST:
                 state = {
                     ...state,
-                    loading:true
-                    // stores: action.payload.stores
+                    loading:true,
+                    stores: action.payload.stores
                 }
                 break;
           case storeContants.ADD_NEW_STORE_SUCCESS:
@@ -39,6 +37,7 @@ export default (state = initialState, action) => {
                             loading:false
                         }
                         break;
+
     }
     return state;
 }
