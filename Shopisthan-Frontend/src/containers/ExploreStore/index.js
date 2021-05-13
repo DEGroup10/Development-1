@@ -22,7 +22,7 @@ const ExploreStore = (props) => {
     return (
       <div id="store">
         {store.stores.map((store, index) => (
-          <div className="card" key={store._id}>
+          <div className="nocard" key={store._id}>
             <Link >
               <img alt="" />
             </Link>

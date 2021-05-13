@@ -26,7 +26,7 @@ const HomePage = (props) => {
     return (
       <div id="product" style={{alignItems:'center'}}>
         {product.products.map((product, index) => (
-          <div className="card" key={product._id}>
+          <div className="newcard" key={product._id}>
             <Link to={`/${product.slug}/${product._id}/p`}>
               <img
                 style={{
