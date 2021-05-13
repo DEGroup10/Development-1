@@ -6,8 +6,8 @@ import { MaterialButton } from "../../components/MaterialUI";
 import { Link } from "react-router-dom";
 import { generatePublicUrl } from "../../urlConfig";
 import { addToCart } from "../../actions/cart.action";
-import {IoMdCart } from "react-icons/io";
-import './style.css'
+import { IoMdCart } from "react-icons/io";
+import "./style.css";
 
 /**
  * @author
@@ -20,15 +20,22 @@ const HomePage = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getInitialData());
-  }, []);
+  });
 
   const renderProduct = () => {
     return (
-      <div id="product">
+      <div id="product" style={{alignItems:'center'}}>
         {product.products.map((product, index) => (
-          <div className="card" key={product._id}>
+          <div className="newcard" key={product._id}>
             <Link to={`/${product.slug}/${product._id}/p`}>
               <img
+                style={{
+                  width: "240px",
+                  height: "100%",
+                  overflow: "hidden",
+                  objectFit: "contain",
+                  position: "relative",
+                }}
                 src={generatePublicUrl(product.productPictures[0].img)}
                 alt=""
               />
@@ -40,13 +47,13 @@ const HomePage = (props) => {
               <span>${product.price}</span>
               <p>{product.description}</p>
               <MaterialButton
-                title="ADD TO CART"
+                title="View"
                 bgColor="#ff9f00"
                 textColor="#ffffff"
                 style={{
                   marginRight: "5px",
                 }}
-                icon={<IoMdCart />}
+                
                 // onClick={() => {
                 //   const { _id, name, price } = product.productDetails;
                 //   const img = product.productDetails.productPictures[0].img;
@@ -62,9 +69,10 @@ const HomePage = (props) => {
   };
 
   return (
-    <Layout sidebar>
+    <>
+    <Layout></Layout>
       <div> {renderProduct()}</div>
-    </Layout>
+    </>
   );
 };
 

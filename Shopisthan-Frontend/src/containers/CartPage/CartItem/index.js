@@ -6,8 +6,7 @@ import "./style.css";
  * @author
  * @function CartItem
  **/
-
-const CartItem = (props) => {
+ const CartItem = (props) => {
   const [qty, setQty] = useState(props.cartItem.qty);
 
   const { _id, name, price, img 

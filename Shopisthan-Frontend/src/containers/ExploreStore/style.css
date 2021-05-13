@@ -1,10 +1,10 @@
 #store{
-    width: 350px;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.card{
+.nocard{
     min-width: 100px;
     min-height: 500px;
     border: 1px solid #eee;
@@ -14,10 +14,10 @@
     margin: 10px;
     transition: 0.5s linear;
 }
-.card:hover{
+.nocard:hover{
     box-shadow: none;
 }
-.card img{
+.nocard img{
     max-width: 300px;
     width: 100%;
     height: 100%;
@@ -25,24 +25,24 @@
     display: block;
     object-fit: cover;
 }
-.card h3{
+.nocard h3{
     text-transform: uppercase;
     margin: 10px 0;
 }
-.card h3 a{
+.nocard h3 a{
     text-decoration: none;
     color: #333;
 }
-.card h3 a:hover{
+.nocard h3 a:hover{
     color: crimson;
 }
-.card span{
+.nocard span{
     color: crimson;
 }
-.card p{
+.nocard p{
     margin: 10px 0;
 }
-.card button{
+.nocard button{
     border: none;
     outline: none;
     background: #333;
