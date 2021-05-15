@@ -29,23 +29,23 @@ const HomePage = (props) => {
           <div className="newcard" key={product._id}>
             <Link to={`/${product.slug}/${product._id}/p`}>
               <img
-                style={{
-                  width: "240px",
-                  height: "100%",
-                  overflow: "hidden",
-                  objectFit: "contain",
-                  position: "relative",
-                }}
+                // style={{
+                //   width: "240px",
+                //   height: "100%",
+                //   overflow: "hidden",
+                //   objectFit: "contain",
+                //   position: "relative",
+                // }}
                 src={generatePublicUrl(product.productPictures[0].img)}
                 alt=""
               />
             </Link>
             <div className="content">
-              <h3>
+              <h3> 
                 <Link to={`/product/${product._id}`}>{product.name}</Link>
               </h3>
-              <span>${product.price}</span>
-              <p>{product.description}</p>
+              <span>$ {product.price}</span>
+              <p>Description : {product.description}</p>
               <MaterialButton
                 title="View"
                 bgColor="#ff9f00"

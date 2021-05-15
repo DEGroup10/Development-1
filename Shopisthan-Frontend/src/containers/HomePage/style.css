@@ -5,8 +5,8 @@
     flex-wrap: wrap;
 }
 .newcard{
-    min-width: 500px;
-    min-height: 500px;
+    min-width: 400px;
+    min-height: 100px;
     border: 1px solid #eee;
     overflow: hidden;
     padding: 10px;
@@ -18,11 +18,11 @@
     box-shadow: none;
 }
 .newcard img{
-    width: 240px;
-    height: 300px;
+    width: 150px;   
+  height: 300px;
     overflow: hidden;
-    object-fit: 'contain',
-    
+    object-fit: 'contain';
+    align-items: center;
 }
 .newcard h3{
     text-transform: uppercase;
