@@ -32,7 +32,7 @@ function App() {
       <Router>
         <Switch>
           //{/* <Route path="/" exact component={HomePage} /> */}
-          //<Route path="/signup" exact component={Signup} />
+          {/* //<Route path="/signup" exact component={Signup} /> */}
           <Route path="/" exact component={HomePage} />
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={CheckoutPage} />

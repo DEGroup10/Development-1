@@ -6,19 +6,18 @@ import { Row, Col, } from 'react-bootstrap'
 const UpdateCategoriesModal = (props) => {
 
     const {
-        show,
-        handleClose,
-        modalTitle,
-        size,
-        expandedArray,
-        checkedArray,
-        handleCategoryInput,
-        categoryList,
-        onSubmit
+            show,
+            handleClose,
+            modalTitle,
+            size,
+            expandedArray,
+            checkedArray,
+            handleCategoryInput,
+            categoryList,
+            onSubmit
 
-}=props;
+        }=props;
 
-//  console.log({expandedArray, checkedArray});
     return(
    
    <Modal
@@ -88,7 +87,6 @@ const UpdateCategoriesModal = (props) => {
                            <Input
                                value={item.name}
                                placeholder={`Category Name`}
-                               // onChange={(e) => setCN(e.traget.value)} 
                                onChange={(e) => handleCategoryInput('name',e.target.value,index,'checked')}
 
                            />
@@ -96,7 +94,6 @@ const UpdateCategoriesModal = (props) => {
                        <Col>
                            <select className="form-control"
                                value={item.parentId}
-                               // onChange={(e) => setCatId(e.traget.value)}
                                onChange={(e) => handleCategoryInput('parentId',e.target.value,index,'checked')}
                            >
                                <option>select category</option>

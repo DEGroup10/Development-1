@@ -16,7 +16,8 @@ const rootReducer = combineReducers({
     product: productReducer,
     order: orderReducer,
     page: pageReducer,
-    store: storeReducers
+    store: storeReducers,
+    order: orderReducer
 
 });
 

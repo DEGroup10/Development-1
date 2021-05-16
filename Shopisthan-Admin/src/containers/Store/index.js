@@ -2,7 +2,7 @@ import React from 'react'
 import { Layout } from '../../components/Layout'
 import { Container, Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
-import {NavLink} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 
 /**
 * @author
@@ -12,12 +12,13 @@ import {NavLink} from 'react-router-dom'
 const Store = (props) => {
 
     const store = useSelector(state => state.store);
-    // console.log(store);
+
     const renderStores = () => {
         return (
             <Table style={{ fontSize: 12 }} responsive="sm">
                 <thead>
                     <tr>
+                   
                         <th>#</th>
                         <th>Store Name</th>
                         <th>Store Phno.</th>
@@ -37,25 +38,26 @@ const Store = (props) => {
                 {
                     store.stores.length > 0 ?
                         store.stores.map((store,index)=>
+                       
                             <tr key={store._id}>
+
+                            
                                 <td>{index + 1}</td>
-                                <td>{store.shopName}</td>
+                               
+                                <td> {store.shopName}</td>
                                 <td>{store.shopPhoneNo}</td>
                                 <td>{store.shopEmail}</td>
                                 <td>{store.shopAddress}</td>
                           
                                 <td>{store.shopCategory.name}</td>
                                 <td>{store.createdBy.username}</td>
-                                
-
+                                  <td> <Link to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>View</Link></td>
+                 
                                 
                             </tr>
+                           
                         ):null
                 }
-
-
-
-{/* // </tbody> */}
 
                 </tbody>
             </Table>

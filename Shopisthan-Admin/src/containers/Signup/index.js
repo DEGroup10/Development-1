@@ -18,13 +18,6 @@ const Signup = (props) => {
   const auth = useSelector(state => state.user)
   const dispatch = useDispatch();
 
-
-
-
-
- 
-
-
   const userSignup = (e) => {
 
     e.preventDefault();

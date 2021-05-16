@@ -45,7 +45,7 @@ const AddProduct = (props) =>{
     //   }
     // },[product.loading])
     
-   const storeCategory = store.shopCategory;
+   const storeCategory = store.shopCategory._id;
 
  
  

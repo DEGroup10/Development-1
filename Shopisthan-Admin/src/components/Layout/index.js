@@ -1,12 +1,9 @@
-
-
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import Header from '../Header'
-// import './style.css'
 import './style.css'
-// import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+
 
 export const Layout = (props) => {
     return (
@@ -37,11 +34,6 @@ export const Layout = (props) => {
                     :
                     props.children
             }
-
-
-
-
-
-        </>
+     </>
     )
 }

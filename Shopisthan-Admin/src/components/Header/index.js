@@ -32,7 +32,6 @@ const  Header =(props) => {
   const renderNonLoggedInLinks = () => {
     return (
       <Nav>
-        {/* <Nav.Link href="#deets">Sigin</Nav.Link> */}
         <li className="nav-item">
           <NavLink to="/signin" className="nav-link" >Signin</NavLink>
 
@@ -52,17 +51,10 @@ const  Header =(props) => {
     <Navbar collapseOnSelect fixed = "top" expand="lg" bg="dark" variant="dark" style={{ zIndex: 1 }}>
       <Container fluid>
         {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
-        <Link to="/" className="navbar-brand">Admin Dashboard</Link>
+        <Link to="/" className="navbar-brand">{auth.authenticate ? auth.admin.fullName :"Shopisthan Vendor Dashboard"}</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown> */}
           </Nav>
 
           {auth.authenticate ? renderLoggedInLinks() : renderNonLoggedInLinks()}
