@@ -4,6 +4,7 @@ import productReducer from './product.reducer';
 import authReducer from './auth.reducer';
 import userReducer from './user.reducer';
 import cartReducer from './cart.reducer';
+import storeReducers from './store.reducer';
 
 
 
@@ -13,8 +14,8 @@ const rootReducer = combineReducers({
     product: productReducer,
     auth : authReducer,
     cart: cartReducer,
-    user: userReducer
-
+    user: userReducer,
+    store: storeReducers
 
 });
 

@@ -13,7 +13,8 @@ exports.signup = (req, res) => {
                 firstName,
                 lastName,
                 email,
-                password
+                password,
+                username
             } = req.body;
             const _user = new User({
                 firstName,
@@ -49,11 +50,11 @@ exports.signin = (req, res) => {
 
                 if ( isPassword && user.role === 'user') {
                     const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET);
-                    const { _id, firstName, lastName, email, role, fullName } = user;
+                    const { _id, firstName, lastName, email, role, fullName, username } = user;
                     res.status(200).json({
                         token,
                         user: {
-                            _id, firstName, lastName, email, role, fullName
+                            _id, firstName, lastName, email, role, fullName, username
                         }
                     })
                 } else {
@@ -67,5 +68,3 @@ exports.signin = (req, res) => {
             }
         })
 }
-
-

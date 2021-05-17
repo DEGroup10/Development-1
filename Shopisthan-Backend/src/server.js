@@ -16,6 +16,12 @@ const productRoutes = require('./routes/product');
 const initialDataRoutes = require('./routes/admin/initialData')
 // const categoryRoutes = require('./routes/admin/category')
 // const productRoutes = require('./routes/store/product');
+// const productRoutes = require('./routes/product');
+// const userRoutes = require('./routes/admin/user/auth');
+// const cartRoutes = require('./routes/admin/user/cart');
+//const initialDataRoutes = require('./routes/admin/initialData')
+//const categoryRoutes = require('./routes/admin/category')
+//const productRoutes = require('./routes/store/product');
 const userRoutes = require('./routes/user/auth');
 const cartRoutes = require('./routes/user/cart');
 const addressRoutes = require('./routes/user/address');
@@ -42,7 +48,7 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-app.use('/public', express.static(path.join(__dirname, 'uploads')));
+app.use('/public', express.static(path.join(__dirname, 'upload')));
 app.use('/api',adminRoutes);
 app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);

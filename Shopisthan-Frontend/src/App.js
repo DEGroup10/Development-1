@@ -12,6 +12,9 @@ import { updateCart } from "./actions/cart.action";
 import CheckoutPage from "./containers/CheckoutPage";
 import OrderDetailsPage from "./containers/OrdersPage";
 import OrderPage from "./containers/OrdersPage";
+import ExploreStore from "./containers/ExploreStore";
+import ShopProfile from "./containers/ShopProfile";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,10 +37,13 @@ function App() {
           //{/* <Route path="/" exact component={HomePage} /> */}
           {/* //<Route path="/signup" exact component={Signup} /> */}
           <Route path="/" exact component={HomePage} />
+          <Route path="/ExploreStore" exact component={ExploreStore} />
           <Route path="/cart" exact component={CartPage} />
           <Route path="/checkout" exact component={CheckoutPage} />
           <Route path="/account/orders" exact component={OrderPage} />
+          <Route path="/order_details/:orderId" component={OrderDetailsPage} />
           <Route path="/myprofile" exact component={Myprofile} />
+          <Route path="/ShopProfile" exact component={ShopProfile} />
           <Route
             path="/:productSlug/:productId/p"
             component={ProductDetailsPage}
