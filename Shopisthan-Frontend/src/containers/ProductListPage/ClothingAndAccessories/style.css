@@ -48,7 +48,7 @@
 
   .Product__singleCard:hover{
     /* box-shadow: none; */
-    transform: translateY(0) scale(1.1);
+    transform: translateY(0) scale(1.05);
 }
   
   @media (max-width: 640px) {
