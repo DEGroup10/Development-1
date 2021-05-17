@@ -11,7 +11,10 @@ import {
 import Shopisthan__logo_bolte from "../../img/shopisthan_logo_bolte.png";
 import Shopisthan__logo from "../../img/shopisthan-logo.png";
 import Wishlist__logo from "../../img/newwishlistlogo.png";
+import Profilepiclogo from "../../img/icons8-male-user-50.png";
+import ExploreIcon from '../../img/explore-icon.svg';
 import { useDispatch, useSelector } from "react-redux";
+
 import { userLogin, signout, signup as _signup } from "../../actions";
 import Cart from '../UI/Cart'
 
@@ -68,14 +71,29 @@ const Header = (props) => {
     return (
       <DropdownMenu
         menu={
-          <a
-            href="/myprofile"
-            className="fullName"
-            onClick={() => setLoginModal(false)}
+
+          <div style={{  marginLeft: 10 }}  onClick={() => setLoginModal(false)}
           >
-            {auth.user.fullName}
-          </a>
+            <a href="/myprofile">
+              <img
+                src={Profilepiclogo}
+                style={{ height: 30, width: 30, marginTop: 5 ,marginLeft: 3 }}
+                alt="Shopisthan Logo"
+              />
+              <span style={{  fontSize: 15,  }}> {auth.user.firstName}</span>
+            </a>
+          </div>
         }
+          // {/* <a
+          //   href="/myprofile"
+          //   className="fullName"
+          //   onClick={() => setLoginModal(false)}
+          // >
+          //   {auth.user.fullName}
+          //   <img src={Profilepiclogo} alt="Shopisthan Logo" />
+          // </a> */}
+          
+   
         menus={[
           { label: "My Profile", href: "/myprofile", icon: null },
           { label: "Cart", href: "/cart", icon: null },
@@ -251,20 +269,25 @@ const Header = (props) => {
             </div>
           </div>
         </div>
-        <div className="rightMenu">
-          <div style={{  marginLeft: -20 }}>
+        <div className="rightMenu" >
+          <div style={{  marginLeft: 10 }}>
             <a href="/">
               <img
                 src={Wishlist__logo}
-                style={{ height: 30, width: 30, marginLeft: 0 }}
+                style={{ height: 25, width: 25, marginTop: 10 ,marginLeft: 10 }}
                 alt="Shopisthan Logo"
               />
-              <span style={{ margin: "0 10px", fontSize: 15 }}>Wishlist</span>
+              <span style={{  fontSize: 13 }}>Wishlist</span>
             </a>
           </div>
-          <div>
+          <div style={{  marginLeft: 10 }}>
             <a href="/ExploreStore">
-              <span style={{ margin: "0 10px", fontSize: 15 }}>Explore Store</span>
+              <img
+                src={ExploreIcon}
+                style={{ height: 25, width: 25, marginTop: 10 ,marginLeft: 23 }}
+                alt="Shopisthan Logo"
+              />
+              <span style={{  fontSize: 13 }}>ExploreStore</span>
             </a>
           </div>
           {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
@@ -285,6 +308,7 @@ const Header = (props) => {
               </span>
             </a>
           </div>
+          
         </div>
       </div>
     </div>
