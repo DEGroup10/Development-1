@@ -22,10 +22,11 @@ when try to checkout ask for credentials and
 if logged in then add products to users cart database from localStorage
 */
 
+
 const CartPage = (props) => {
-  
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
+  // const cartItems = cart.cartItems;
   const [cartItems, setCartItems] = useState(cart.cartItems);
   const dispatch = useDispatch();
 
@@ -40,6 +41,7 @@ const CartPage = (props) => {
   }, [auth.authenticate]);
 
   const onQuantityIncrement = (_id, qty) => {
+    //console.log({_id, qty});
     const { name, price, img } = cartItems[_id];
     dispatch(addToCart({ _id, name, price, img }, 1));
   };
@@ -69,7 +71,7 @@ const CartPage = (props) => {
   }
 
   return (
-    <Layout >    
+    <Layout>
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
         <Card
           headerLeft={`My Cart`}
