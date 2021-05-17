@@ -4,6 +4,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
 .newcard{
     min-width: 400px;
     min-height: 100px;
@@ -14,9 +15,11 @@
     margin: 10px;
     transition: 0.5s linear;
 }
+
 .newcard:hover{
     box-shadow: none;
 }
+
 .newcard img{
     width: 150px;   
     height: 300px;
@@ -24,14 +27,31 @@
     object-fit: 'contain';
     position: relative;
 }
+
 .newcard h3{
     text-transform: uppercase;
     margin: 10px 0;
 }
+
 .newcard h3 a{
     text-decoration: none;
     color: #333;
 }
+
+.Home__imageBanner {
+    
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .Home__imageBanner img {
+    width: 100%;
+    height: 300px;
+    margin: 0px 80px;
+    object-fit: cover;
+  }
+
 .newcard h3 a:hover{
     color: crimson;
 }

@@ -14,6 +14,7 @@ import OrderDetailsPage from "./containers/OrdersPage";
 import OrderPage from "./containers/OrdersPage";
 import ExploreStore from "./containers/ExploreStore";
 import ShopProfile from "./containers/ShopProfile";
+import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
+        <Switch>    
           {/* <Route path="/signup" exact component={Signup} /> */}
           <Route path="/" exact component={HomePage} />
           <Route path="/ExploreStore" exact component={ExploreStore} />
