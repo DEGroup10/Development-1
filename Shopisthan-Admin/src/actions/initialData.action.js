@@ -1,12 +1,11 @@
 import axiosIntance from "../helpers/axios";
-import { categoryContants, productContants, storeContants } from "./constants"
+import { categoryContants, orderConstants, productContants, storeContants } from "./constants"
 
 export const getInitialData = () => {
     return async dispatch => {
-        // dispatch({ type: initialDataContants.GET_ALL_INITIAL_DATA_REQUEST });
         const res = await axiosIntance.post(`/initialData`);
         if (res.status === 200) {
-            const { categories, products,stores } = res.data;
+            const { categories, products,stores,orders } = res.data;
             dispatch({
                 type: categoryContants.GET_ALL_CATEGORIES_SUCCESS,
                 payload: { categories }
@@ -19,8 +18,10 @@ export const getInitialData = () => {
                 type: storeContants.GET_ALL_STORE_SUCCESS,
                 payload: { stores }
             });
-            
+            dispatch({
+                type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
+                payload: { orders }
+            });
         }
-      console.log(res);
     }
 }

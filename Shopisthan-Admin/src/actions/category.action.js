@@ -7,7 +7,6 @@ import { categoryContants } from "./constants";
 
         dispatch({ type: categoryContants.GET_ALL_CATEGORIES_REQUEST });
         const res = await axiosIntance.get(`category/getcategory`);
-        console.log(res);
         if (res.status === 200) {
 
             const { categoryList } = res.data;
@@ -26,13 +25,11 @@ import { categoryContants } from "./constants";
 
 export const addCategory = (from) => {
     return async (dispatch) => {
-        // dispatch({ type: categoryContants.ADD_NEW_CATEGORIES_REQUEST });
        dispatch({ type: categoryContants.ADD_NEW_CATEGORY_REQUEST});
         const res = await axiosIntance.post(`/category/create`, from);
         if (res.status === 201) {
             dispatch({
                 type: categoryContants.ADD_NEW_CATEGORY_SUCCESS,
-                // payload:  res.data.category
                 payload: {category : res.data.category}
             })
         } else {
@@ -50,10 +47,9 @@ export const updateCategories = (from) => {
      dispatch({type: categoryContants.UPDATE_CATEGORY_REQUEST});
         const res = await axiosIntance.post(`/category/update`, from);
         if (res.status === 201) {
-            // return true;
             dispatch({type:categoryContants.UPDATE_CATEGORY_SUCCESS});
             dispatch(getAllCategory());
-           console.log(res);
+
         } else {
             const {error} = res.data;
             dispatch({
@@ -76,20 +72,15 @@ export const deleteCategories = (ids) => {
             }
         });
         if(res.status == 201){
-                // return true;
                 dispatch({type:categoryContants.DELETE_CATEGORY_SUCCESS});
                 dispatch(getAllCategory());
         }
     else{
-        // return false;
-        // const {error} = res.data;
         dispatch({
             type:categoryContants.DELETE_CATEGORY_FAILURE,
-            // payload:{error}
             payload:{error: res.data.error}
         })
     }
-    //    console.log(res);
     }
 }
 

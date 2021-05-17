@@ -33,6 +33,13 @@ const shopSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    
+  followers:[{
+    type: mongoose.Schema.Types.ObjectId,ref: 'User'
+  }], 
+    profilePicture: {
+          img: { type: String }
+      },
       shopCategory:{
         type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
           

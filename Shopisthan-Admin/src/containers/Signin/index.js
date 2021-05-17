@@ -5,7 +5,6 @@ import Input from "../../components/UI/Input";
 import { login } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-// import {useDispatch} from 'react-redux'
 import { NavLink, Link } from 'react-router-dom'
 
 const Signin = (props) => {
@@ -20,13 +19,11 @@ const Signin = (props) => {
 
   const userLogin = (e) => {
     e.preventDefault();
-
     const user = {
       email,
       password
     };
     dispatch(login(user));
-    // dispatch(login(user));
   };
   
 

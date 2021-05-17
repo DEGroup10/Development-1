@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-// import { getAllCategory } from '../../actions'
-import { addCategory, getAllCategory ,updateCategories,deleteCategories as deleteCategoriesAction} from '../../actions/category.action'
+import { 
+            addCategory, 
+            getAllCategory,
+            updateCategories,
+            deleteCategories as deleteCategoriesAction
+        } from '../../actions/category.action'
 
 import { Layout } from '../../components/Layout'
-import Input from '../../components/UI/Input'
 import Modal from '../../components/UI/Modal';
 import CheckboxTree from 'react-checkbox-tree'
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
-import { IoIosCheckbox, IoIosCheckboxOutline, IoIosArrowForward, IoIosArrowDown, IoIosAdd, IoIosTrash, IoIosCloudUpload } from 'react-icons/io'
+import { 
+            IoIosCheckbox, 
+            IoIosCheckboxOutline,
+            IoIosArrowForward,
+            IoIosArrowDown, 
+            IoIosAdd, 
+            IoIosTrash, 
+            IoIosCloudUpload 
+        } from 'react-icons/io'
 import UpdateCategoriesModal from './components/UpdateCategoriesModal'
 import AddCategoryModal from './components/AddCategoryModal'
 import './style.css';
@@ -35,8 +46,6 @@ const Category = (props) => {
     const [parentCategoryId, setParentCategoryId] = useState("");
     const [categoryImage, setCategoryImage] = useState('');
 
-    // const [categoryId, setCatId] = useState("");
-    // const [categoryImg, setCatImg] = useState("");
 
      useEffect(()=>{
        if(!category.loading){
@@ -49,11 +58,6 @@ const Category = (props) => {
 
     const handleClose = () => {
 
-        // if(categoryName === ""){
-        //     alert("Name is required")
-        // }
-        //  if() 
-
         const from = new FormData();
         from.append('name', categoryName);
         from.append('parentId', parentCategoryId);
@@ -61,17 +65,9 @@ const Category = (props) => {
 
         dispatch(addCategory(from));
 
-        // setCategoryImage('');
         setCategoryName('');
         setParentCategoryId('');
 
-        // const cat = {
-        //     categoryName,
-        //     parentCategoryId,
-        //     categoryImage
-        // };
-
-        // console.log(cat);
         setShow(false);
     }
 
@@ -86,10 +82,7 @@ const Category = (props) => {
                     value: category._id,
                     children: category.children.length > 0 && renderCategories(category.children)
                 }
-                // < li key = { category.name } >
-                // { category.name }
-                //     { category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null }
-                // </ >
+              
             );
         }
         return myCategories;
@@ -100,7 +93,6 @@ const Category = (props) => {
         for (let category of categories) {
             options.push({
                  value: category._id, 
-                //  _id: category._id, 
                  name: category.name, 
                  parentId: category.parentId,
                  type: category.type
@@ -115,7 +107,6 @@ const Category = (props) => {
 
 
     const handleCategoryImage = (e) => {
-        // setCategoryImage(e.traget.files[0]);
         setCategoryImage(e.target.files[0]);
     }
 
@@ -139,7 +130,7 @@ const Category = (props) => {
 
         setCheckedArray(checkedArray);
         setExpandedArray(expandedArray);
-        // console.log({ checked, expanded, categories, checkedArray, expandedArray });
+
     }
 
     const handleCategoryInput = (key,value,index,type) =>{
@@ -171,11 +162,6 @@ const Category = (props) => {
         });
 
         dispatch(updateCategories(form));
-        // .then(result=>{
-        //     if(result){
-        //         dispatch(getAllCategory())
-        //     }
-        // })
         setUpdateCategoryModal(false);
     }
 
@@ -208,8 +194,6 @@ if(checkedIdsArray.length>0){
      
      const renderDeleteCategoryModal = () =>{
 
-        // console.log('delete',checkedArray);
-    
         return(
             <Modal
              modalTitle="Confrim"
@@ -265,10 +249,6 @@ if(checkedIdsArray.length>0){
                 </Row>
                 <Row>
                     <Col md={12}>
-                        {/* <ul> */}
-                        {/* {renderCategories(category.categories)} */}
-                        {/* {JSON.stringify(createCategoryList(category.categories))} */}
-                        {/* </ul> */}
                         <CheckboxTree
                             nodes={renderCategories(category.categories)}
                             checked={checked}
@@ -316,9 +296,7 @@ if(checkedIdsArray.length>0){
                 handleCategoryInput={handleCategoryInput}
                 categoryList = {categoryList}
             />
-           
-                  {/* {renderAddCategoryModal()} */}
-               
+                          
                   {renderDeleteCategoryModal()}
             
 

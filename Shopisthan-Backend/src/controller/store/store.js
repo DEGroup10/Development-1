@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const Store = require('../../models/store/store');
 const Product = require('../../models/store/product')
 const Category = require('../../models/admin/category')
+const order = require('../../models/user/order')
 
 
 
@@ -22,12 +23,23 @@ exports.storeSignin = async(req,res)=>{
             return res.status(400).json({message:"Invaild password"})
         }
         const token = jwt.sign({ _id: store._id, role: store.role}, process.env.JWT_SECRET );
-                    const { _id, userName, shopName, shopType,shopEmail, shopCategory, shopPhoneNo,shopAddress,role } = store;
+
+
+         store = await Store.findOne({shopEmail:email})
+         .populate("shopCategory","name _id")
+         .select("-password")
+         .exec();
+                    // const { _id, userName, shopName, shopType,shopEmail, shopCategory, shopPhoneNo,shopAddress,role,profilePicture,followers } = store;
+                    
+                      
+
                     res.status(200).json({
                         token,
-                        store: {
-                            _id, userName, shopName, shopType,shopEmail, shopCategory, shopPhoneNo,shopAddress,role
-                        }
+                        // store: {
+                        //     storeDetails
+                        //     // _id, userName, shopName, shopType,shopEmail, shopCategory, shopPhoneNo,shopAddress,role,profilePicture,followers
+                        // },
+                        store
                     })
 
         
@@ -67,7 +79,7 @@ exports.createStore = async(req, res) => {
         const salt = await bcrypt.genSalt(10);
         store.password = await bcrypt.hash(password,salt);
         await store.save((error,store)=>{
-            if (error) return res.status(400).json({ error });
+            if (error) return res.status(400).json({  "errorfre":"qwdqw" });
                if (store) {
                    res.status(201).json({ store });
                }
@@ -76,7 +88,7 @@ exports.createStore = async(req, res) => {
         
 
     }catch(error){
-        return res.status(400).json({error})
+        return res.status(400).json({"Error hai":"qwdqw"})
     }
     
     
@@ -119,9 +131,19 @@ exports.storeData = async (req, res) => {
         .populate({path: 'category', select: '_id name'})
         .populate({path: 'ParCategory', select: '_id name'})
         .exec();
+        const orders = await order.find({
+            items: {
+              $elemMatch: {
+                storeId:req.store._id
+              }
+            } 
+          })
+          .populate("items.productId","name")
+          .exec();
     res.status(200).json({
         categories,
-        storeProducts
+        storeProducts,
+        orders
     })
 }
 
