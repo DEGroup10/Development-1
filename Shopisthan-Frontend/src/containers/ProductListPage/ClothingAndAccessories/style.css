@@ -1,6 +1,5 @@
 .caContainer{
     width: 300px;
- 
 }
 /* .caImgContainer{
   align-content: center;
@@ -26,6 +25,7 @@
 }
 
 .Product__container {
+  
     display: flex;
     flex-direction: row;
     justify-content: center;
