@@ -1,6 +1,6 @@
 import React from "react";
 import { IoIosCart } from "react-icons/io";
-
+import CartIcon from '../../img/cart-icon.svg'
 /**
  * @author
  * @function Cart
@@ -13,20 +13,21 @@ const Cart = (props) => {
         style={{
           position: "absolute",
           background: "red",
-          width: "15px",
-          height: "15px",
+          width: "18px",
+          height: "18px",
           borderRadius: "5px",
-          fontSize: "10px",
+          fontSize: "15px",
           border: "1px solid #fff",
           textAlign: "center",
           alignSelf: "center",
-          top: "-12px",
-          right: "-6px",
+          top: "-15px",
+          right: "-8px",
+          color: 'white'
         }}
       >
         {props.count}
       </span>
-      <IoIosCart />
+      <img  src={CartIcon} alt="Add to Cart" />
     </div>
   );
 };
