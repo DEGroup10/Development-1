@@ -2,6 +2,9 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Layout } from '../../components/Layout'
 import './style.css'
+import { FacebookShareButton, WhatsappShareButton } from "react-share";
+import { WhatsappIcon,FacebookIcon } from "react-share";
+
 
 
 
@@ -46,6 +49,24 @@ const  ShopProfile = ()=> {
               </div>
               <div className="StoreCard__column1"><div className="Shop__type">{store.shopType}</div></div>
               <div className="StoreCard__column1"><div className="Shop__type">{store.shopCategory.name}</div></div>
+              <div className="Store_Share">
+                <WhatsappShareButton
+                title={store.shopName}
+                separator=" "
+                url="https://www.npmjs.com/package/react-share">
+                  <WhatsappIcon logoFillColor="green" round={true} size={50}>
+                  </WhatsappIcon>
+                </WhatsappShareButton>
+                <FacebookShareButton
+                style={{marginLeft:"12px"}}
+                title={store.shopName}
+                quote={`Follow My Shop at Shopisthan ${store.shopName}`}
+                hashtag="#myShopAtShopisthan #dsfwe"
+                url="https://www.npmjs.com/package/react-share">
+                  <FacebookIcon logoFillColor="green" round={true} size={50}>
+                  </FacebookIcon>
+                </FacebookShareButton>
+              </div>
              
       </div> </div></div>
 
