@@ -47,7 +47,8 @@
   }
 
   .Product__singleCard:hover{
-    box-shadow: none;
+    /* box-shadow: none; */
+    transform: translateY(0) scale(1.1);
 }
   
   @media (max-width: 640px) {
@@ -67,7 +68,7 @@
     overflow: hidden;
     position: relative;
     
-    padding: 50px;
+    padding: 20px;
   }
   
   .Product__detailsContainer {
