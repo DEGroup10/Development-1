@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import {Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router';
 import { addShop } from '../../actions/store.action';
 import { Layout } from '../../components/Layout';
 import Input from '../../components/UI/Input';
-import { Redirect } from "react-router-dom";
-import { getInitialData } from '../../actions';
+
 
 
 
@@ -14,7 +14,6 @@ const AddStore = (props) =>{
  
     const [categoryId, setCategoryId] = useState('');
     const [shopType, setShopType] = useState('');
-
     const [userName, setUserName] = useState('');
     const [shopName, setShopName] = useState('');
     const [shopEmail, setShopEmail] = useState('');
@@ -22,34 +21,16 @@ const AddStore = (props) =>{
     const [shopAddress, setShopAddress] = useState('');
     const [shopPassword, setShopPassword] = useState('');
 
-
-          //  const addedStore = useSelector(state=> state.store);
-        
-          //  if(addedStore.loading){
-          //   return (<Redirect to={`/`} />);
-
-          //  }
-
-         
-    
-
-
-
     const category = useSelector(state => state.category);
     const addedStore = useSelector(state=> state.store);
     const dispatch = useDispatch();
-    
-           if(addedStore.loading){  
 
-            dispatch(getInitialData());
-            return (<Redirect to={`/store`} />);
-            
-          
-          
+   
 
-           }
-
- 
+    if(addedStore.added){ 
+      
+      return (<Redirect to={`/store`} />);
+     }
 
 
     const createCategoryList = (categories, options = []) => {
@@ -90,17 +71,9 @@ const AddStore = (props) =>{
               shopCategory:categoryId,
               shopPhoneNo:shopPhNo,
               shopAddress
-
-
-
-
             }
 
-        //  console.log(shop);
          dispatch(addShop(shop))
-
-        //  dispatch(addShop(from));
-
 
     }
 
@@ -113,10 +86,7 @@ const AddStore = (props) =>{
            
 
      <Row>
-         <Col 
-          // md={{ span: 3, offset: 1 }}
-        md={10}
-          >
+         <Col md={10}>
 
           <Form onSubmit={createShop}>
 

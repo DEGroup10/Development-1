@@ -4,9 +4,6 @@ import { authConstants } from "./constants";
 
 export const login = (admin) => {
 
-  // console.log(admin);
-
-
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGIN_REQUEST });
     const res = await axiosIntance.post(`/admin/signin`, {
@@ -34,40 +31,6 @@ export const login = (admin) => {
     }
   };
 };
-
-
-// export const signup = (user) => {
-
-//   console.log(user);
-
-
-//   return async (dispatch) => {
-//     dispatch({ type: authConstants.LOGIN_REQUEST });
-//     const res = await axiosIntance.post(`/admin/signup`, {
-//       ...user
-//     });
-
-//     if (res.status === 201) {
-//       const { message } = res.data;
-
-//       dispatch({
-//         type: authConstants.LOGIN_SUCCESS,
-//         payload: {
-//           token,
-//           user
-//         }
-//       });
-//     } else {
-//       if (res.status === 400) {
-//         dispatch({
-//           type: authConstants.LOGIN_FAILURE,
-//           payload: { error: res.data.error }
-//         });
-//       }
-//     }
-//   };
-// };
-
 
 export const isUserLoggedIn = () => {
   return async (dispatch) => {

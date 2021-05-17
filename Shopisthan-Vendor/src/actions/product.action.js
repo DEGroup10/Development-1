@@ -9,7 +9,6 @@ const getStoreData = () => {
         const res = await axiosIntance.post(`/storeData`);
         if (res.status === 200) {
             const { categories, storeProducts } = res.data;
-            // console.log(categories, storeProducts);
             dispatch({
                 type: categoryContants.GET_ALL_CATEGORIES_SUCCESS,
                 payload: { categories }
@@ -28,8 +27,7 @@ const getStoreData = () => {
 
 export const addProduct = (from) =>{
  return async dispatch => {
-  // const res = await axiosIntance.post(`product/create`, from);
-  // console.log(res);
+  
   dispatch({ type: productContants.ADD_NEW_PRODUCT_REQUEST});
          try{
              const res = await axiosIntance.post('product/create',from);
@@ -54,4 +52,29 @@ export const addProduct = (from) =>{
 }
 }
 
-// /product/create
+
+export const deleteProductById = (payload) => {
+
+    return async (dispatch) => {
+      try {
+        const res = await axiosIntance.delete(`/product/deleteProductById`, {
+        data : {payload },
+        });
+        dispatch({ type: productContants.DELETE_PRODUCT_BY_ID_REQUEST });
+        if (res.status === 202) {
+          dispatch({ type: productContants.DELETE_PRODUCT_BY_ID_SUCCESS });
+          dispatch(getStoreData());
+        } else {
+          const { error } = res.data;
+          dispatch({
+            type: productContants.DELETE_PRODUCT_BY_ID_FAILURE,
+            payload: {
+              error,
+            },
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  };

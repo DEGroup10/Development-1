@@ -33,8 +33,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>    
-          {/* <Route path="/signup" exact component={Signup} /> */}
+        <Switch>
+          //{/* <Route path="/" exact component={HomePage} /> */}
+          {/* //<Route path="/signup" exact component={Signup} /> */}
           <Route path="/" exact component={HomePage} />
           <Route path="/ExploreStore" exact component={ExploreStore} />
           <Route path="/cart" exact component={CartPage} />

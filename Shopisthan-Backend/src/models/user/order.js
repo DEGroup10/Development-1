@@ -22,6 +22,10 @@ const orderSchema = new mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
         },
+        storeId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Store",
+        },
         payablePrice: {
           type: Number,
           required: true,

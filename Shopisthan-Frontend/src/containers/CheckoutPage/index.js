@@ -157,6 +157,7 @@ const CheckoutPage = (props) => {
       productId: key,
       payablePrice: cart.cartItems[key].price,
       purchasedQty: cart.cartItems[key].qty,
+      storeId:cart.cartItems[key].storeId
     }));
     const payload = {
       addressId: selectedAddress._id,

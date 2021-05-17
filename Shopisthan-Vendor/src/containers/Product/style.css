@@ -1,0 +1,150 @@
+
+  .Product__container {
+    display: flex;
+    /* display: flex; */
+    /* justify-content: space-between;   */
+    /* flex-direction: row;
+    flex-direction: column; */
+    /* justify-content: center; */
+    /* flex-wrap: wrap;
+    gap: 60px;
+    margin-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px; */
+    background-color:#ffffff;
+    flex-wrap: wrap;
+    gap: 60px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    border-width: 3px;   
+  }
+  
+  .Product__singleCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    width: 300px;
+    height: 350px;
+    margin-top: 10px;
+    /* background-color: rgb(18, 59, 92); */
+    margin-right: 35px;
+  }
+  
+  @media (max-width: 640px) {
+    .Product__container {
+      width: 640px;
+    }
+  }
+  
+  .Product__imageContainer {
+    width: 300px;
+    height: 200px;
+    background-color: #fe9a37;
+  }
+  
+  .Product__image {
+    object-fit:cover;
+    width: 300px;
+    height: 200px;
+    
+  }
+  
+  .Product__detailsContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    /* background-color: rgb(189, 111, 111); */
+    padding: 20px;
+
+  }
+  
+  .Product__btnFlex {
+    display: flex;
+    flex-direction: row;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #8d8d8d;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .Product__iconFlex {
+    display: flex;
+    flex-direction: row;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    gap: 20px;
+    padding-bottom: 15px;
+  }
+  
+  .Product__icons {
+    margin-left: 2px;
+  }
+  
+  .Product__name {
+    width: 200px;
+  }
+  
+  .Product__priceFlex {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .Product__cartBtn {
+    width: 250px;
+    height: 45px;
+    margin-top: 10px;
+    display: flex;
+    border-radius: 20px;
+    height: 45px;
+    gap: 10px;
+    align-items: center;
+    background-color: #fe9a37;
+    border: none;
+    justify-content: center;
+    border-radius: 6px;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .Product__cartBtnText {
+    font-size: 13px;
+  }
+  
+  .Product__priceTag {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  
+  .Product__mrpPrice {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: #c4c4c4;
+    padding-top: 4px;
+    text-decoration: line-through;
+  }
+  
+  .Product__discountedPrice {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    color: #00b451;
+    padding-top: 4px;
+  }
