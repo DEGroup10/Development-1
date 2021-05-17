@@ -4,17 +4,26 @@
     background: #fff;
    border-bottom: 1px solid #cecece;
    box-shadow: 0 2px 2px -2px #333;
+   /* position: fixed;
+   margin-top: 60px; */
+
    }
    
    .menuHeader ul {
    list-style: none;
    margin: 0;
    padding: 0;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.0rem;
+ 
    }
    
    .menuHeader > ul {
     display: flex;
     margin: 0 50px;
+    align-items: center;
     position: relative;
     /* margin-top: 40px; */
    }
