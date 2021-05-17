@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import './style.css'
 import { deleteProductById } from '../../actions/product.action'
 import Modal from '../../components/UI/Modal';
+import { WhatsappShareButton } from "react-share";
+import { WhatsappIcon } from "react-share";
+import { productShareApi } from '../../urlConfig'
 
 
 
@@ -23,6 +26,7 @@ const Product = (props) => {
     const [deleteProductId,setDeleteProductId] = useState("");
     const [deleteProductName,setDeleteProductName] = useState("");
 
+    
 
     const  deletePtById = (pId,pName) =>{
         // console.log(pId);
@@ -89,9 +93,16 @@ const Product = (props) => {
                         <div className="Product__detailsContainer">
                             <div className="Product__iconFlex">
                                 <div className="Product__name">{product.name}</div>
-                                <div className="Product__icons"><img
-                                //  src={Share_icon}
-                                  alt="Share" /></div>
+                                <div className="Product__icons">
+                                  <WhatsappShareButton
+                                    title={product.name}
+                                    separator=" "
+                                    url={`${productShareApi}${product.slug}/${product._id}/p`}>
+                                    <WhatsappIcon logoFillColor="green" round={true} size={30}>
+                                    </WhatsappIcon>
+                                    </WhatsappShareButton>
+                                  
+                                </div>
                             
                                 </div>
                             
