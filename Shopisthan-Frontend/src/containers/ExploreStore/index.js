@@ -33,7 +33,7 @@ const ExploreStore = (props) => {
               <span>Shop Email : {store.shopEmail}</span>
               <p>Shop Category : {store.shopCategory.name}</p>
               <p>Owner Name : {store.createdBy.username}</p>
-              <button>Walk in store</button>
+              <Link  className='gobutton' to="/Shopprofile">Walk in store</Link>
             </div>
           </div>
         ))}

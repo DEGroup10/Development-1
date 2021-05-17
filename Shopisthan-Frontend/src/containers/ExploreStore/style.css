@@ -42,11 +42,12 @@
 .nocard p{
     margin: 10px 0;
 }
-.nocard button{
+.gobutton{
+    align-items: center;
     border: none;
     outline: none;
-    background: #333;
-    color: white;
+    background: rgb(206, 206, 206);
+    color: rgb(209, 209, 209);
     width: 100%;
     height: 40px;
     display: block;
@@ -54,4 +55,5 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 15px 0;
+    
 }

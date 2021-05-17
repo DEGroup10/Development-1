@@ -29,13 +29,9 @@ const HomePage = (props) => {
           <div className="newcard" key={product._id}>
             <Link to={`/${product.slug}/${product._id}/p`}>
               <img
-                // style={{
-                //   width: "240px",
-                //   height: "100%",
-                //   overflow: "hidden",
-                //   objectFit: "contain",
-                //   position: "relative",
-                // }}
+                style={{
+                  alignItems: 'center'
+                }}
                 src={generatePublicUrl(product.productPictures[0].img)}
                 alt=""
               />
