@@ -11,8 +11,10 @@ import HomeNavbar from '../Newheader'
 const Layout = (props) => {
     return (
         <>
-            <Header     />      
-                <MenuHeader/>
+            {/* <div style={{position:'fixed'}}>  */}
+            <Header />  <MenuHeader/>
+             {/* </div> */}
+                
             {props.children}
         </>
     )

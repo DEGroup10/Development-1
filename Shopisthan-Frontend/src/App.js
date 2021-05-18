@@ -32,8 +32,11 @@ function App() {
 
   return (
     <div className="App">
+    {/* <div style={{position:'fixed'}}> <Layout/></div> */}
       <Router>
+    
         <Switch>    
+        
           {/* <Route path="/signup" exact component={Signup} /> */}
           <Route path="/" exact component={HomePage} />
           <Route path="/ExploreStore" exact component={ExploreStore} />
