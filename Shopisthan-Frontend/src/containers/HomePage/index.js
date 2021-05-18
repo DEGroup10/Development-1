@@ -9,6 +9,7 @@ import { addToCart } from "../../actions/cart.action";
 import { IoMdCart } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
 import Rating_icon from "../../img/rating-icon.svg";
+import ShopIcon from "../../img/icons8-shop-50.png"
 import Share_icon from "../../img/share-icon.svg";
 import Heart_icon from "../../img/heart-outlined.svg";
 import Cart_icon from "../../img/cart-icon.svg";
@@ -101,19 +102,19 @@ const HomePage = (props) => {
                 <div className="Product__discountedPrice">25% off</div>
               </div>
 
-              <div>
+               <div>
                 <div className="Product__btnFlex">
                   <div>
-                    <img src={Rating_icon} alt="Ratings" />
+                    <img height='25px' width="25px" src={ShopIcon} alt="Ratings" />
                   </div>
-                  <div>0 Reviews and Ratings</div>
-                </div>
+                  <div style={{ fontSize: '18px', marginTop:'3px'}}>  {product.createdBy.shopName}</div>
+                </div> 
                 
-                <Link to={`/${product.slug}/${product._id}/p`}  className="Product__cartBtn">
+                {/* <Link to={`/${product.slug}/${product._id}/p`}  className="Product__cartBtn">
                   <img alt="follow__icon" src={Cart_icon} />
                   <p  className="product__cartBtnText">Add to cart</p>
-                </Link>
-              </div>
+                </Link> */}
+              </div> 
             </div>
           </div>
         </div>
@@ -124,10 +125,9 @@ const HomePage = (props) => {
 
   return (
     <>
-    <Layout/>
-    
-      <div> 
-      <div className="Home__imageBanner">
+   <Layout/>
+      <div  > 
+      <div className="Home__imageBanner" >
           <img
             alt="Home Banner"
             className="Home__imageBanner"

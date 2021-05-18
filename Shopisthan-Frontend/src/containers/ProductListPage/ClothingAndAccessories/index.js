@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductBySlug } from "../../../actions";
+import { getInitialData, getProductBySlug } from "../../../actions";
 import Card from "../../../components/UI/Card";
 import { BiRupee } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import image from "../../../img/product-image1.jpg";
 import Rating_icon from "../../../img/rating-icon.svg";
+import ShopIcon from "../../../img/icons8-shop-50.png"
 import Share_icon from "../../../img/share-icon.svg";
 import Heart_icon from "../../../img/heart-outlined.svg";
 import Cart_icon from "../../../img/cart-icon.svg";
@@ -25,8 +26,10 @@ const ClothingAndAccessories = (props) => {
   useEffect(() => {
     const { match } = props;
     dispatch(getProductBySlug(match.params.slug));
+    // dispatch(getInitialData());
   }, []);
 
+ 
   return (
     // <div style={{ padding: "10px" }}>
     //   <Card
@@ -92,19 +95,12 @@ const ClothingAndAccessories = (props) => {
                 <div className="Product__discountedPrice">25% off</div>
               </div>
 
-              <div>
-                <div className="Product__btnFlex">
+              <div className="Product__btnFlex">
                   <div>
-                    <img src={Rating_icon} alt="Ratings" />
+                    <img height='25px' width="25px" src={ShopIcon} alt="Ratings" />
                   </div>
-                  <div>0 Reviews and Ratings</div>
-                </div>
-                
-                <Link to={`/${product.slug}/${product._id}/p`}  className="Product__cartBtn">
-                  <img alt="follow__icon" src={Cart_icon} />
-                  <p  className="product__cartBtnText">Add to cart</p>
-                </Link>
-              </div>
+                  <div style={{ fontSize: '18px', marginTop:'3px'}}>  {product.createdBy.shopName}</div>
+                </div> 
             </div>
           </div>
         </div>

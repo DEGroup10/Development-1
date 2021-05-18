@@ -1,49 +1,52 @@
-*{
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
-.header{
-    width: 100%;
-    height: 70px;
-    background-color: #ffffff;
-    box-shadow: 0px 4px 6px rgba(226, 226, 226, 0.35);
-    /* position: fixed; */
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(226, 226, 226, 0.35);
+  overflow: hidden;
+  /* position: fixed; */
+  /* margin-top: -20px; */
+  /* object-fit: fill; */
 }
-.subHeader{
-    max-width: 1100px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    margin: 0 auto;   
-    align-items: center;
-    
+.subHeader {
+  max-width: 1100px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  /* overflow: hidden; */
 }
 
-.logo{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-center;
+.logo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-center;
 }
-.logo .logoimage{
-    width: 75px;
+.logo .logoimage {
+  width: 75px;
 }
-.exploreText{ 
-    font-size: 11px;
-    font-style: italic;   
+.exploreText {
+  font-size: 11px;
+  font-style: italic;
 }
-.plusText{ 
-    font-size: 10px; 
-    margin: 0 2px; 
-    text-transform: capitalize;
-    font-style: italic;
-    color: yellow;
-  }
-.logo .goldenStar{
-    width: 10px;
-    height: 10px;
+.plusText {
+  font-size: 10px;
+  margin: 0 2px;
+  text-transform: capitalize;
+  font-style: italic;
+  color: yellow;
+}
+.logo .goldenStar {
+  width: 10px;
+  height: 10px;
 }
 
 .Navbar__.searchBar {
@@ -64,7 +67,6 @@
   width: 24px;
   height: 24px;
 }
-
 
 #searchQueryInput {
   width: 18.75rem;
@@ -91,48 +93,50 @@
   padding: 5px;
   transform: translateY(0.125rem);
 }
-  .rightMenu{
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 13px;
-  }
+.rightMenu {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 13px;
+  /* overflow: hidden; */
+}
 .loginButton {
-    display: block;
-    width: 100px;
-    height: 30px;
-    background: orange;
-    text-align: center;
-    line-height: 30px;
-    color: #fff;
-    font-weight: 500;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 8px;
-    font-family: 'Roboto', sans-serif;
-  }
-.more, .fullName {
-    font-weight: bold;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    margin: 0 20px;
-    cursor: pointer;
-  }
+  display: block;
+  width: 100px;
+  height: 30px;
+  background: orange;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+}
+.more,
+.fullName {
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  margin: 0 20px;
+  cursor: pointer;
+}
 .cart {
-    font-weight: bold;
-    background: orange; 
-    width: 100px;
-    height: 30px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 20px
-  }
+  font-weight: bold;
+  background: orange;
+  width: 100px;
+  height: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
 
-.authContainer{
+.authContainer {
   color: #212121;
   margin: 0 auto;
   border-radius: 2px;
@@ -140,16 +144,16 @@
   max-width: 750px;
   min-width: 650px;
 }
-.row{
+.row {
   width: 100%;
   display: flex;
   flex-flow: row wrap;
   height: 528px;
-    max-width: 750px;
-    min-width: 650px;
+  max-width: 750px;
+  min-width: 650px;
 }
 
-.leftspace{
+.leftspace {
   width: 100%;
   height: 100%;
   color: #fff;
@@ -161,16 +165,14 @@
   box-sizing: border-box;
 }
 
-.rightspace{
+.rightspace {
   width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
-
 }
 
-  
 .Navbar__menuItem {
   display: flex;
   flex-direction: column;
@@ -178,7 +180,7 @@
   gap: 0.45rem;
 }
 
-.LoginInputContainer{
+.LoginInputContainer {
   width: 100%;
   box-sizing: border-box;
   padding: 0 30px;
