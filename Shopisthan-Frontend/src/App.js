@@ -14,7 +14,6 @@ import OrderDetailsPage from "./containers/OrdersPage";
 import OrderPage from "./containers/OrdersPage";
 import ExploreStore from "./containers/ExploreStore";
 import ShopProfile from "./containers/ShopProfile";
-import Layout from "./components/Layout";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,12 +31,8 @@ function App() {
 
   return (
     <div className="App">
-    {/* <div style={{position:'fixed'}}> <Layout/></div> */}
       <Router>
-    
-        <Switch>    
-        
-          {/* <Route path="/signup" exact component={Signup} /> */}
+        <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/ExploreStore" exact component={ExploreStore} />
           <Route path="/cart" exact component={CartPage} />

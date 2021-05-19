@@ -75,13 +75,13 @@ const ProductDetailsPage = (props) => {
                 }}
                 icon={<IoMdCart />}
                 onClick={() => {
-                  const { _id, name, price } = product.productDetails;
+                  const { _id, name, price,createdBy} = product.productDetails;
                   const img = product.productDetails.productPictures[0].img;
-                  dispatch(addToCart({ _id, name, price, img }));
+                  dispatch(addToCart({ _id, name, price, img,createdBy }));
                   props.history.push(`/cart`);
                 }}
               />
-
+         
               {/* <MaterialButton
                   title="BUY NOW"
                   bgColor="#fb641b"

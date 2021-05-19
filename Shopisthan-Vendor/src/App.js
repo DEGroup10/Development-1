@@ -9,6 +9,7 @@ import Home from './containers/Home';
 import PrivateRoute from './components/HOC/PrivateRoute';
 import { getStoreData } from './actions/storedata.action';
 import AddProduct from './containers/AddProduct';
+import ShopProfile from './containers/ShopProfile';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
             <PrivateRoute path="/storeProducts" component={Product} />
              <PrivateRoute path="/storeOrders" component={Orders} />
              <PrivateRoute path="/addProduct" component={AddProduct} />
+             <PrivateRoute path="/storeProfile" component ={ShopProfile} />
           
               <Route path="/signin" component={Signin}></Route>
   

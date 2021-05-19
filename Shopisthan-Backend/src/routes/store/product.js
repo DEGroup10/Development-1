@@ -19,13 +19,18 @@ const storage = multer.diskStorage({
   var upload = multer({  storage })
 
 // const { addCategory, getCategories } = require('../controller/category');
-const { requireSignin, adminMiddleware } = require('../../common-middleware');
-const { createProduct, getProductBySlug, getProductDetailsById } = require('../../controller/store/product');
+const { requireSignin, adminMiddleware, requireStoreSignin, storeMiddleware, requireAdminSignin } = require('../../common-middleware');
+const { createProduct, getProductBySlug, getProductDetailsById, deleteProductById } = require('../../controller/store/product');
 
 
 router.post('/product/create',requireSignin,adminMiddleware,upload.array('productPictures'),createProduct)
 // router.get('/category/getcategory',getCategories)
 router.get('/products/:slug',getProductBySlug)
 router.get("/product/:productId", getProductDetailsById);
+
+// router.delete('/product/deleteProductById',requireAdminSignin,adminMiddleware,deleteProductById
+  
+// );
+
 
 module.exports = router;
