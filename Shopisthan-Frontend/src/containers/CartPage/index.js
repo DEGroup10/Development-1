@@ -72,7 +72,9 @@ const CartPage = (props) => {
 
   return (
     <Layout>
-      <div className="cartContainer" style={{ alignItems: "flex-start" }}>
+
+
+       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
         <Card
           headerLeft={`My Cart`}
           headerRight={<div>Deliver to</div>}
@@ -116,7 +118,8 @@ const CartPage = (props) => {
             return totalPrice + price * qty;
           }, 0)}
         />
-      </div>
+      </div> 
+     
     </Layout>
   );
 };

@@ -1,6 +1,6 @@
 
 const express = require('express');
-const { requireSignin, adminMiddleware, storeMiddleware, requireStoreSignin, requireAdminSignin } = require('../../common-middleware');
+const { adminMiddleware, storeMiddleware, requireStoreSignin, requireAdminSignin } = require('../../common-middleware');
 const { storeOrders } = require('../../controller/store/order.store');
 const { createStore, storeSignin, storeData } = require('../../controller/store/store');
 const { validateSigninRequest, isRequestVaildated } = require('../../validators/auth');
