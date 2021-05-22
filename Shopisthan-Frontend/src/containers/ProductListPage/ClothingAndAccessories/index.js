@@ -21,6 +21,7 @@ import { generatePublicUrl } from "../../../urlConfig";
 
 const ClothingAndAccessories = (props) => {
   const product = useSelector((state) => state.product);
+  const store = useSelector((state) => state.store);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,38 +30,10 @@ const ClothingAndAccessories = (props) => {
     // dispatch(getInitialData());
   }, []);
 
+
  
   return (
-    // <div style={{ padding: "10px" }}>
-    //   <Card
-    //     style={{
-    //       boxSizing: "border-box",
-    //       padding: "10px",
-    //       display: "flex",
-    //     }}
-    //   >
-    //     {product.products.map((product) => (
-    //       <div className="caContainer">
-    //         <Link
-    //           className="caImgContainer"
-    //           to={`/${product.slug}/${product._id}/p`}
-    //         >
-
-    //           <img src={generatePublicUrl(product.productPictures[0].img)} />
-    //         </Link>
-    //         <div>
-    //           <div className="caProductName">{product.name}</div>
-    //           <div className="caProductPrice">
-    //             <BiRupee />
-    //             {product.price}
-    //           </div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </Card>
-    // </div>
-
-
+  
     <div className="Product__container" >
       {product.products.map((product) => (
         <div className="Product__singleCard">
@@ -99,7 +72,9 @@ const ClothingAndAccessories = (props) => {
                   <div>
                     <img height='25px' width="25px" src={ShopIcon} alt="Ratings" />
                   </div>
-                  <div style={{ fontSize: '18px', marginTop:'3px'}}>  {product.createdBy.shopName}</div>
+                  <Link to={`/${store._id}/store`}>
+                  <div style={{ fontSize: '18px', marginTop:'3px'}}>ShopName{product.createdBy.shopName}</div>
+                  </Link>
                 </div> 
             </div>
           </div>
