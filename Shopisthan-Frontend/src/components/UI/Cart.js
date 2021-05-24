@@ -1,5 +1,5 @@
 import React from "react";
-import { IoIosCart } from "react-icons/io";
+// import { IoIosCart } from "react-icons/io";
 import CartIcon from '../../img/cart-icon.svg'
 /**
  * @author
