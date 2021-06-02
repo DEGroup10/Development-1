@@ -23,8 +23,6 @@ export const Layout = (props) => {
                                     <li> <NavLink exact to={`/`}>Home</NavLink></li>
                                     <li> <NavLink to={`/storeProducts`}>Products</NavLink></li>
                                     <li> <NavLink to={`/storeOrders`}>Orders</NavLink></li>
-                                    
-
                                 </ul>
                             </Col>
                             <Col md={10} style={{ marginLeft: 'auto', paddingTop: '60px'}}>

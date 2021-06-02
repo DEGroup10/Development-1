@@ -31,10 +31,10 @@ const adminSchema = new mongoose.Schema({
           unique: true,
           lowercase: true
       },
-      hash_password:{
-          type: String,
-          required: true
-      },
+      password:{
+        type: String,
+        required: true
+    },
       role:{
           type: String,
           enum: ['admin','sub-admin'],
@@ -52,17 +52,17 @@ adminSchema.virtual('fullName')
 
 
 
-adminSchema.virtual('password')
-.set(function(password){
-   this.hash_password = bcrypt.hashSync(password, 10);
-});
+// adminSchema.virtual('password')
+// .set(function(password){
+//    this.hash_password = bcrypt.hashSync(password, 10);
+// });
 
 
 
-adminSchema.methods = {
-    authenticate : function(password){
-        return bcrypt.compareSync(password, this.hash_password);
-    }
-}
+// adminSchema.methods = {
+//     authenticate : function(password){
+//         return bcrypt.compareSync(password, this.hash_password);
+//     }
+// }
 
 module.exports = mongoose.model('Admin',adminSchema);

@@ -12,6 +12,7 @@ const Signin = (props) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
+  const storeauth = useSelector((state)=>state.storeauth)
 
   const dispatch = useDispatch();
 
@@ -30,6 +31,10 @@ const Signin = (props) => {
   if (auth.authenticate) {
     return <Redirect to={`/`} />;
   }
+  if (storeauth.authenticate) {
+    return <Redirect to={`/storeHome`} />;
+  }
+
 
   return (
     <>

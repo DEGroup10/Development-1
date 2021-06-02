@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Layout } from '../../components/Layout'
 import { Container, Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import './style.css';
+import Input from '../../components/UI/Input';
 
 
 /**
@@ -13,10 +14,14 @@ import './style.css';
 const Products = (props) => {
 
     const product = useSelector(state => state.product);
+    const [searchTerm,setSearchTerm] = useState("");
+    const [categoryType,setCategoryType] = useState("");
+
+     const productCategory  = Array.from(product.products.reduce((map,obj)=> map.set(obj.category._id,obj),new Map()).values());
 
     const renderProducts = () => {
         return (
-            <Table style={{ fontSize: 12 }} responsive="sm">
+            <Table style={{ fontSize: 12, marginTop:"10px" }} responsive="sm">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -32,7 +37,24 @@ const Products = (props) => {
 
                     {
                         product.products.length > 0 ?
-                            product.products.map((product,index)=>
+                            product.products.filter((product)=>{
+                        if(searchTerm ==="" || searchTerm ==null ){
+                            if(categoryType === "" || categoryType == null){
+                                return product       
+                            }else if(product.category._id.includes(categoryType)) {
+                                    return product
+                            }
+                           
+                        }else if(product.name.toLowerCase().split(" ").join("").includes(searchTerm.toLowerCase().split(" ").join(""))
+                        || product.createdBy.shopName.toLowerCase().split(" ").join("").includes(searchTerm.toLowerCase().split(" ").join(""))
+                        ){
+                            return product
+                        } 
+                        {/* else if(categoryType !=="" || product.category._id.includes(categoryType)){
+                            return product
+                            
+                        } */}
+                    }).map((product,index)=>
                                 <tr key={product._id}>
                                     <td>{index + 1}</td>
                                     <td>{product.name}</td>
@@ -59,9 +81,36 @@ const Products = (props) => {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex',
+                        //  justifyContent: 'space-between' 
+                         }}>
                             <h3>Products</h3>
-                        </div>
+                            <Input 
+                                type="text" 
+                                placeholder="Search by Product Name, Shop Name"
+                                onChange={(e)=>{
+                                setSearchTerm(e.target.value)
+                                }}
+                                style={{width: "370px", marginLeft:"120px",marginTop:"5px"}}
+                             />
+                               <select  className="form-control" 
+                               style={{width:"200px", marginLeft:"20px",marginTop:"5px"}}
+                                    value={categoryType}
+                                onChange = {(e)=>{ 
+                                const selectedProductCategory = e.target.value;
+                                setCategoryType(selectedProductCategory);
+                                
+                                }}
+             
+                               >
+                             <option value="">Category</option>
+                                {
+                                    productCategory.map(value =>
+                                            <option key={value.category._id} value={value.category._id}>{value.category.name}</option>
+                                        )
+                                    }
+                                </select>
+                                </div>
                     </Col>
                 </Row>
 

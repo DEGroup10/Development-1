@@ -38,12 +38,6 @@ const AddProduct = (props) =>{
      
     }
 
-    // useEffect(()=>{
-    //   if(!product.loading){
-    //     console.log("Wjwe");
-    //     return <Redirect to={`/`} />
-    //   }
-    // },[product.loading])
     
    const storeCategory = store.shopCategory._id;
 

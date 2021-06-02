@@ -79,9 +79,19 @@ exports.createStore = async(req, res) => {
         const salt = await bcrypt.genSalt(10);
         store.password = await bcrypt.hash(password,salt);
         await store.save((error,store)=>{
-            if (error) return res.status(400).json({  "errorfre":"qwdqw" });
+            if (error) return res.status(400).json({ error});
                if (store) {
-                   res.status(201).json({ store });
+                //    res.status(201).json({ store });
+                
+                const store = Store.find({})
+                .select('_id userName shopName shopType shopEmail shopCategory shopPhoneNo shopAddress createdBy')
+                .populate({path: 'shopCategory', select: '_id name'})
+                .populate({path:'createdBy',select: '_id username'})
+                .exec();
+                res.status(201).json({
+                    store
+                })
+
                }
         })
         // return res.status(201).json({message:"Store Reg...."})
@@ -126,7 +136,7 @@ function createCategories(categories, parentId = null) {
 exports.storeData = async (req, res) => {
     const categories = await Category.find({}).exec();
    
-    const storeProducts = await Product.find({createdBy:req.store._id})
+    const products = await Product.find({createdBy:req.store._id})
         .select('_id name price quantity slug description productPictures category ParCategory createdBy')
         .populate({path: 'category', select: '_id name'})
         .populate({path: 'ParCategory', select: '_id name'})
@@ -142,9 +152,37 @@ exports.storeData = async (req, res) => {
           .exec();
     res.status(200).json({
         categories,
-        storeProducts,
+        products,
         orders
     })
+}
+
+
+exports.editStore = async(req,res)=>{
+    const {
+         shopName, shopDes,shopPhoneNo,shopAddress
+     } = req.body;  
+
+     const updatedStoreProdile = await Store.findOneAndUpdate({_id:req.store._id},{$set:{shopName,shopDes,shopPhoneNo,shopAddress}},
+        {new:true,useFindAndModify: false},
+        (err,updatedStoreInfo)=>{
+            if(err) {
+                 return res.status(400).json({err});
+            }
+            if(updatedStoreInfo){
+                const store = Store.findOne({_id:req.store._id})
+                .populate("shopCategory","name _id")
+                .select("-password")
+                .exec((err,storeInfo)=>{
+                    if(err)    return res.status(400).json({err});
+                    if(storeInfo){
+                        return res.status(201).json({storeInfo});
+                    }
+                });
+            }
+
+        })
+    
 }
 
 

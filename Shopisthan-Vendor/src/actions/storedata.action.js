@@ -25,3 +25,34 @@ export const getStoreData = () => {
   
     }
 }
+
+
+export const editStoreProfile = (store) =>{
+    return async dispatch => {
+     
+     dispatch({ type:storeDataContants.EDIT_STORE_DATA_REQUEST});
+            try{
+                const res = await axiosIntance.post('/editStore',{...store});
+                if(res.status === 201){
+                    dispatch({
+                        type:storeDataContants.EDIT_STORE_DATA_SUCCESS,
+                        payload:{updatedStoreProfile:res.data.storeInfo}
+                      
+                    });
+                }else{
+                    dispatch({
+                       type:storeDataContants.EDIT_STORE_DATA_FAILURE,
+                       payload:{error:res.data.err}
+                   
+                    })
+               
+                }
+            }catch(error){
+                console.log(error);
+            }
+   
+   
+   }
+   }
+   
+   

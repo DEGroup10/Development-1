@@ -78,3 +78,31 @@ export const deleteProductById = (payload) => {
       }
     };
   };
+
+
+  
+export const editProductAction = (newProductDetails) =>{
+  return async dispatch => {
+   
+   dispatch({ type:productContants.EDIT_PRODUCT_BY_ID_REQUEST});
+          try{
+              const res = await axiosIntance.post('/editProduct',{...newProductDetails});
+              if(res.status === 201){
+                  dispatch({
+                      type:productContants.EDIT_PRODUCT_BY_ID_SUCCESS,
+                  });
+                  dispatch(getStoreData());
+              }else{
+                  dispatch({
+                     type:productContants.EDIT_PRODUCT_BY_ID_FAILURE,   
+                  })
+                   console.log(res.data.err);
+              }
+          }catch(error){
+              console.log(error);
+          }
+ 
+ 
+ }
+ }
+ 
