@@ -9,6 +9,7 @@ import { addToCart } from "../../actions/cart.action";
 import { IoMdCart } from "react-icons/io";
 import { BiRupee } from "react-icons/bi";
 import Rating_icon from "../../img/rating-icon.svg";
+import ShopIcon from "../../img/icons8-shop-50.png"
 import Share_icon from "../../img/share-icon.svg";
 import Heart_icon from "../../img/heart-outlined.svg";
 import Cart_icon from "../../img/cart-icon.svg";
@@ -22,6 +23,7 @@ import "./style.css";
 
 const HomePage = (props) => {
   const product = useSelector((state) => state.product);
+  const store = useSelector((state) => state.store);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,43 +32,6 @@ const HomePage = (props) => {
 
   const renderProduct = () => {
     return (
-      // <div id="product" style={{alignItems:'center'}}>
-      //   {product.products.map((product, index) => (
-      //     <div className="newcard" key={product._id}>
-      //       <Link to={`/${product.slug}/${product._id}/p`}>
-      //         <img
-      //           style={{
-      //             alignItems: 'center'
-      //           }}
-      //           src={generatePublicUrl(product.productPictures[0].img)}
-      //           alt=""
-      //         />
-      //       </Link>
-      //       <div className="content">
-      //         <h3> 
-      //           <Link to={`/product/${product._id}`}>{product.name}</Link>
-      //         </h3>
-      //         <span>$ {product.price}</span>
-      //         <p>Description : {product.description}</p>
-      //         <MaterialButton
-      //           title="View"
-      //           bgColor="#ff9f00"
-      //           textColor="#ffffff"
-      //           style={{
-      //             marginRight: "5px",
-      //           }}
-                
-      //           // onClick={() => {
-      //           //   const { _id, name, price } = product.productDetails;
-      //           //   const img = product.productDetails.productPictures[0].img;
-      //           //   dispatch(addToCart({ _id, name, price, img }));
-      //           //   props.history.push(`/cart`);
-      //           // }}
-      //         />
-      //       </div>
-      //     </div>
-      //   ))}
-      // </div>
       <div className="Product__container" >
       {product.products.map((product, index) => (
         <div className="Product__singleCard" key={product._id}>
@@ -101,19 +66,21 @@ const HomePage = (props) => {
                 <div className="Product__discountedPrice">25% off</div>
               </div>
 
-              <div>
+               <div>
                 <div className="Product__btnFlex">
                   <div>
-                    <img src={Rating_icon} alt="Ratings" />
+                    <img height='25px' width="25px" src={ShopIcon} alt="Ratings" />
                   </div>
-                  <div>0 Reviews and Ratings</div>
-                </div>
+                  {/* <Link to={`/${store._id}/store`}> */}
+                  <div style={{ fontSize: '18px', marginTop:'3px'}}>  {product.createdBy.shopName}</div>
+                  {/* </Link> */}
+                </div> 
                 
-                <Link to={`/${product.slug}/${product._id}/p`}  className="Product__cartBtn">
+                {/* <Link to={`/${product.slug}/${product._id}/p`}  className="Product__cartBtn">
                   <img alt="follow__icon" src={Cart_icon} />
                   <p  className="product__cartBtnText">Add to cart</p>
-                </Link>
-              </div>
+                </Link> */}
+              </div> 
             </div>
           </div>
         </div>
@@ -124,10 +91,9 @@ const HomePage = (props) => {
 
   return (
     <>
-    <Layout/>
-    
-      <div> 
-      <div className="Home__imageBanner">
+   <Layout/>
+      <div  > 
+      <div className="Home__imageBanner" >
           <img
             alt="Home Banner"
             className="Home__imageBanner"
