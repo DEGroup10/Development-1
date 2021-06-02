@@ -96,8 +96,8 @@ const NewPage = (prpos) =>{
         return (
             <Modal
             show={createModal}
-            modalTitle = {"Create New Page"}
-            handleClose = {()=>setCreateModal(false)}
+            modaltitle = {"Create New Page"}
+            handleclose = {()=>setCreateModal(false)}
             onSubmit = {submitPageFrom}
             >
 

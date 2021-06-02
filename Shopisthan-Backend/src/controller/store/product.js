@@ -105,6 +105,37 @@ exports.getProductBySlug = (req, res) => {
     }
   };
   
+
+exports.editProduct = async(req,res)=>{
+    const {
+      name, price, description, quantity,_id
+     } = req.body;  
+
+     const updatedProduct = await Product.findOneAndUpdate({_id:_id},{$set:{name, price, description, quantity}},
+        {new:true,useFindAndModify: false},
+        (err,updatedProductInfo)=>{
+            if(err) {
+                 return res.status(400).json({err});
+            }
+            if(updatedProductInfo){
+                // const store = Store.findOne({_id:req.store._id})
+                // .populate("shopCategory","name _id")
+                // .select("-password")
+                // .exec((err,storeInfo)=>{
+                //     if(err)    return res.status(400).json({err});
+                //     if(storeInfo){
+                //         return res.status(201).json({storeInfo});
+                //     }
+                // });
+                return res.status(201).json({updatedProductInfo});
+            }
+
+        })
+    
+}
+
+
+
   
 exports.deleteProductById = (req, res) => {
   const { productId } = req.body.payload;
@@ -121,4 +152,7 @@ exports.deleteProductById = (req, res) => {
 
 
 };
+
+
+
 

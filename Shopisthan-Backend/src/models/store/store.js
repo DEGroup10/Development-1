@@ -55,6 +55,11 @@ const shopSchema = new mongoose.Schema({
         required: true
         
     },
+    shopDes:{
+      type: String,
+      default: 'N.A'
+      
+  },
     role:{
         type: String,
         default: 'store'

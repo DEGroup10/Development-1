@@ -2,26 +2,74 @@ import axiosIntance from "../helpers/axios";
 import axios from "../helpers/axios";
 import { authConstants } from "./constants";
 
+// export const login = (admin) => {
+
+//   return async (dispatch) => {
+//     dispatch({ type: authConstants.LOGIN_REQUEST });
+//     const res = await axiosIntance.post(`/admin/signin`, {
+//       ...admin
+//     });
+
+//     if (res.status === 200) {
+//       const { token, admin } = res.data;
+//       localStorage.setItem("token", token);
+//       localStorage.setItem("admin", JSON.stringify(admin));
+//       dispatch({
+//         type: authConstants.LOGIN_SUCCESS,
+//         payload: {
+//           token,
+//           admin
+//         }
+//       });
+//     } else {
+//       if (res.status === 400) {
+//         dispatch({
+//           type: authConstants.LOGIN_FAILURE,
+//           payload: { error: res.data.error }
+//         });
+//       }
+//     }
+//   };
+// };
+
 export const login = (admin) => {
 
   return async (dispatch) => {
     dispatch({ type: authConstants.LOGIN_REQUEST });
     const res = await axiosIntance.post(`/admin/signin`, {
-      ...admin
+      ...admin 
     });
 
     if (res.status === 200) {
-      const { token, admin } = res.data;
+      const {admin,store,token } = res.data;
+       if(admin){
+      // const token = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("admin", JSON.stringify(admin));
       dispatch({
-        type: authConstants.LOGIN_SUCCESS,
+        type: authConstants.ADMIN_LOGIN_SUCCESS,
         payload: {
           token,
           admin
         }
       });
-    } else {
+       }
+       if(store){
+        // const token = res.data;
+        localStorage.setItem("storetoken", token);
+        localStorage.setItem("store", JSON.stringify(store));
+        dispatch({
+          type: authConstants.STORE_LOGIN_SUCCESS,
+          payload: {
+            token,
+            store
+          }
+        });
+       }
+     
+    }
+     
+    else {
       if (res.status === 400) {
         dispatch({
           type: authConstants.LOGIN_FAILURE,
@@ -38,10 +86,32 @@ export const isUserLoggedIn = () => {
     if (token) {
       const admin = JSON.parse(localStorage.getItem("admin"));
       dispatch({
-        type: authConstants.LOGIN_SUCCESS,
+        type: authConstants.ADMIN_LOGIN_SUCCESS,
         payload: {
           token,
           admin
+        }
+      });
+    } else {
+      dispatch({
+        type: authConstants.LOGIN_FAILURE,
+        payload: { error: "Failed to login" }
+      });
+    }
+  };
+};
+
+
+export const isStoreLoggedIn = () => {
+  return async (dispatch) => {
+    const storetoken = localStorage.getItem("storetoken");
+    if (storetoken) {
+      const store = JSON.parse(localStorage.getItem("store"));
+      dispatch({
+        type: authConstants.STORE_LOGIN_SUCCESS,
+        payload: {
+         token: storetoken,
+          store
         }
       });
     } else {

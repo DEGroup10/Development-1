@@ -55,6 +55,29 @@ exports.getCustomerOrders = async(req,res) =>{
     .populate("items.productId","name")
     .exec();
     res.status(200).json({orders});
+
+  //  const orders = await order.find({})
+  //     .populate("items.productId", "_id name productPictures")
+  //     .populate("items.storeId", "_id shopName shopEmail shopPhoneNo shopAddress")
+  //     .lean()
+  //     .exec((error, order) => {
+  //       if (error) return res.status(400).json({ error });
+  //       if (order) {
+  //       Address.findOne({
+  //           user: order.user,
+  //         }).exec((error, address) => {
+  //           if (error) return res.status(400).json({ error });
+  //           order.address = address.address.find(
+  //             (adr) => adr._id.toString() == order.addressId.toString()
+  //           );
+  //           res.status(200).json({
+  //             order,
+            
+  //           });
+  //         });
+
+  //       }
+  //     });
 }
 
 // exports.getOrder = (req, res) => {

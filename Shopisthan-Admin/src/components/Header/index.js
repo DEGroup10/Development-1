@@ -8,10 +8,27 @@ const  Header =(props) => {
 
   const auth = useSelector(state => state.auth);
   const dispatch = useDispatch();
-
+  const storeauth = useSelector(state => state.storeauth)
 
   const logout = () => {
     dispatch(signout());
+  }
+
+  const renderName = () =>{
+    if(auth.authenticate && auth.admin){
+      return (
+        <Link to="/" className="navbar-brand">{auth.admin.fullName}</Link>
+        );
+    }else if(storeauth.authenticate && storeauth.store){
+      return (
+        <Link to="/storeProfile" className="navbar-brand">{storeauth.store.shopName}</Link>
+        );
+    }else{
+      return (  
+          <Navbar.Brand >Shopisthan Dashboard</Navbar.Brand> 
+        );
+      return 
+    }
   }
 
 
@@ -51,13 +68,18 @@ const  Header =(props) => {
     <Navbar collapseOnSelect fixed = "top" expand="lg" bg="dark" variant="dark" style={{ zIndex: 1 }}>
       <Container fluid>
         {/* <Navbar.Brand href="#home">Admin Dashboard</Navbar.Brand> */}
-        <Link to="/" className="navbar-brand">{auth.authenticate ? auth.admin.fullName :"Shopisthan Vendor Dashboard"}</Link>
+        {/* <Link to="/" 
+        // className="navbar-brand"
+        > */}
+        {renderName()}
+        
+        {/* </Link> */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
           </Nav>
 
-          {auth.authenticate ? renderLoggedInLinks() : renderNonLoggedInLinks()}
+          {auth.authenticate || storeauth.authenticate? renderLoggedInLinks() : renderNonLoggedInLinks()}
 
         </Navbar.Collapse>
       </Container>

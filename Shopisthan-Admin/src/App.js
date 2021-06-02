@@ -4,9 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
-import PrivateRoute from "./components/HOC/PrivateRoute";
+
 import { useDispatch, useSelector } from "react-redux";
-import { isUserLoggedIn } from './actions'
+import { isStoreLoggedIn, isUserLoggedIn } from './actions'
 import Products from "./containers/Products";
 import Orders from "./containers/Orders";
 import Category from "./containers/Category";
@@ -18,27 +18,52 @@ import NewPassword from "./containers/Reset/NewPassword";
 import AddStore from "./containers/AddStore";
 import { OrderDetailsPage } from "./containers/OrderDetailsPage";
 import ShopProfile from "./containers/ShopProfile";
+import { PrivateRoute, StorePrivateRoute } from "./components/HOC/PrivateRoute";
+// import  StoreProduct from "./containers/StoreContainers/StoreProduct";
+// import { StoreOrder } from "./containers/StoreContainers/StoreOrders";
+import StoreHome from "./containers/StoreContainers/StoreHome";
+import StoreOrder from "./containers/StoreContainers/StoreOrders";
+import StoreProduct from "./containers/StoreContainers/StoreProduct";
+import StoreProfile from "./containers/StoreContainers/StoreProfile";
+import AddProduct from "./containers/StoreContainers/AddProduct";
+import { getStoreData } from "./actions/storedata.action";
 
 function App() {
 
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth)
+  const storeauth = useSelector(state => state.storeauth)
 
 
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
+   
     }
     dispatch(getInitialData());
    },[]);
+
+   useEffect(() => {
+    if (!storeauth.authenticate) {
+       dispatch(isStoreLoggedIn());
+    }
+    dispatch(getStoreData());
+   },[]);
+
+
   return (
     <div className="App">
 
       <Switch>
+      <StorePrivateRoute path = "/storeHome" exact component={StoreHome} />
+      <StorePrivateRoute path = "/storeProduct"  exact component={StoreProduct} />
+      <StorePrivateRoute path = "/storeOrder"  exact component={StoreOrder} />
+      <StorePrivateRoute path = "/storeProfile" exact component ={StoreProfile} />
+      <StorePrivateRoute path = "/addProduct" exact component ={AddProduct} />
         <PrivateRoute path="/" exact component={Home} />
-        <PrivateRoute path="/products" component={Products} />
+        <PrivateRoute path="/products" exact component={Products} />
         <PrivateRoute path="/page" component={NewPage} />
-        <PrivateRoute path ="/:storeId/store" component ={ShopProfile} />
+        <PrivateRoute  path ="/:storeId/store" exact component ={ShopProfile} />
         <PrivateRoute path= "/:orderId/o" component ={OrderDetailsPage}/>
         <PrivateRoute path="/orders" component={Orders} />
         <PrivateRoute path="/category" component={Category} />

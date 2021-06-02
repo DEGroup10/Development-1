@@ -5,6 +5,7 @@ import Input from "../../components/UI/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from '../../actions/auth.action';
+import { getStoreData } from '../../actions/storedata.action';
 
 
 
@@ -27,10 +28,12 @@ const Signin = (props)=>{
         password
       };
       dispatch(login(store));
+      
  
     };
   
     if (auth.authenticate) {
+      // dispatch(getStoreData());
       return <Redirect to={`/`} />;
     }
 
