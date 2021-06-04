@@ -21,15 +21,21 @@ const MenuHeader = (props) => {
     let myCategories = [];
     for (let category of categories) {
       myCategories.push(
-        <li key={category.name,category.categoryImage}>
-          {
+    //     <nav className="NavigationBar-subcategoryList-1nX">
+    // <a className="router-link-exact-active router-link-active NavigationBar-subcategoryLink-3Ua">
+    //         <div className="SubCategory-root-mwE SubCategory-active-Sxz NavigationBar-subcategory-2m5">
+    //             <h5 className="SubCategory-label-30F">New Mobile</h5>
+    //         </div>
+    //     </a>
+         <li key={category.name,category.categoryImage}>
+           {
             
-            category.parentId ? <a 
-            href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>  {category.name}</a> :
-              <span>{category.name}</span>
-          }
-          {category.children.length > 0 ? (<ul>{renderCategories(category.children)}</ul>) : null}
-        </li>
+             category.parentId ? <a   className="SubCategory-label-30F"
+             href={`/${category.slug}?cid=${category._id}&type=${category.type}`}>  {category.name}</a> :
+               <span>{category.name}</span>
+           }
+           {category.children.length > 0 ? (<ul >{renderCategories(category.children)}</ul>) : null}
+        </li> 
       );
     }
     return myCategories;
@@ -37,7 +43,7 @@ const MenuHeader = (props) => {
 
   return (
     <div className="menuHeader">
-      <ul>
+      <ul className="SubCategory-label-30F">
         {category.categories.length > 0 ? renderCategories(category.categories) : null}
       </ul>
 

@@ -50,7 +50,7 @@ const Store = (props) => {
                                 <td>{store.shopAddress}</td>
                           
                                 <td>{store.shopCategory.name}</td>
-                                <td>{store.createdBy.username}</td>
+                                {/* <td>{store.createdBy.username}</td> */}
                                   <td> <Link to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>View</Link></td>
                  
                                 
@@ -62,7 +62,6 @@ const Store = (props) => {
                 </tbody>
             </Table>
         )
-
     }
 
 

@@ -10,6 +10,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import "./style.css";
 import { Breed } from "../../components/MaterialUI";
 import { generatePublicUrl } from "../../urlConfig";
+import NavBar from "../Navbar";
+import MenuHeader from "../../components/MenuHeader";
 
 /**
  * @author
@@ -27,7 +29,9 @@ const OrderPage = (props) => {
   console.log(user);
 
   return (
-    <Layout>
+    <>
+    <NavBar/>
+    <MenuHeader/>
       <div style={{ maxWidth: "1160px", margin: "5px auto" }}>
         <Breed
           breed={[
@@ -63,7 +67,7 @@ const OrderPage = (props) => {
           ));
         })}
       </div>
-    </Layout>
+      </>
   );
 };
 

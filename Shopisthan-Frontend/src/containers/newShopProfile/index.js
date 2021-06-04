@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStoreDetailsById } from "../../actions/store.action";
 import Layout from "../../components/Layout";
 import { generatePublicUrl } from "../../urlConfig";
+import { WhatsappShareButton } from "react-share";
+import { WhatsappIcon } from "react-share";
 import "./style.css";
+import NavBar from "../Navbar";
 
 const ShopProfile = (props) => {
   const disptach = useDispatch();
-
+  let currentUrl = window.location.href;
   useEffect(() => {
     const { storeId } = props.match.params;
 
@@ -29,7 +32,7 @@ const ShopProfile = (props) => {
 
   return (
     <>
-      <Layout>
+      <NavBar/>
         <div id="top-panel" className="slide-panel js-top-panel">
           <div
             tabIndex="0"
@@ -216,28 +219,26 @@ const ShopProfile = (props) => {
                           </table>
                         </div>
                       </div>
-                      <div className="UserInfo-infoBlockRow-1xR">
-                        <div scope="row" className="UserInfo-column-TMV">
-                          <ul className="UserInfo-socialLinks-cY4">
-                            <li title="WhatsApp">
-                              <a>WhatsApp</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                      <div className="UserInfo-infoBlockRow-1xR"></div>
                     </div>
                   </div>
                   <div className="Profile-profileContents-3cP">
-                    <ul className="Profile-tabControl-wVx Profile-hireMeCTA-2c2">
+                    {/* <ul className="Profile-tabControl-wVx Profile-hireMeCTA-2c2">
                       <li className="Profile-tabControl-wVx .Profile-tab-3cJ.Profile-active-cBh.Profile-hireMeCTA-2c2 ">
                         <a className="Profile-anchor-1kn Profile-hireMeCTA-2c2"></a>
                       </li>
                       <li className="Profile-tab-3cJ e2e-Profile-work-tab Profile-active-cBh Profile-hireMeCTA-2c2">
                         <a className="Profile-anchor-1kn Profile-hireMeCTA-2c2">
                           Products
-                        </a>
+                        </a> 
                       </li>
-                    </ul>
+                    </ul> */}
+                    <div >
+                      <div className="Profile-tabControl-wVx .Profile-tab-3cJ.Profile-active-cBh.Profile-hireMeCTA-2c2 ">
+                      <span style={{borderRadius:'30px', backgroundColor:'black', fontsize:'px', lineHeight:2, marginRight:'1000px', color:'white'}}> Products</span>
+                      
+                      </div>
+                    </div>
                     <div className="Profile-tabs-DeN Profile-transitionBackwards-1fh">
                       <div className="Profile-tab-3cJ">
                         <div>
@@ -267,9 +268,8 @@ const ShopProfile = (props) => {
                                             <img
                                               sizes="404px"
                                               style={{
-                                                objectFit: "fill",
-                                                paddingLeft: 100,
-                                                paddingRight: 100,
+                                                objectFit: "contain",
+                                                padding: "10px",
                                               }}
                                               src={generatePublicUrl(
                                                 product.productPictures[0].img
@@ -279,9 +279,7 @@ const ShopProfile = (props) => {
                                             ></img>
                                           </Link>
                                         </div>
-                                      <div className="Cover-overlay-28e Cover-showOnHover-Ks- Cover-transitionDone-22y">
-                                        
-                                      </div>
+                                        <div className="Cover-overlay-28e Cover-showOnHover-Ks- Cover-transitionDone-22y"></div>
                                       </div>
                                     </div>
                                   </div>
@@ -298,7 +296,6 @@ const ShopProfile = (props) => {
             </div>
           </div>
         </div>
-      </Layout>
     </>
   );
 };

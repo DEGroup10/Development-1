@@ -40,7 +40,8 @@ export const getProductDetailsById = (payload) => {
                 payload: { productDetails: res.data.product }
             });
 
-        } catch(error) {
+        } 
+        catch(error) {
             console.log(error);
             dispatch({
                 type: productConstants.GET_PRODUCT_DETAILS_BY_ID_FAILURE,
