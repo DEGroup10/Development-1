@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getInitialData } from "../../actions";
 import { Link } from "react-router-dom";
 import "./style.css";
+import NavBar from "../Navbar";
 
 /**
  * @author
@@ -32,7 +33,7 @@ const ExploreStore = (props) => {
               </h3>
               <span>Shop Email : {store.shopEmail}</span>
               <p>Shop Category : {store.shopCategory.name}</p>
-              <p>Owner Name : {store.createdBy.username}</p>
+              {/* <p>Owner Name : {store.createdBy.username}</p> */}
               <Link className='gobutton' to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>Walk in store</Link>
             </div>
           </div>
@@ -42,9 +43,10 @@ const ExploreStore = (props) => {
   };
 
   return (
-    <Layout sidebar>
+    <>
+    <NavBar />
       <div> {renderStores()}</div>
-    </Layout>
+</>
   );
 };
 

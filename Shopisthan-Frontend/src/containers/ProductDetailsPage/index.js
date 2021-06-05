@@ -11,6 +11,8 @@ import "./style.css";
 import { generatePublicUrl } from "../../urlConfig";
 import { WhatsappShareButton } from "react-share";
 import { WhatsappIcon } from "react-share";
+import NavBar from "../Navbar";
+import MenuHeader from "../../components/MenuHeader";
 
 /**
  * @author
@@ -38,8 +40,9 @@ const ProductDetailsPage = (props) => {
   }
 
   return (
-    <Layout>
-      {/* <div>{product.productDetails.name}</div> */}
+    <>
+    <NavBar/>
+    <MenuHeader/>
       <div className="productDescriptionContainer">
         <div className="flexRow">
           <div className="verticalImageStack">
@@ -49,7 +52,6 @@ const ProductDetailsPage = (props) => {
                   src={generatePublicUrl(
                     product.productDetails.productPictures[0].img
                   )}
-                
                 />
               </div>
             ))}
@@ -184,7 +186,7 @@ const ProductDetailsPage = (props) => {
           </div>
         </div>
       </div>
-    </Layout>
+</>
   );
 };
 

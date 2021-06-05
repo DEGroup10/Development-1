@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from '../../containers/Navbar'
 import Header from '../Header'
 import MenuHeader from '../MenuHeader'
 import HomeNavbar from '../Newheader'
@@ -10,11 +11,11 @@ import HomeNavbar from '../Newheader'
 
 const Layout = (props) => {
     return (
-        <>
-            <Header     />      
+        <div style={{position:'fixed' , width:'100%', marginTop:'-20px'}}>
+            <NavBar     />      
                 <MenuHeader/>
             {props.children}
-        </>
+        </div>
     )
 }
 

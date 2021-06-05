@@ -12,16 +12,34 @@
   justify-content: center;
   align-items: center;
 }
+
+.productWrapper .detailsWrapper .prodDesc .priceWrapper .priceDiv .discount .discPrice {
+  text-decoration: line-through;
+  color: rgba(0,0,0,.4);
+}
+
 .modalContainer{
-  min-width: 400px;
+  width: 90%;
+    margin: auto;
+    min-height: 150px;
+    min-width: 18rem;
+    border-radius: 0.6rem;
+  background: #fff;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+.ProductContainer{
+  min-width: 600px;
   max-width: 90%;
-  min-height: 200px;
+  min-height: 300px;
   max-height: 90vh;
   background: #fff;
   border-radius: 4px;
   margin: 0 auto;
   overflow-x: hidden;
 }
+
 .modalClose{
   position: absolute;
   color: #fff;
@@ -68,12 +86,12 @@
   padding: 15px;
   font-size: 15px;
   outline: none;
-  background-color: #fb641b;
+  background-color: #616060;
   color: #ffffff;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
   border: none;
   cursor: pointer;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .materialButton:hover{
   box-shadow: 0 4px 6px 0 rgba(0,0,0,.12);
@@ -151,4 +169,11 @@ border-radius: 2px;
   background: transparent;
   border: none;
   letter-spacing: 1px;
+}
+
+/* ProductModal */
+
+.ProjectPopupLayout-app-3ym {
+  position: relative;
+  z-index: 8;
 }
