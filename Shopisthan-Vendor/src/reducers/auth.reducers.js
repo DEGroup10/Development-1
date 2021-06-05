@@ -1,4 +1,4 @@
-import { authConstants } from "../actions/constants"
+import { authConstants, storeDataContants } from "../actions/constants"
 
 const initState = {
     token: null,
@@ -61,6 +61,26 @@ export default (state = initState, action) => {
                 loading: false
             }
             break;
+        case storeDataContants.EDIT_STORE_DATA_REQUEST:
+                state = {
+                    ...state,
+                
+                }
+                break;
+         case storeDataContants.EDIT_STORE_DATA_SUCCESS:
+                    state = {
+                        ...state,
+                        store: action.payload.updatedStoreProfile,
+                    
+                    }
+                    break;
+          case storeDataContants.EDIT_STORE_DATA_FAILURE:
+                        state = {
+                            ...state,
+                            error: action.payload.error,
+                        
+                        }
+                        break;
     }
 
     return state;

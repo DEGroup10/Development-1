@@ -4,11 +4,13 @@ import {Link, NavLink} from 'react-router-dom'
 import { Container, Row, Col, Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import './style.css'
-import { deleteProductById } from '../../actions/product.action'
+import { deleteProductById,editProductAction } from '../../actions/product.action'
 import Modal from '../../components/UI/Modal';
 import { WhatsappShareButton } from "react-share";
 import { WhatsappIcon } from "react-share";
 import { productShareApi } from '../../urlConfig'
+import Input from '../../components/UI/Input'
+
 
 
 
@@ -22,33 +24,99 @@ const Product = (props) => {
 
     const dispatch = useDispatch();
     const product = useSelector(state => state.product);
-    const [deleteCategoryModal,setDeleteCategoryModal] = useState(false);
+    const [editProductModal,setEditProductModal] = useState(false);
+    const [deleteProductModal,setDeleteProductModal] = useState(false);
     const [deleteProductId,setDeleteProductId] = useState("");
-    const [deleteProductName,setDeleteProductName] = useState("");
+    const [deleteProductName,setDeleteProductName] = useState(""); 
+    const [editProductId,setEditProductId] = useState("");
+    const [editProductName,setEditProductName] = useState("");
+    const [editProductPrice,setEditProductPrice] = useState("");
+    const [editProductQuantity,setEditProductQuantity] = useState("");
+    const [editProductDesc,setEditProductDesc] = useState("");
+
 
     
 
+  const editProduct = (e) =>{
+    
+    e.preventDefault();
+   const newProductDetails = {
+    name:editProductName, 
+    price:editProductPrice, 
+    description:editProductDesc, 
+    quantity:editProductQuantity,
+    _id:editProductId
+   
+   };
+   dispatch(editProductAction(newProductDetails));
+   setEditProductModal(false)
+ }
+    
+
+    const  editProductById =(productDetails) =>{
+       setEditProductId(productDetails._id)
+       setEditProductName(productDetails.name)
+       setEditProductQuantity(productDetails.quantity)
+       setEditProductPrice(productDetails.price)
+       setEditProductDesc(productDetails.description)
+       setEditProductModal(true)
+    }
+    
+    const renderEditProductModal = () =>{
+        return(
+            <Modal show={editProductModal}
+            handleclose={()=>setEditProductModal(false)}
+            onSubmit = {editProduct}
+            modaltitle={`Edit Product`}
+        >
+            <Input
+                label={"Product Name"}
+                value={editProductName}
+                placeholder={`Product Name`}
+                onChange={(e) => setEditProductName(e.target.value)}/>
+            
+            <Input
+                label={"Product Quantity"}
+                value={editProductQuantity}
+                placeholder={`Product Quantity`}
+                onChange={(e) => setEditProductQuantity(e.target.value)}/>
+
+                
+            <Input
+                label={"Product Price"}
+                value={editProductPrice}
+                placeholder={`Product Price`}
+                onChange={(e) => setEditProductPrice(e.target.value)}/>
+                     
+            <Input
+                label={"Product Description"}
+                value={editProductDesc}
+                placeholder={`Product Description`}
+                onChange={(e) => setEditProductDesc(e.target.value)}/>
+              
+           
+        </Modal>
+        );
+    }
+
     const  deletePtById = (pId,pName) =>{
-        // console.log(pId);
         setDeleteProductId(pId);
         setDeleteProductName(pName);
-        setDeleteCategoryModal(true)
+        setDeleteProductModal(true)
     } 
 
     const renderDeleteProductModal = () =>{
-        // setDeleteCategoryModal(true)
      return(
             <Modal
              modaltitle="Delete"
-             show = {deleteCategoryModal}
-            // show = "true"
-             handleclose = {()=> setDeleteCategoryModal(false)}
+             show = {deleteProductModal}
+             handleclose = {()=> setDeleteProductModal(false)}
              buttons = {[
                  {
                      label: 'No',
                      color:'primary',
                      onClick:()=>{
-                        setDeleteCategoryModal(false)
+                        setDeleteProductModal(false)
                      }
                  },
                  {
@@ -59,8 +127,7 @@ const Product = (props) => {
                                         productId: deleteProductId,
                                         };
                                         dispatch(deleteProductById(payload));
-                                        setDeleteCategoryModal(false)
-                                        
+                                        setDeleteProductModal(false)     
                                     }
                  }
              ]}
@@ -114,22 +181,20 @@ const Product = (props) => {
                             <div> {product.category.name}</div>
                             <div>  
                             <button
-                                    // onClick={() => {
-                                    //     const payload = {
-                                    //     productId: product._id,
-                                    //     };
-                                    //     dispatch(deleteProductById(payload));
-                                    // }}
                                     onClick = 
                                     {()=>
-                                    
-                                    // setDeleteCategoryModal(true)
                                     deletePtById(product._id,product.name)
                                     
                                     }
-                                     
-
-                                    >Delete</button> </div>
+                            >Delete</button> 
+                             <button
+                                    onClick = 
+                                    {()=>
+                                    editProductById(product)
+                                    
+                                    }
+                            >Edit</button> 
+                            </div>
                           
                             
                           
@@ -166,6 +231,7 @@ const Product = (props) => {
                 <Row>
                     <Col>
                         {renderProducts()}
+                        {renderEditProductModal()}
                         {renderDeleteProductModal()}
                     </Col>
                 </Row>

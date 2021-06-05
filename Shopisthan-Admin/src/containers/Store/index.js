@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Layout } from '../../components/Layout'
 import { Container, Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux';
 import {Link, NavLink} from 'react-router-dom'
+import Input from '../../components/UI/Input';
 
 /**
 * @author
@@ -12,10 +13,14 @@ import {Link, NavLink} from 'react-router-dom'
 const Store = (props) => {
 
     const store = useSelector(state => state.store);
+    const [searchTerm,setSearchTerm] = useState("");
+    const [categoryType,setCategoryType] = useState("");
+    // const storeCategory  =  Array.from(store.stores.reduce((map,obj)=> map.set(obj.shopCategory._id,obj),new Map()).values());
+
 
     const renderStores = () => {
         return (
-            <Table style={{ fontSize: 12 }} responsive="sm">
+            <Table style={{ fontSize: 12 , marginTop:"10px"}} responsive="sm">
                 <thead>
                     <tr>
                    
@@ -32,34 +37,48 @@ const Store = (props) => {
                     
                 </thead>
                 <tbody>
-                 
-              
 
                 {
                     store.stores.length > 0 ?
-                        store.stores.map((store,index)=>
-                       
-                            <tr key={store._id}>
-
+                    store.stores.filter((store)=>{
+                        if(searchTerm ==="" || searchTerm == null){
+                            if(categoryType === "" || categoryType === null){
+                                return store
+                            }else if(store.shopCategory._id.includes(categoryType)){
+                                 return store
+                            }
                             
-                                <td>{index + 1}</td>
-                               
-                                <td> {store.shopName}</td>
-                                <td>{store.shopPhoneNo}</td>
-                                <td>{store.shopEmail}</td>
-                                <td>{store.shopAddress}</td>
+                        }else if(store.shopEmail.toLowerCase().split(" ").join("").includes(searchTerm.toLowerCase().split(" ").join(""))
+                        || store.shopName.toLowerCase().split(" ").join("").includes(searchTerm.toLowerCase().split(" ").join(""))
+                        ){
+                            return store
+                        }
+                        {/* else if(store.shopCategory._id.includes(categoryType)){
+                                  return store
+                        } */}
+                    }).map((store,index)=>
+                       
+                       <tr key={store._id}>
+
+                       
+                           <td>{index + 1}</td>
                           
-                                <td>{store.shopCategory.name}</td>
-                                {/* <td>{store.createdBy.username}</td> */}
-                                  <td> <Link to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>View</Link></td>
-                 
-                                
-                            </tr>
+                           <td> {store.shopName}</td>
+                           <td>{store.shopPhoneNo}</td>
+                           <td>{store.shopEmail}</td>
+                           <td>{store.shopAddress}</td>
+                     
+                           <td>{store.shopCategory.name}</td>
+                           <td>{store.createdBy.username}</td>
+                           <td> <Link to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>View</Link></td>
+           
                            
-                        ):null
+                       </tr>
+                      
+                   ):null
                 }
 
-                </tbody>
+            </tbody>
             </Table>
         )
     }
@@ -70,10 +89,37 @@ const Store = (props) => {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', 
+                        justifyContent: 'space-between' 
+                         
+                        }}>
                             <h3>Store</h3>
-                            {/* <button>Add</button> */}
-                            <NavLink to={`/addStore`}><button>Add Store </button></NavLink>
+                            <Input type="text" 
+                                placeholder="Search by Store Name, Store Email"
+                                onChange={(e)=>{
+                                 setSearchTerm(e.target.value)
+                                }}
+                                style={{width: "370px",marginTop:"5px"}}
+                            />
+                             <select  className="form-control" 
+                               style={{width:"200px",marginTop:"5px"}}
+                                    value={categoryType}
+                                onChange = {(e)=>{ 
+                                const selectedStoreCategory = e.target.value;
+                                setCategoryType(selectedStoreCategory);
+                                
+                                }}
+             
+                               >
+                             <option value="">Category (All)</option>
+                                {/* {
+                                   storeCategory.map(value =>
+                                            <option key={value.shopCategory._id} value={value.shopCategory._id}>{value.shopCategory.name}</option>
+                                        )
+                              
+                                    } */}
+                                </select>
+                            <NavLink to={`/addStore`} ><button>Add Store </button></NavLink>
                         </div>
                     </Col>
                 </Row>

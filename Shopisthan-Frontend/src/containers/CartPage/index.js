@@ -146,7 +146,7 @@ const CartPage = (props) => {
         className="cartContainer"
         style={{ alignItems: "flex-start", overflow: "hidden" }}
       >
-        <Card
+      <Card
           style={{
             width: "calc(100% - 500px)",
             marginTop: "20px",

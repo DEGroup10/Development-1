@@ -34,7 +34,7 @@ export default (state = initState, action) => {
                 authenticating: false
             }
             break;
-             case authConstants.LOGIN_SUCCESS:
+             case authConstants.ADMIN_LOGIN_SUCCESS:
             state = {
                 ...state,
                 admin: action.payload.admin,

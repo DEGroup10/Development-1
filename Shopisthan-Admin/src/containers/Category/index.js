@@ -196,9 +196,9 @@ if(checkedIdsArray.length>0){
 
         return(
             <Modal
-             modalTitle="Confrim"
+             modaltitle="Confrim"
              show = {deleteCategoryModal}
-             handleClose = {()=> setDeleteCategoryModal(false)}
+             handleclose = {()=> setDeleteCategoryModal(false)}
              buttons = {[
                  {
                      label: 'No',
@@ -272,9 +272,9 @@ if(checkedIdsArray.length>0){
 
             <AddCategoryModal 
                show={show}
-                handleClose={()=>setShow(false)}
+                handleclose={()=>setShow(false)}
                 onSubmit ={handleClose}
-                modalTitle={`Add New Categories`}
+                modaltitle={`Add New Categories`}
                 categoryName = {categoryName}
                 setCategoryName = {setCategoryName}
                 parentCategoryId = {parentCategoryId}
@@ -287,9 +287,9 @@ if(checkedIdsArray.length>0){
             
             <UpdateCategoriesModal
                 show={updateCategoryModal}
-                handleClose={()=> setUpdateCategoryModal(false)}
+                handleclose={()=> setUpdateCategoryModal(false)}
                 onSubmit = {updateCategoriesForm}
-                modalTitle={`Update Categories`}
+                modaltitle={`Update Categories`}
                 size='lg'
                 expandedArray= {expandedArray}
                 checkedArray ={checkedArray}

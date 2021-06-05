@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+export const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -17,4 +17,25 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+
+export const StorePrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      component={(props) => {
+        const storetoken = window.localStorage.getItem("storetoken")
+        if (storetoken) {
+          return <Component {...props} />;
+        }
+         else {
+          return <Redirect to={`/signin`} />;
+        }
+      }}
+    />
+  );
+};
+
+
+
+
+

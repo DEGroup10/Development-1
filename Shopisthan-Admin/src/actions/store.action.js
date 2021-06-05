@@ -29,8 +29,8 @@ export const addShop = (shop) =>{
 
             const {store} =  res.data;
             dispatch({
-                 type: storeContants.ADD_NEW_STORE_SUCCESS,
-                   payload: { stores:store }
+                    type: storeContants.ADD_NEW_STORE_SUCCESS,
+                     payload: { stores:store }
                    });
             dispatch(getAllStoresList());
             
@@ -69,3 +69,4 @@ export const getStoreDetailsById = (payload) => {
          
   }
 }
+

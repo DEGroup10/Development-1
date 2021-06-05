@@ -3,7 +3,7 @@ import { categoryContants, orderConstants, productContants, storeContants } from
 
 export const getInitialData = () => {
     return async dispatch => {
-        const res = await axiosIntance.post(`/initialData`);
+        const res = await axiosIntance.post(`/initialdata`);
         if (res.status === 200) {
             const { categories, products,stores,orders } = res.data;
             dispatch({

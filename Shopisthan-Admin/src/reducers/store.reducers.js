@@ -7,7 +7,8 @@ const initialState = {
     loading: false,
     added:false,
     storeProducts:[],
-    storeDetails:{}
+    storeDetails:{},
+
 };
 
 export default (state = initialState, action) => {
@@ -64,7 +65,7 @@ export default (state = initialState, action) => {
              case storeContants.GET_STORE_DETAILS_BY_ID_REQUEST:
                                     state = {
                                         ...state,
-                                        loading:false,
+                                        loading:true,
                                         added:false
                                     }
                                     break;

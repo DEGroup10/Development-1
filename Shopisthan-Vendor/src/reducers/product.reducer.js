@@ -1,4 +1,4 @@
-import { productContants } from "../actions/constants";
+import { authConstants, productContants } from "../actions/constants";
 
 const initialState = {
  products:[],
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
              
             }
        break;
-       case productContants.ADD_NEW_PRODUCT_REQUEST:
+       case productContants.ADD_NEW_PRODUCT_REQUEST: 
             state = {
                 ...state,
                 // products: action.payload.product,

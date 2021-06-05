@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Button } from "react-bootstrap";
+// import { Card, Button } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import "./style.css";
 import Profilepic from "../../img/profilepic.jpg";
