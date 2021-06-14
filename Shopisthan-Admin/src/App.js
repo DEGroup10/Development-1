@@ -38,16 +38,22 @@ function App() {
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
-   
-    }
-    dispatch(getInitialData());
+   }
+
+    dispatch(getInitialData()); 
+
    },[]);
+
+
 
    useEffect(() => {
     if (!storeauth.authenticate) {
        dispatch(isStoreLoggedIn());
     }
-    dispatch(getStoreData());
+
+      dispatch(getStoreData());
+
+ 
    },[]);
 
 

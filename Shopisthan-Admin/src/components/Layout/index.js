@@ -24,7 +24,7 @@ export const Layout = (props) => {
             </ul>
           );
         
-        }else{
+        }else if(storeauth.authenticate && storeauth.store){
           return (
             <ul>
             <li> <NavLink exact to={`/storeHome`}>Home</NavLink></li>
@@ -32,6 +32,8 @@ export const Layout = (props) => {
             <li> <NavLink to={`/storeOrder`}>Orders</NavLink></li>
             </ul>
           )
+        }else{
+          return null;
         }
       }
 

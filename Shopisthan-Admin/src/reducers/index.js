@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
     order: orderReducer,
     page: pageReducer,
     store: storeReducers,
-    order: orderReducer
+    // order: orderReducer
 
 });
 

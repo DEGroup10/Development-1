@@ -5,12 +5,29 @@ const bcrypt = require('bcrypt')
 const Store = require('../../models/store/store')
 
 exports.signup = (req, res) => {
+
     Admin.findOne({ email: req.body.email })
         .exec(async (error, admin) => {
 
             if (admin) return res.status(400).json({
                 message: "Admin already registered"
             });
+               
+            // Store.findOne({shopEmail:req.body.email})
+            // .exec((error,store)=>{
+            //     if(error)
+            //     {
+            //      return res.status(400).json({error})
+            //     }
+            //     if(store) return res.status(400).json({
+            //         message: "Email already registered"
+            //      });
+            // })
+            let store = await Store.findOne({shopEmail: req.body.email})
+            if(store){
+                return res.status(400).json({message:"Email already Exists"})
+            }
+    
 
             const {
                 firstName,

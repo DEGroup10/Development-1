@@ -14,6 +14,7 @@ import Heart_icon from "../../img/heart-outlined.svg";
 import Cart_icon from "../../img/cart-icon.svg";
 import HomeBanner from "../../img/home-banner.jpg";
 import "./style.css";
+import NewNavbar from "../../components/Navbar"
 
 /**
  * @author
@@ -124,8 +125,8 @@ const HomePage = (props) => {
 
   return (
     <>
-    <Layout/>
-    
+    {/* <Layout/> */}
+     <NewNavbar/>
       <div> 
       <div className="Home__imageBanner">
           <img

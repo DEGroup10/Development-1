@@ -2,14 +2,16 @@ import React from 'react';
 import { Card } from 'react-bootstrap'
 import { Layout } from '../../components/Layout'
 import './style.css'
-import {NavLink} from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Home = (props) => {
 
  const store = useSelector(state=>state.store);
  const product = useSelector(state=>state.product);
  const order = useSelector(state=>state.order);
+
+
 
     return (
         <>

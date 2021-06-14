@@ -1,4 +1,3 @@
-import react from 'react'
 import Input from '../../../components/UI/Input'
 import Modal from '../../../components/UI/Modal';
 import { Row, Col, } from 'react-bootstrap'
