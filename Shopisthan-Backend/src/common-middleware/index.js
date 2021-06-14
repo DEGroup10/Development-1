@@ -5,19 +5,32 @@ const shortid = require('shortid');
 const multer = require('multer')
 
 
+
+//user Middleware
+
 exports.requireSignin = ( req, res, next) => {
 
-    if(req.headers.authorization){
-        const token = req.headers.authorization.split(" ")[1];
-        const user = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = user;
-       
-    }else{
-        return res.status(400).json({ message: 'Authorization Required'});
-    }
-   
-    next();
+  if(req.headers.authorization){
+      const token = req.headers.authorization.split(" ")[1];
+      const user = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = user;
+     
+  }else{
+      return res.status(400).json({ message: 'Authorization Required'});
+  }
+ 
+  next();
 }
+
+exports.userMiddleware = (req, res, next) => {
+  if(req.user.role !== 'user'){
+      return res.status(400).json({ message: 'user access denied'});
+  }
+  next();
+}
+
+
+//admin Middleware
 
 
 exports.requireAdminSignin = ( req, res, next) => {
@@ -34,12 +47,6 @@ exports.requireAdminSignin = ( req, res, next) => {
   next();
 }
 
-exports.userMiddleware = (req, res, next) => {
-    if(req.user.role !== 'user'){
-        return res.status(400).json({ message: 'user access denied'});
-    }
-    next();
-}
 
 
 exports.adminMiddleware = (req, res, next) => {
@@ -50,6 +57,7 @@ exports.adminMiddleware = (req, res, next) => {
 }
 
 
+//store Middleware
 
 exports.requireStoreSignin = (req, res, next) => {
  

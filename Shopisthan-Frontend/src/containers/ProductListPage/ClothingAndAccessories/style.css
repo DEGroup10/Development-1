@@ -1,6 +1,5 @@
 .caContainer{
     width: 300px;
- 
 }
 /* .caImgContainer{
   align-content: center;
@@ -26,11 +25,12 @@
 }
 
 .Product__container {
+  
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 50px;
+    gap: 30px;
     margin-top: 30px;
     padding: 0px;
   }
@@ -41,13 +41,14 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 500px;
+    height: 100%;
     background-color: white;
     
   }
 
   .Product__singleCard:hover{
-    box-shadow: none;
+    /* box-shadow: none; */
+    transform: translateY(0) scale(1.05);
 }
   
   @media (max-width: 640px) {
@@ -67,7 +68,7 @@
     overflow: hidden;
     position: relative;
     
-    padding: 50px;
+    padding: 20px;
   }
   
   .Product__detailsContainer {

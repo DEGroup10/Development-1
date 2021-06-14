@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 
 /**
- * @author Rizwan Khan
+ * @author Shopisthan
  * @function
  **/
 
@@ -23,6 +23,12 @@ const Modal = (props) => {
     </>
   );
 };
+
+const ProdModal = (props) ={
+  return(
+
+  )
+}
 
 const MaterialInput = (props) => {
   const [focus, setFocus] = useState(props.value === "" ? false : true);
