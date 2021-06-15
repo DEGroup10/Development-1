@@ -37,17 +37,8 @@ const HomePage = (props) => {
 
   return (
     <>
-    {/* <Layout/> */}
-     <NewNavbar/>
-      <div> 
-      <div className="Home__imageBanner">
-   <Layout/>
-      <div  > 
-      <div className="Home__imageBanner" >
-          <img
       <NavBar/>
       <NewCategory/>
-      {props => <Productpopup {...props} key={this.props.location.key} visible={productModal} onClose={() => setProductModal(false)} /> }
       <div>
         <div className="Home__imageBanner">
           <img style={{borderRadius:'10px', border:'3px solid rgba(105, 105, 105, 0.2)'}}
