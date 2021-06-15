@@ -7,17 +7,16 @@ const Category = require("../../models/admin/category");
 exports.createProduct = (req, res) => {
 
     const {
-        name, price, description, category, quantity, createdBy
+        name, price, description, category, quantity, createdBy,ParCategory
     } = req.body;   
 
     let productPictures = [];
 
   if (req.files.length > 0) {
     productPictures = req.files.map((file) => {
-      return { img: file.filename  };
+      return { img: file.location  };
     });
   }
-   
     const product = new Product({
         name: name,
         slug: slugify(name),
@@ -27,6 +26,7 @@ exports.createProduct = (req, res) => {
         description,
         category,
         createdBy: req.store._id,
+        ParCategory
 
     });
 
@@ -42,7 +42,8 @@ exports.createProduct = (req, res) => {
 exports.getProductBySlug = (req, res) => {
   const { slug } = req.params;
   Category.findOne({ slug: slug })
-    .select("_id type")
+    .select("_id type createdBy")
+    .populate({path:'createdBy',select: '_id username'})
     .exec((error, category) => {
       if (error) {
         return res.status(400).json({ error });
@@ -103,4 +104,53 @@ exports.getProductBySlug = (req, res) => {
       return res.status(400).json({ error: "Params required" });
     }
   };
+ 
+
+exports.editProduct = async(req,res)=>{
+    const {
+      name, price, description, quantity,_id
+     } = req.body;  
+
+     const updatedProduct = await Product.findOneAndUpdate({_id:_id},{$set:{name, price, description, quantity}},
+        {new:true,useFindAndModify: false},
+        (err,updatedProductInfo)=>{
+            if(err) {
+                 return res.status(400).json({err});
+            }
+            if(updatedProductInfo){
+                // const store = Store.findOne({_id:req.store._id})
+                // .populate("shopCategory","name _id")
+                // .select("-password")
+                // .exec((err,storeInfo)=>{
+                //     if(err)    return res.status(400).json({err});
+                //     if(storeInfo){
+                //         return res.status(201).json({storeInfo});
+                //     }
+                // });
+                return res.status(201).json({updatedProductInfo});
+            }
+
+        })
+    
+}
+
+
+
   
+exports.deleteProductById = (req, res) => {
+  const { productId } = req.body.payload;
+  if (productId) {
+    Product.deleteOne({ _id: productId }).exec((error, result) => {
+      if (error) return res.status(400).json({ error });
+      if (result) {
+        res.status(202).json({ result });
+      }
+    });
+  } else {
+    res.status(400).json({ error: "Params required" });
+  }
+
+
+};
+
+

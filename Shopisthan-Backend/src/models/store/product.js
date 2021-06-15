@@ -45,6 +45,9 @@ const productSchema = new mongoose.Schema({
     category: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
     },
+    ParCategory: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
+    },
 
     createdBy: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Store', required: true

@@ -25,14 +25,23 @@ const shopSchema = new mongoose.Schema({
           trim: true,
           unique: true,
       },
-      hash_password:{
-          type: String,
-          required: true
+    //   hash_password:{
+    //       type: String,
+    //       required: true
+    //   },
+    password:{
+        type: String,
+        required: true
+    },
+    
+  followers:[{
+    type: mongoose.Schema.Types.ObjectId,ref: 'User'
+  }], 
+    profilePicture: {
+          img: { type: String }
       },
       shopCategory:{
-          type: String,
-          trim: true,
-          required: true
+        type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true
           
       },
       shopPhoneNo:{
@@ -46,12 +55,20 @@ const shopSchema = new mongoose.Schema({
         required: true
         
     },
+    shopDes:{
+      type: String,
+      default: 'N.A'
+      
+  },
     role:{
         type: String,
         default: 'store'
     },
 
       shopPofilePicture: {type: String},
+      time:{
+        type: String
+      },
       createdBy: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Admin', required: true
 
@@ -61,17 +78,39 @@ const shopSchema = new mongoose.Schema({
 
 
 
-  shopSchema.virtual('password')
-.set(function(password){
-   this.hash_password = bcrypt.hashSync(password, 10);
-});
+// shopSchema.virtual('password')
+// .set(function(password){
+//    this.hash_password = bcrypt.hashSync(password, 12);
+// });
+
+// shopSchema.pre('save',async function(next){
+//     if(this.isModified('password')){
+//         this.password = bcrypt.hash(this.password,12)
+//     }
+//     next();
+// })
+
+// shopSchema.virtual('password')
+// .set(function(password){
+//    this.hash_password = bcrypt.genSalt(10,(err,salt)=>{
+//        if(err){
+//            console.log('sever error');
+//        }else{
+//         bcrypt.hash(password,salt,(err,hash)=>{
+//             if(err){
+                
+//             }
+//         })
+//        }
+//    })
+// });
 
 
 
-shopSchema.methods = {
-    authenticate : function(password){
-        return bcrypt.compareSync(password, this.hash_password);
-    }
-}
+// shopSchema.methods = {
+//     authenticate : function(password){
+//         return bcrypt.compareSync(password, this.hash_password);
+//     }
+// }
 
 module.exports = mongoose.model('Store',shopSchema);
