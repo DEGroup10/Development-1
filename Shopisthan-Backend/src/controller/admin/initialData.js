@@ -36,9 +36,9 @@ exports.initialData = async (req, res) => {
     .populate("items.productId","name")
     .exec();
 
-
+     
     const stores = await store.find({})
-    .select('_id userName shopName shopType shopEmail shopCategory shopPhoneNo shopAddress createdBy')
+    .select('_id userName shopName shopType shopEmail shopCategory shopPhoneNo shopAddress createdBy createdAt')
     .populate({path: 'shopCategory', select: '_id name'})
     .populate({path:'createdBy',select: '_id username'})
     .exec();
