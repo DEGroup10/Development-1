@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "react-share": "^4.4.0",
-    "react-social": "^1.10.0",
-    "social-media-icons-react": "^1.1.2"
-  }
-}
