@@ -1,8 +1,17 @@
-#product{
+/* #product{
     width: 100%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+}
+
+.productWrapper .detailsWrapper .prodDesc h1 {
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-family: montserrat,sans-serif;
+    line-height: 20px;
+    color: rgba(0,0,0,.7);
+    font-weight: 500;
 }
 
 .newcard{
@@ -36,13 +45,14 @@
 .newcard h3 a{
     text-decoration: none;
     color: #333;
-}
+} */
 
 .Home__imageBanner {
     overflow: hidden;
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
+    width: 103rem;
+    margin-left: -30px;
   }
   
   .Home__imageBanner img {
@@ -51,8 +61,9 @@
     margin: 0px 80px;
     object-fit: fill;
     overflow: hidden;
+    
   }
-
+/* 
 .newcard h3 a:hover{
     color: crimson;
 }
@@ -91,4 +102,6 @@
 .caProductName{
     font-size: 12px;
     padding: 10px 0;
-}
+} */
+
+/* Css in Product list css */

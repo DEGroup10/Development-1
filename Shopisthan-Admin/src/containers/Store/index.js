@@ -89,7 +89,7 @@ const Store = (props) => {
                            <td>{store.shopCategory.name}</td>
                            <td>{store.createdBy.username}</td>
                            <td> <Link to={`/${store._id}/store`}style={{ textDecoration: 'none' }}>View</Link></td>
-            
+           
                            
                        </tr>
                       
@@ -121,7 +121,6 @@ const Store = (props) => {
             </tbody>
             </Table>
         )
-
     }
 
 

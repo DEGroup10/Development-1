@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
 import CartItem from "./CartItem";
-import { addToCart, getCartItems, removeCartItem } from "../../actions/cart.action";
+import {
+  addToCart,
+  getCartItems,
+  removeCartItem,
+} from "../../actions/cart.action";
 import PriceDetails from "../../components/PriceDetails";
 import "./style.css";
 import { MaterialButton } from "../../components/MaterialUI";
 import HomeNavbar from "../../components/Newheader";
+import NavBar from "../Navbar";
+import MenuHeader from "../../components/MenuHeader";
 
 /**
  * @author
@@ -21,7 +27,6 @@ save in localStorage
 when try to checkout ask for credentials and 
 if logged in then add products to users cart database from localStorage
 */
-
 
 const CartPage = (props) => {
   const cart = useSelector((state) => state.cart);
@@ -64,22 +69,94 @@ const CartPage = (props) => {
             cartItem={cartItems[key]}
             onQuantityInc={onQuantityIncrement}
             onQuantityDec={onQuantityDecrement}
+            onRemoveCartItem={onRemoveCartItem}
           />
         ))}
       </>
     );
   }
+  if (Object.keys(cartItems).length === 0) {
+    return (
+      <>
+        <NavBar />
+        <MenuHeader />
+        <div
+          className="container"
+          style={{ backgroundColor: "rgb(255, 255, 255)" }}
+        >
+          <div
+            className="emptycartwish emptyPage"
+            style={{ padding: "30px 0px 0px" }}
+          >
+            <img
+              src="https://images.bewakoof.com/images/doodles/empty-cart-page-doodle.png"
+              title="Empty Cart Page Doodle"
+              alt="Empty Cart Page Doodle"
+              width="150px"
+            />
+            <div className="clearfix">Nothing in the Cart</div>
+            <div className="clearfix">
+              <a
+                class="success"
+                hreflang="en-in"
+                href="/"
+                style={{
+                  padding: "10px",
+                  border: "2px solid",
+                  borderRadius: "5px",
+                  display: "inline-block",
+                  marginTop: "15px",
+                }}
+              >
+                Continue Shopping
+              </a>
+            </div>
+          </div>
+          <div
+            className="emptylisting"
+            style={{ backgroundColor: "rgb(255, 255, 255)" }}
+          >
+            <hr
+              style={{
+                height: "1px",
+                borderWidth: "1px 0px 0px",
+                borderTopStyle: "solid",
+                borderRightStyle: "initial",
+                borderBottomStyle: "initial",
+                borderLeftStyle: "initial",
+                borderTopColor: "rgb(204, 204, 204)",
+                borderRightColor: "initial",
+                borderBottomColor: "initial",
+                borderLeftColor: "initial",
+                borderImage: "initial",
+              }}
+            ></hr>
+            <div style={{ margin: "20px auto" }}></div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
-    <Layout>
-
-
-       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
-        <Card
-          headerLeft={`My Cart`}
-          headerRight={<div>Deliver to</div>}
-          style={{ width: "calc(100% - 400px)", overflow: "hidden" }}
+    <>
+      <NavBar />
+      <MenuHeader />
+      <div
+        className="cartContainer"
+        style={{ alignItems: "flex-start", overflow: "hidden" }}
+      >
+      <Card
+          style={{
+            width: "calc(100% - 500px)",
+            marginTop: "20px",
+            overflow: "hidden",
+          }}
         >
+          <div className="sectionTopHeading">
+            <h5>My Cart</h5>
+          </div>
+
           {Object.keys(cartItems).map((key, index) => (
             <CartItem
               key={index}
@@ -96,8 +173,7 @@ const CartPage = (props) => {
               display: "flex",
               background: "#ffffff",
               justifyContent: "flex-end",
-              boxShadow: "0 0 10px 10px #eee",
-              padding: "10px 0",
+              padding: "12px",
               boxSizing: "border-box",
             }}
           >
@@ -118,9 +194,8 @@ const CartPage = (props) => {
             return totalPrice + price * qty;
           }, 0)}
         />
-      </div> 
-     
-    </Layout>
+      </div>
+    </>
   );
 };
 

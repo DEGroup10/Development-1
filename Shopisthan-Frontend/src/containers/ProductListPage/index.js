@@ -5,6 +5,10 @@ import ProductPage from "./ProductPage";
 import ProductStore from "./ProductStore";
 import ClothingAndAccessories from "./ClothingAndAccessories";
 import "./style.css";
+import Popup from "../Navbar";
+import NewCategory from "../../components/NewCategoryUI";
+import NavBar from "../Navbar";
+import MenuHeader from "../../components/MenuHeader";
 
 
 /**
@@ -34,9 +38,10 @@ const ProductListPage = (props) => {
 
   return (
     <>
-    <Layout>
+    <NavBar/>
+    <MenuHeader/>
       {renderProduct()}
-    </Layout>
+    
     </>
   );
 };

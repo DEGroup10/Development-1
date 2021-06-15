@@ -14,6 +14,7 @@ import OrderDetailsPage from "./containers/OrdersPage";
 import OrderPage from "./containers/OrdersPage";
 import ExploreStore from "./containers/ExploreStore";
 import ShopProfile from "./containers/newShopProfile";
+import NewCategory from "./components/NewCategoryUI";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/order_details/:orderId" component={OrderDetailsPage} />
           <Route path="/myprofile" exact component={Myprofile} />
           <Route path="/:storeId/store" exact component={ShopProfile} />
+          <Route path="/UI" exact component={NewCategory} />
           <Route
             path="/:productSlug/:productId/p"
             component={ProductDetailsPage}

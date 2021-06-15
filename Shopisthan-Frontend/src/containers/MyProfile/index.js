@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/Layout";
 import "./style.css";
 import Profilepic from "../../img/profilepic.jpg";
+import NavBar from "../Navbar";
 
 /**
  * @author
@@ -15,7 +16,7 @@ const MyProfile = (props) => {
 
   return (
     <>
-      <Layout> </Layout>
+      <NavBar/>
 
       {/* ProfileHEader  starts*/}
       <main className="SCxLW o64aR " role="main">

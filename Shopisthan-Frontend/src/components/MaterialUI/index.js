@@ -24,11 +24,6 @@ const Modal = (props) => {
   );
 };
 
-const ProdModal = (props) ={
-  return(
-
-  )
-}
 
 const MaterialInput = (props) => {
   const [focus, setFocus] = useState(props.value === "" ? false : true);

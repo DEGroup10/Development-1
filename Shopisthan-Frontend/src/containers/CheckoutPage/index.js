@@ -14,6 +14,7 @@ import CartPage from "../CartPage/index";
 import AddressForm from "./AddressForm";
 
 import "./style.css";
+import NavBar from "../Navbar";
 
 /**
  * @author
@@ -206,7 +207,8 @@ const CheckoutPage = (props) => {
   }
 
   return (
-    <Layout>
+    <>
+     <NavBar/>
       <div className="cartContainer" style={{ alignItems: "flex-start" }}>
         <div className="checkoutContainer">
           {/* check if user logged in or not */}
@@ -347,7 +349,7 @@ const CheckoutPage = (props) => {
           }, 0)}
         />
       </div>
-    </Layout>
+</>
   );
 };
 

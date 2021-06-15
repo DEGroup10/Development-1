@@ -8,27 +8,53 @@ import Card from "../../components/UI/Card";
 
 const PriceDetails = (props) => {
   return (
-    <Card headerLeft={"Price Details"} style={{ maxWidth: "380px" }}>
-      <div
-        style={{
-          padding: "20px",
-          boxSizing: "border-box",
-        }}
-      >
-        <div className="flexRow sb" style={{ margin: "10px 0" }}>
-          <div>Price ({props.totalItem} items)</div>
-          <div>{props.totalPrice}</div>
+    <div className="summaryBox col-sm-5 rightSection noPdRight">
+      <div className="summeryBorderBox prc-summary">
+        <div className="sectionTopHeading">
+          <h5>Price Summary</h5>
         </div>
-        <div className="flexRow sb" style={{ margin: "10px 0" }}>
-          <div>Delivery Charges</div>
-          <div>FREE</div>
-        </div>
-        <div className="flexRow sb" style={{ margin: "10px 0" }}>
-          <div>Total Amount</div>
-          <div>{props.totalPrice}</div>
+        <div className="paymentBox">
+          <div className="paymentBoxInner">
+            <p>No of Items</p>
+            <p>{props.totalItem} Items</p>
+          </div>
+          <div className="paymentBoxInner">
+            <p>Delivery Fee</p>
+            <p style={{ color: "rgb(29, 136, 2)" }}>FREE</p>
+          </div>
+          <div
+            className="paymentBoxInner"
+            style={{ fontFamily: "montserrat, sans-serif" }}
+          >
+            <p>Total</p>
+            <p>₹ {props.totalPrice}</p>
+          </div>
+          <div
+            className="savingLabel"
+            style={{
+              backgroundColor: "rgba(29, 136, 2, 0.1)",
+              color: "rgb(29, 136, 2)",
+            }}
+          >
+            <p id="os_savingLabel_text">You are saving ₹ 650 on this order</p>
+          </div>
+          <div className="pmts-wrap">
+            {/* <button
+                  id="os_payNow_btn"
+                  className="pmts-btn false"
+                  style={{
+                    backgroundColor: "rgb(66, 162, 162)",
+                    borderColor: "rgb(66, 162, 162)",
+                    color: "white",
+                  }}
+                  onClick={() => props.history.push(`/checkout`)}
+                >
+                  Continue
+                </button> */}
+          </div>
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 
