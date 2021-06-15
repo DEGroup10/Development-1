@@ -144,7 +144,7 @@ const Category = (props) => {
 
     }
 
-    const updateCategoriesForm = () =>{
+    const updateCategoriesForm = () => {
 
         const form = new FormData();
 
@@ -271,7 +271,7 @@ if(checkedIdsArray.length>0){
             </Container>
 
             <AddCategoryModal 
-               show={show}
+                show={show}
                 handleclose={()=>setShow(false)}
                 onSubmit ={handleClose}
                 modaltitle={`Add New Categories`}

@@ -35,19 +35,25 @@ function App() {
   const storeauth = useSelector(state => state.storeauth)
 
 
-  useEffect(() => {
-    if (!auth.authenticate) {
-      dispatch(isUserLoggedIn());
-   
-    }
-    dispatch(getInitialData());
-   },[]);
+  // useEffect(() => {
+  //   if (!auth.authenticate) {
+  //     dispatch(isUserLoggedIn());
+  //  }
+
+  //   dispatch(getInitialData()); 
+
+  //  },[]);
+
+
 
    useEffect(() => {
     if (!storeauth.authenticate) {
        dispatch(isStoreLoggedIn());
     }
-    dispatch(getStoreData());
+
+      dispatch(getStoreData());
+
+ 
    },[]);
 
 

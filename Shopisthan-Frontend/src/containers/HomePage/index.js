@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import HomeBanner from "../../img/home-banner.jpg";
 import "./style.css";
+import NewNavbar from "../../components/Navbar"
 import Productpopup from "./popindex";
 import ProductHomeComponent from "../../components/ProductComponets/productcomponent";
 import Popup from "../Navbar";
@@ -36,6 +37,14 @@ const HomePage = (props) => {
 
   return (
     <>
+    {/* <Layout/> */}
+     <NewNavbar/>
+      <div> 
+      <div className="Home__imageBanner">
+   <Layout/>
+      <div  > 
+      <div className="Home__imageBanner" >
+          <img
       <NavBar/>
       <NewCategory/>
       {props => <Productpopup {...props} key={this.props.location.key} visible={productModal} onClose={() => setProductModal(false)} /> }

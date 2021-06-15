@@ -66,6 +66,9 @@ const shopSchema = new mongoose.Schema({
     },
 
       shopPofilePicture: {type: String},
+      time:{
+        type: String
+      },
       createdBy: {
         type: mongoose.Schema.Types.ObjectId, ref: 'Admin', required: true
 

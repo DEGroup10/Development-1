@@ -1,12 +1,8 @@
 import axiosIntance from "../helpers/axios";
-import axios from "../helpers/axios";
 import { userContants } from "./constants";
 
 
 export const signup = (user) => {
-
-  // console.log(user);
-
 
   return async dispatch => {
     dispatch({ type: userContants.USER_REGISTER_REQUEST });
@@ -24,12 +20,13 @@ export const signup = (user) => {
         }
       });
     } else {
-      if (res.status === 400) {
+      console.log("defw");
+      // if (res.status === 400) {
         dispatch({
           type: userContants.USER_REGISTER_FAILURE,
           payload: { error: res.data.error }
         });
-      }
+      // }
     }
   };
 };

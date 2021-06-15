@@ -6,7 +6,7 @@ const Store = require('../../models/store/store');
 const Product = require('../../models/store/product')
 const Category = require('../../models/admin/category')
 const order = require('../../models/user/order')
-
+const Admin = require("../../models/admin/auth")
 
 
 exports.storeSignin = async(req,res)=>{
@@ -63,8 +63,12 @@ exports.createStore = async(req, res) => {
         if(store){
             return res.status(400).json({message:"Shop already Exists"})
         }
+        let admin = await Admin.findOne({email:shopEmail})
+        if(admin){
+            return res.status(400).json({message:"Shop already Exists"})
+        }
 
-        store = new Store({
+        store = new Store({     
                 userName, 
                 shopName, 
                 shopType,
@@ -73,7 +77,8 @@ exports.createStore = async(req, res) => {
                 shopCategory,
                 shopPhoneNo,
                 shopAddress,
-                createdBy: req.admin._id
+                createdBy: req.admin._id,
+                time: new Date()
         })
 
         const salt = await bcrypt.genSalt(10);

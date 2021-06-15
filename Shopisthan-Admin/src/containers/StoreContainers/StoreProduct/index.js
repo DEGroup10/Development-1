@@ -153,7 +153,10 @@ const StoreProduct = (props) => {
                    
                         <div className="Product__imageContainer">
                             <img className="Product__image" 
-                            src="https://as1.ftcdn.net/jpg/03/01/31/70/500_F_301317052_ajbJFzcmAbkAUJPW57nj4fevWm4ZlKJB.jpg"
+                            style ={{  "max-width ": "100%",
+                                 " max-height":" 100%",
+                                  "object-fit": "contain"}}
+                            src={product.productPictures[0].img}
                             alt="product" />
                         </div>
                         <div className="Product__detailsContainer">
