@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
-
 //routes
 const adminRoutes = require('./routes/admin/auth');
 const storeRoutes = require('./routes/store/store');
