@@ -4,7 +4,6 @@ import getParams from "../../utils/getParams";
 import ProductPage from "./ProductPage";
 import ProductStore from "./ProductStore";
 import ClothingAndAccessories from "./ClothingAndAccessories";
-import "./style.css";
 import Popup from "../Navbar";
 import NewCategory from "../../components/NewCategoryUI";
 import NavBar from "../Navbar";

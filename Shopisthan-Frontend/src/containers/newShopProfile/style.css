@@ -309,14 +309,9 @@ svg:not(:root) {
   flex: auto;
 }
 
-.Btn-primary-1H3 {
-  background: #0057ff;
-  border-color: transparent;
-  color: #fff;
-}
+
 .Btn-button-BGn {
-  border: 1px solid transparent;
-  border-radius: 100px;
+  border-radius: 5px;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
