@@ -39,7 +39,7 @@ const HomePage = (props) => {
     <>
     {/* <Layout/> */}
      <NewNavbar/>
-      <div> 
+      {/* <div> 
       <div className="Home__imageBanner">
    <Layout/>
       <div  > 
@@ -57,7 +57,7 @@ const HomePage = (props) => {
           />
         </div>
         {renderProduct()}
-      </div>
+      </div> */}
     </>
   );
 };
