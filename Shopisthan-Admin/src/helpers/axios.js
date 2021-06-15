@@ -3,6 +3,7 @@ import { api } from '../urlConfig';
 
 const token = window.localStorage.getItem('token');
 
+
 const axiosIntance = axios.create({
    baseURL: api,
    headers:{
