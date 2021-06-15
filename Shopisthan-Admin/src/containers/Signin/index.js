@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Layout } from "../../components/Layout";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import Input from "../../components/UI/Input";
-import { login } from "../../actions";
+import { getInitialData, login } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom'
@@ -29,9 +29,11 @@ const Signin = (props) => {
   
 
   if (auth.authenticate) {
+    // dispatch(getInitialData());
     return <Redirect to={`/`} />;
   }
   if (storeauth.authenticate) {
+ 
     return <Redirect to={`/storeHome`} />;
   }
 

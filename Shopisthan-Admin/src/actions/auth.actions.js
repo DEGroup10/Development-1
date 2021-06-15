@@ -1,7 +1,7 @@
 import axiosIntance from "../helpers/axios";
 import axios from "../helpers/axios";
 import { authConstants } from "./constants";
-
+import { categoryContants, orderConstants, productContants, storeContants } from "./constants"
 // export const login = (admin) => {
 
 //   return async (dispatch) => {
@@ -32,6 +32,33 @@ import { authConstants } from "./constants";
 //   };
 // };
 
+const getInitialData = () => {
+  return async dispatch => {
+      const res = await axiosIntance.post(`/initialdata`);
+      if (res.status === 200) {
+          const { categories, products,stores,orders } = res.data;
+          dispatch({
+              type: categoryContants.GET_ALL_CATEGORIES_SUCCESS,
+              payload: { categories }
+          });
+          dispatch({
+              type: productContants.GET_ALL_PRODUCTS_SUCCESS,
+              payload: { products }
+          });
+          dispatch({
+              type: storeContants.GET_ALL_STORE_SUCCESS,
+              payload: { stores }
+          });
+          dispatch({
+              type: orderConstants.GET_CUSTOMER_ORDER_SUCCESS,
+              payload: { orders }
+          });
+      }
+  }
+}
+
+
+
 export const login = (admin) => {
 
   return async (dispatch) => {
@@ -53,6 +80,7 @@ export const login = (admin) => {
           admin
         }
       });
+      // dispatch(getInitialData())
        }
        if(store){
         // const token = res.data;
@@ -193,3 +221,8 @@ export const newPassword = (user) => {
 
   }
 }
+
+
+
+
+

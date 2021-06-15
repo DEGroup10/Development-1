@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from 'react-bootstrap'
 import { Layout } from '../../components/Layout'
 import './style.css'
@@ -10,9 +10,20 @@ const Home = (props) => {
  const store = useSelector(state=>state.store);
  const product = useSelector(state=>state.product);
  const order = useSelector(state=>state.order);
+ const auth = useSelector(state => state.auth)
 
 
+ useEffect(() => {
+//     if (!auth.authenticate) {
+//       dispatch(isUserLoggedIn());
+//    }
+console.log("hello");
 
+   },[auth.authenticate]);
+
+    if(auth.authenticate){
+        console.log("hello21");
+    }
     return (
         <>
             <Layout sidebar>

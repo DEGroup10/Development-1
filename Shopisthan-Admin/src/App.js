@@ -35,26 +35,32 @@ function App() {
   const storeauth = useSelector(state => state.storeauth)
 
 
-  // useEffect(() => {
-  //   if (!auth.authenticate) {
-  //     dispatch(isUserLoggedIn());
-  //  }
+  useEffect(() => {
+    if (!auth.authenticate) {
+      dispatch(isUserLoggedIn());
+   }
 
-  //   dispatch(getInitialData()); 
+   if(auth.authenticate){
+     console.log("hello");
+   }
+    // dispatch(getInitialData()); 
 
-  //  },[]);
-
-
-
-   useEffect(() => {
-    if (!storeauth.authenticate) {
-       dispatch(isStoreLoggedIn());
+    if(!auth.authenticate){
+      console.log("helwlo");
     }
+   },[]);
 
-      dispatch(getStoreData());
+
+
+  //  useEffect(() => {
+  //   if (!storeauth.authenticate) {
+  //      dispatch(isStoreLoggedIn());
+  //   }
+
+  //     dispatch(getStoreData());
 
  
-   },[]);
+  //  },[]);
 
 
   return (
