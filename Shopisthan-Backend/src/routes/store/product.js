@@ -32,5 +32,9 @@ router.get("/product/:productId", getProductDetailsById);
   
 // );
 
+router.post('/product/create',requireSignin,adminMiddleware,upload.array('productPictures'),createProduct)
+// router.get('/category/getcategory',getCategories)
+router.get('/products/:slug',getProductBySlug)
+router.get("/product/:productId", getProductDetailsById);
 
 module.exports = router;

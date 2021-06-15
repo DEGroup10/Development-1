@@ -50,7 +50,7 @@ exports.requireAdminSignin = ( req, res, next) => {
 
 
 exports.adminMiddleware = (req, res, next) => {
-    if(req.admin.role !== 'admin'){
+   if(req.admin.role !== 'admin'){
         return res.status(400).json({ message: 'Admin access denied'});
     }
     next();

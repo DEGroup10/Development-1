@@ -11,6 +11,7 @@ exports.createProduct = (req, res) => {
     } = req.body;   
 
     let productPictures = [];
+
   if (req.files.length > 0) {
     productPictures = req.files.map((file) => {
       return { img: file.location  };
@@ -103,7 +104,7 @@ exports.getProductBySlug = (req, res) => {
       return res.status(400).json({ error: "Params required" });
     }
   };
-  
+ 
 
 exports.editProduct = async(req,res)=>{
     const {
@@ -151,7 +152,5 @@ exports.deleteProductById = (req, res) => {
 
 
 };
-
-
 
 

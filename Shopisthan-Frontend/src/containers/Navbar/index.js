@@ -17,10 +17,10 @@ import { userLogin, signout, signup as _signup } from "../../actions";
 
 /**
  * @author
- * @function Popup
+ * @function Navigationbar
  **/
 
-const Popup = (props) => {
+const Navigationbar = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [signup, setSignup] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -173,8 +173,7 @@ const Popup = (props) => {
         tabIndex="-1"
         className="PrimaryNav-strip-3w8 js-nav-primary e2e-PrimaryNav"
         style={{
-          border: "1px solid rgba(145, 145, 145, 0.2)",
-          boxshadow: "0 0 2px -2px gray",
+          // border: "1px solid rgba(145, 145, 145, 0.2)",
         }}
       >
         <Modal visible={loginModal} onClose={() => setLoginModal(false)}>
@@ -257,94 +256,51 @@ const Popup = (props) => {
               </div>
             </a>
           </li>
-          <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
-            <a
-              href="/"
-              className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-discover PrimaryNav-active-jbv"
-            >
-              <h3 className="PrimaryNav-coreNavigationLabel-3rj">Home</h3>
-            </a>
-          </li>
-          <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
-            <a
-              href="/ExploreStore"
-              className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-live"
-            >
-              <h3 className="PrimaryNav-coreNavigationLabel-3rj">
-                ExploreStore
-              </h3>
-            </a>
-          </li>
-          <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
-            <a
-              href="/cart"
-              className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-jobs"
-            >
-              <h3 className="PrimaryNav-coreNavigationLabel-3rj">Cart</h3>
-            </a>
-          </li>
         </ul>
         <div className="PrimaryNav-siteSearch-ndn">
-          <div
-            tabIndex="0"
-            className="SearchTypeahead-searchContainer-175 SearchTypeahead-isTypeaheadEnabled-3i3"
-          >
-            <div className="SearchTypeahead-searchInputWrap-3Hg">
-              <div className="SearchTypeahead-searchIcon-1ld">
-                <svg viewBox="0 0 12 12" class="SearchTypeahead-icon-20K">
-                  <path d="M11.407,10.421,8.818,7.832a4.276,4.276,0,1,0-.985.985l2.589,2.589a.7.7,0,0,0,.985-.985ZM2.355,5.352a3,3,0,1,1,3,3,3,3,0,0,1-3-3Z"></path>
-                </svg>
-              </div>
-              <form className="SearchTypeahead-searchForm-20c">
-                <label for="search">
-                  <input
-                    type="search"
-                    name="search"
-                    autocomplete="off"
-                    placeholder="Search…"
-                    aria-label="Search "
-                    className="SearchTypeahead-searchInput-1qk e2e-SearchInput-input"
-                  />
-                </label>
-              </form>
-              {/* <ul className="SearchTypeahead-suggestions-2lD"></ul> */}
-            </div>
-            <button
-              tabIndex="-1"
-              className="Btn-button-BGn Btn-ghost-2Wn Btn-small-2_o SearchTypeahead-mobileCloseButton-OkE"
-            >
-              <div className="Btn-labelWrapper-1jSE">
-                <div className="Btn-label-1Zf e2e-Btn-label">Cancel</div>
-              </div>
-            </button>
-          </div>
+          <ul className="PrimaryNav-coreNavigation-rdG">
+            <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
+              <a
+                href="/"
+                className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-discover PrimaryNav-active-jbv"
+              >
+                <h3 className="PrimaryNav-coreNavigationLabel-3rj">Home</h3>
+              </a>
+            </li>
+            <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
+              <a
+                href="/ExploreStore"
+                className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-live"
+              >
+                <h3 className="PrimaryNav-coreNavigationLabel-3rj">
+                  ExploreStore
+                </h3>
+              </a>
+            </li>
+            <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
+              <a
+                href="/cart"
+                className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-jobs"
+              >
+                <h3 className="PrimaryNav-coreNavigationLabel-3rj">Cart</h3>
+              </a>
+            </li>
+            <li className="PrimaryNav-coreNavigationItem-236 PrimaryNav-text-1ps">
+              <a
+                href="/cart"
+                className="PrimaryNav-coreNavigationLink-2uv e2e-Nav-jobs"
+              >
+                <h3 className="PrimaryNav-coreNavigationLabel-3rj">Wishlist</h3>
+              </a>
+              
+            </li>
+          </ul>
         </div>
         <div className="PrimaryNav-signup-Yf6">
           <div className="PrimaryNav-a11yButtonWrap-23Z">
             <span className="PrimaryNav-a11yButtonHelper-3Vx"></span>
           </div>
           <ul className="PrimaryNav-loggedOutOptions-1SQ">
-            {/* <li className="PrimaryNav-loggedOutOption-3xV PrimaryNav-logIn-VCn">
-           
-              <div className="PrimaryNav-a11yButtonWrap-23Z">
-                <button className="Btn-button-BGn Btn-base-M-O Btn-normal-hI4 js-adobeid-signin PrimaryNav-a11yButton-2Cl"  onClick={() => setLoginModal(false)}>
-                  <div className="Btn-labelWrapper-1jS">
-                    <div className="Btn-label-1Zf e2e-Btn-label"> Log In</div>
-                  </div>
-                </button>
-                <span className="PrimaryNav-a11yButtonHelper-3Vx"></span>
-              </div>
-            </li>
-            <li className="PrimaryNav-loggedOutOption-3xV">
-            <div className="PrimaryNav-a11yButtonWrap-23Z">
-              <button className="Btn-button-BGn Btn-primary-1H3 Btn-normal-hI4 js-adobeid-signup e2e-PrimaryNav-signup PrimaryNav-a11yButton-2Cl">
-                <div className="Btn-labelWrapper-1jS">
-                  <div className="Btn-label-1Zf e2e-Btn-label"> Sign Up</div>
-                </div>
-              </button>
-              <span className="PrimaryNav-a11yButtonHelper-3Vx"></span>
-            </div>
-            </li> */}
             {auth.authenticate ? renderLoggedInMenu() : renderNonLoggedInMenu()}
           </ul>
         </div>
@@ -358,4 +314,4 @@ const Popup = (props) => {
   );
 };
 
-export default Popup;
+export default Navigationbar;

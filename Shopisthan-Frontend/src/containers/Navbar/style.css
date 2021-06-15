@@ -1,13 +1,13 @@
 /* nav style starts */
 @media (min-width: 1080px) {
   .PrimaryNav-strip-3w8 {
-    padding-left: 50px;
+    padding-left: 110px;
   }
 }
 
 @media (min-width: 1025px) {
   .PrimaryNav-strip-3w8 {
-    padding-right: 0px;
+    padding-right: 50px;
   }
 }
 
@@ -153,7 +153,7 @@ ul {
 }
 
 .PrimaryNav-strip-3w8 .PrimaryNav-coreNavigationItem-236:not(:last-child) {
-  margin-right: 24px;
+  margin-right: 25px;
 }
 .PrimaryNav-strip-3w8 .PrimaryNav-coreNavigationItem-236 {
   position: relative;
@@ -239,13 +239,6 @@ a:-webkit-any-link {
   color: inherit;
 }
 
-.PrimaryNav-coreNavigationLabel-3rj {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  position: relative;
-}
-
 h3 {
   font-size: 18px;
   line-height: 22px;
@@ -297,17 +290,11 @@ h3 {
 }
 
 .PrimaryNav-coreNavigationLabel-3rj {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 450;
   margin: 0;
   position: relative;
-}
-
-.PrimaryNav-coreNavigationLabel-3rj {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  position: relative;
+  color: #696969;
 }
 
 .PrimaryNav-strip-3w8
@@ -340,6 +327,7 @@ h3 {
 .SearchTypeahead-searchContainer-175 {
   position: relative;
   width: 100%;
+  margin-left: 340px;
 }
 
 @media (min-width: 922px) {
@@ -358,10 +346,10 @@ h3 {
 .SearchTypeahead-searchInputWrap-3Hg {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
-  border-radius: 50px;
+  border-radius: 5px;
   display: -webkit-box;
   display: flex;
-  height: 32px;
+  height: 42px;
   width: 100%;
 }
 
@@ -378,8 +366,7 @@ h3 {
   color: #696969;
 }
 .Btn-button-BGn {
-  border: 1px solid transparent;
-  border-radius: 100px;
+  border-radius: 10px;
   cursor: pointer;
   display: inline-block;
   font-weight: 600;
@@ -392,6 +379,8 @@ h3 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  background-color: #f9f9f9;
+  border: 1px solid #d4d4d4;
 }
 
 /* /////////// */
@@ -542,6 +531,7 @@ button {
   height: 100%;
   -webkit-box-pack: center;
   justify-content: center;
+  
 }
 
 .PrimaryNav-loggedOutOption-3xV.PrimaryNav-logIn-VCn {
@@ -555,22 +545,6 @@ button {
   background: #fff;
   border-color: #e8e8e8;
   color: #191919;
-}
-.Btn-button-BGn {
-  border: 1px solid transparent;
-  border-radius: 100px;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  line-height: 1;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-property: color, background;
-  transition-property: color, background;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 .PrimaryNav-a11yButton-2Cl {
   position: relative;
@@ -607,26 +581,11 @@ button {
 }
 
 .Btn-primary-1H3 {
-  background: #0057ff;
-  border-color: transparent;
-  color: #fff;
+  background-color: #f9f9f9;
+  border: 1px solid #b9b9b9;
+  color: rgb(32, 32, 32);
 }
-.Btn-button-BGn {
-  border: 1px solid transparent;
-  border-radius: 100px;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  line-height: 1;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-property: color, background;
-  transition-property: color, background;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+
 .PrimaryNav-a11yButton-2Cl {
   position: relative;
 }

@@ -70,7 +70,7 @@ exports.getCartItems = (req, res) => {
     //const { user } = req.body.payload;
     //if(user){
     Cart.findOne({ user: req.user._id })
-      .populate("cartItems.product", "_id name price productPictures createdBy")
+     .populate("cartItems.product", "_id name price productPictures createdBy")
       .exec((error, cart) => {
         if (error) return res.status(400).json({ error });
         if (cart) {

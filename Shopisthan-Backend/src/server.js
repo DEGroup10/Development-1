@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
-
 //routes
 const adminRoutes = require('./routes/admin/auth');
 const storeRoutes = require('./routes/store/store');
@@ -41,7 +40,6 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-app.use('/public', express.static(path.join(__dirname, 'upload')));
 app.use('/api',adminRoutes);
 app.use('/api',storeRoutes);
 app.use('/api',categoryRoutes);
@@ -56,6 +54,7 @@ app.use('/api',storeDetailsById);
 app.use('/api',adminOrdersRoutes);
 app.use('/api',userStore);
 app.use('/api',locationRoutes);
+
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on port ${process.env.PORT}`);
