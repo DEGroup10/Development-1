@@ -29,100 +29,23 @@ const HomePage = (props) => {
   let currentUrl = window.location.href;
   const product = useSelector((state) => state.product);
   const store = useSelector((state) => state.store.storeDetails);
+  console.log(product);
+  const categoriesList = useSelector((state) => state.category.categories);
   const [productDetailModal, setProductDetailModal] = useState(false);
   const [productDetails, setProductDetails] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterdTerm, setFilterdTerm] = useState("");
+
+console.log("categoriesList",categoriesList);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getInitialData());
   }, []);
 
-  const renderProduct = () => {
-    return (
-      <div style={{ padding: "30px" }}>
-        <div className="Galleries-covers-ihH Galleries-grid-1Bv Galleries-header-14v">
-          {product.products.map((product, index) => (
-            <div key={product._id}>
-              <Link
-                onClick={() => showProductDetailsModal(product)}
-                key={product._id}
-              >
-                <div className="Galleries-gridCover-j9D">
-                  <div className="ProjectCoverNeue-root-166 ProjectCoverNeue-statsVisible-19j ProjectCover-cover-3zh">
-                    <div className="Cover-cover-2mr ProjectCoverNeue-cover-3Ni e2e-ProjectCoverNeue js-project-cover e2e-ProjectCoverNeue-cover ProjectCoverNeue-coverWithFlags-1Aq ProjectCoverNeue-statsVisible-19j ProjectCoverNeue-loaded-26R">
-                      <div className="Cover-wrapper-300 ProjectCoverNeue-wrapper-27j e2e-ProjectCoverNeue-wrapper">
-                        <div className="Cover-content-2R2">
-                          <div className="DominantColor-dominantColor-2PM"></div>
-                          <img
-                            sizes="404px"
-                            style={{ padding: "10px" }}
-                            src={generatePublicUrl(
-                              product.productPictures[0].img
-                            )}
-                            alt="Children's Day - ''SEE ME&quot;"
-                            loading="lazy"
-                            class="ProjectCoverNeue-image-1MZ js-cover-image"
-                          ></img>
-                          <div className="ProjectCoverNeue-controlsAndPrivacyContainer-20r"></div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* /////// */}
-                    <div style={{ padding: "10px" }}>
-                      <div className="Cover-overlay-28e Cover-showOnHover-Ks- Cover-transitionDone-22y">
-                        <div className="ProjectCoverNeue-details-yQ_">
-                          <div className="ProjectCoverNeue-info-4Ul">
-                            <a className="Title-title-3nk e2e-Title-owner js-project-cover-title-link">
-                              {product.name}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="ProjectCoverNeue-visibleStatsAndOwners-2Av">
-                        <span className="ProjectCoverNeue-ownersContainer-3Go">
-                          <div className="Owners-root-3c9 Owners-dark-1Vh Owners-overflowText-3Yn ProjectCoverNeue-owners-1qo">
-                            <span className="js-mini-profile Owners-ownerAndAvatar-1d5">
-                              {/* <span className="Owners-ownerImage-27R">
-                     <img src="https://mir-s3-cdn-cf.behance.net/user/50/e3288c7532301.5fd90c23ec9bc.jpg" alt="Marta Syrko" className="Owners-ownerImageEl-3cu"/>
-                   </span> */}
-                              <a className="Owners-owner-2lB e2e-Owner-user-link">
-                                {product.name}
-                              </a>
-                            </span>
-                          </div>
-                        </span>
-                        <div className="Stats-stats-1iI">
-                          <div className="Product__priceFlex">
-                            <a className="Owners-owner-2lB e2e-Owner-user-link" onClick={() => setProductDetailModal(true)}>
-                              View Details
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <span className="ProjectCoverNeue-ownersContainer-3Go">
-                        <div className="Owners-root-3c9 Owners-dark-1Vh Owners-overflowText-3Yn ProjectCoverNeue-owners-1qo">
-                          <span className="js-mini-profile Owners-ownerAndAvatar-1d5">
-                            <a className="Owners-owner-2lB e2e-Owner-user-link">
-                              By -
-                            </a>
-                          </span>
-                        </div>
-                      </span>
-                    </div>
-                    {/* ///////// */}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
 
-  const handleCloseProductDetailsModal = () => {
-    setProductDetailModal(false);
-  };
 
+
+  
   const showProductDetailsModal = (product) => {
     setProductDetails(product);
     setProductDetailModal(true);
@@ -136,30 +59,30 @@ const HomePage = (props) => {
 
     return (
       <Modal
-        visible={productDetailModal} onClose={() => setProductDetailModal(false)}
-        modalTitle={"Product Details"}
+        visible={productDetailModal}
+        onClose={() => setProductDetailModal(false)}
         size="lg"
       >
         <div className="productDescriptionContainer">
           <div className="flexRow">
             <div className="verticalImageStack">
-              {/* {product.productDetails.productPictures.map((thumb, index) => ( */}
+              {productDetails.productPictures.map((thumb, index) => (
               <div className="thumbnail">
                 <img
-                // src={generatePublicUrl(
-                //   product.productDetails.productPictures[0].img
-                // )}
+                src={
+                  productDetails.productPictures[0].img
+                }
                 />
               </div>
-              {/* ))} */}
+              ))}
             </div>
             <div className="productDescContainer">
               <div className="productDescImgContainer">
                 <img
-                // src={generatePublicUrl(
-                //   product.productDetails.productPictures[0].img
-                // )}
-                // alt={`${product.productDetails.productPictures[0].img}`}
+                src={
+                  productDetails.productPictures[0].img
+                }
+                alt={`${productDetails.productPictures[0].img}`}
                 />
               </div>
 
@@ -171,8 +94,7 @@ const HomePage = (props) => {
             <div className="prodDesc clearfix">
               <div className="productDetails" style={{ width: "600px" }}>
                 <p className="productTitle" style={{ maxWidth: "500px" }}>
-                  Samsung Galaxy M02s (Blue,3GB RAM, 32GB Storage) | 5000 mAh |
-                  Triple Camera
+                 {productDetails.name}
                 </p>
                 <div>
                   <span className="ratingCount">
@@ -189,7 +111,7 @@ const HomePage = (props) => {
                 <div className="flexRow priceContainer">
                   <span className="price">
                     <BiRupee />
-                    {product.productDetails.price}
+                    {productDetails.price}
                   </span>
                   <span className="discount" style={{ margin: "0 10px" }}>
                     22% off
@@ -224,13 +146,7 @@ const HomePage = (props) => {
                         color: "#212121",
                       }}
                     >
-                      13MP+2MP+2MP Triple rear camera setup-13MP (F2.2) main
-                      camera + 2MP (F2.4) depth camera + 2MP (2.4) Macro Camera|
-                      5MP (F2.2) front camera 16.55 centimeters (6.5-inch) PLS
-                      TFT LCD - infinity v-cut display, HD+ resolution with 720
-                      x 1600 pixels resolution, 269 PPI with 16M colours Memory,
-                      Storage & SIM: 3GB RAM | 32GB internal memory expandable
-                      up to 1TB| Dual SIM (nano+nano) dual-standby (4G+4G)
+                      {productDetails.description}
                     </span>
                   </p>
                   <div className="share-btn-container">
@@ -256,7 +172,14 @@ const HomePage = (props) => {
                     >
                       <span>ADD TO BAG</span>
                     </button>
-                    <button id="addToCart" className="wishlists pull-left ">
+                    <button id="addToCart" className="wishlists pull-left "
+                    onClick={() => {
+                  const { _id, name, price,createdBy} = product.productDetails;
+                  const img = product.productDetails.productPictures[0].img;
+                  dispatch(addToCart({ _id, name, price, img,createdBy }));
+                  props.history.push(`/cart`);
+                }}
+                    >
                       <span>SHARE</span>
                     </button>
                   </div>
@@ -269,33 +192,127 @@ const HomePage = (props) => {
     );
   };
 
+ 
+
+  const renderProduct = () => {
+    return (
+
+      <div style={{ padding: "30px" }}>
+        <div className="Galleries-covers-ihH Galleries-grid-1Bv Galleries-header-14v">
+          {product.products.filter((product)=>{
+            if (searchTerm === "" || searchTerm == null) {
+                    if (filterdTerm === "" || filterdTerm == null) {
+                      return product;
+                    }
+                    {/* else if(product.._id.includes(categoryType)){
+                      return product;
+                    } */}
+                  } else if (
+                    product.name
+                      .toLowerCase()
+                      .split(" ")
+                      .join("")
+                      .includes(searchTerm.toLowerCase().split(" ").join("")) ||
+                    product.createdBy.shopName
+                      .toLowerCase()
+                      .split(" ")
+                      .join("")
+                      .includes(searchTerm.toLowerCase().split(" ").join(""))
+                  ) {
+                    return product;
+                  }
+          }).map((product, index) => (
+            <div key={product._id}>
+              <Link
+                onClick={() => showProductDetailsModal(product)}
+                key={product._id}
+              >
+                <div className="Galleries-gridCover-j9D">
+                  <div className="ProjectCoverNeue-root-166 ProjectCoverNeue-statsVisible-19j ProjectCover-cover-3zh">
+                    <div className="Cover-cover-2mr ProjectCoverNeue-cover-3Ni e2e-ProjectCoverNeue js-project-cover e2e-ProjectCoverNeue-cover ProjectCoverNeue-coverWithFlags-1Aq ProjectCoverNeue-statsVisible-19j ProjectCoverNeue-loaded-26R">
+                      <div className="Cover-wrapper-300 ProjectCoverNeue-wrapper-27j e2e-ProjectCoverNeue-wrapper">
+                        <div className="Cover-content-2R2">
+                          <div className="DominantColor-dominantColor-2PM"></div>
+                          <img
+                            sizes="404px"
+                            style={{ padding: "10px" }}
+                            src={
+                              product.productPictures[0].img
+                            }
+                            alt="Children's Day - ''SEE ME&quot;"
+                            loading="lazy"
+                            class="ProjectCoverNeue-image-1MZ js-cover-image"
+                          ></img>
+                          <div className="ProjectCoverNeue-controlsAndPrivacyContainer-20r"></div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* /////// */}
+                    <div style={{ padding: "10px" }}>
+                      <div className="Cover-overlay-28e Cover-showOnHover-Ks- Cover-transitionDone-22y">
+                        <div className="ProjectCoverNeue-details-yQ_">
+                          <div className="ProjectCoverNeue-info-4Ul">
+                            <a className="Title-title-3nk e2e-Title-owner js-project-cover-title-link">
+                              {product.name}
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="ProjectCoverNeue-visibleStatsAndOwners-2Av">
+                        <span className="ProjectCoverNeue-ownersContainer-3Go">
+                          <div className="Owners-root-3c9 Owners-dark-1Vh Owners-overflowText-3Yn ProjectCoverNeue-owners-1qo">
+                            <span className="js-mini-profile Owners-ownerAndAvatar-1d5">
+                              {/* <span className="Owners-ownerImage-27R">
+                     <img src="https://mir-s3-cdn-cf.behance.net/user/50/e3288c7532301.5fd90c23ec9bc.jpg" alt="Marta Syrko" className="Owners-ownerImageEl-3cu"/>
+                   </span> */}
+                              <a className="Owners-owner-2lB e2e-Owner-user-link">
+                                {product.name}
+                              </a>
+                            </span>
+                          </div>
+                        </span>
+                        <div className="Stats-stats-1iI">
+                          <div className="Product__priceFlex">
+                            <div
+                              className="Owners-owner-2lB e2e-Owner-user-link"
+                              onClick={() => showProductDetailsModal(product)}
+                            >
+                              View Details
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <span className="ProjectCoverNeue-ownersContainer-3Go">
+                        <div className="Owners-root-3c9 Owners-dark-1Vh Owners-overflowText-3Yn ProjectCoverNeue-owners-1qo">
+                          <span className="js-mini-profile Owners-ownerAndAvatar-1d5">
+                            <a className="Owners-owner-2lB e2e-Owner-user-link">
+                              By -{product.createdBy.shopName}
+                            </a>
+                          </span>
+                        </div>
+                      </span>
+                    </div>
+                    {/* ///////// */}
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const handleCloseProductDetailsModal = () => {
+    setProductDetailModal(false);
+  };
+
   return (
     <>
-<<<<<<< HEAD
-    {/* <Layout/> */}
-     <NewNavbar/>
-      {/* <div> 
-      <div className="Home__imageBanner">
-   <Layout/>
-      <div  > 
-      <div className="Home__imageBanner" >
-          <img
-      <NavBar/>
+         <NavBar/>
       <NewCategory/>
-      {props => <Productpopup {...props} key={this.props.location.key} visible={productModal} onClose={() => setProductModal(false)} /> }
-=======
-      <Navigationbar />
-      {/* <NewCategory/> */}
-      {/* {props => <Productpopup {...props} key={this.props.location.key} visible={productModal} onClose={() => setProductModal(false)} /> } */}
->>>>>>> 21b9c8099e76bde718e022ccc21fb36c7d0a7456
-      <div>
-        {/* <div className="Home__imageBanner">
-          <img style={{borderRadius:'10px', border:'3px solid rgba(105, 105, 105, 0.2)'}}
-            alt="Home Banner"
-            className="Home__imageBanner"
-            src={HomeBanner}
-          />
-        </div> */}
+      
+        <div>
         <nav
           className="NavigationBar-subcategoryList-1nX"
           style={{
@@ -319,10 +336,21 @@ const HomePage = (props) => {
             <li>
               <a className="router-link-exact-active router-link-active NavigationBar-subcategoryLink-3Ua">
                 <div className="SubCategory-root-mwE SubCategory-active-Sxz NavigationBar-subcategory-2m5">
-                  <select className="SubCategory-label-30F">
-                  <option>Categories</option>
-                  <option>Categories</option>
-               
+                  <select className="SubCategory-label-30F"
+                    value={filterdTerm}
+                onChange={(e) => {
+                  const selectedProductCategory = e.target.value;
+                  setFilterdTerm(selectedProductCategory);
+                }}
+                  >
+                  <option value="">Category</option>
+                    {categoriesList.map((value) => (
+                  <option key={value._id} value={value._id}>
+                    {value.name}
+                  </option>
+                ))}
+         
+                    
                   </select>
                 </div>
               </a>
@@ -330,9 +358,7 @@ const HomePage = (props) => {
             <li>
               <a className="router-link-exact-active router-link-active NavigationBar-subcategoryLink-3Ua">
                 <div className="SubCategory-root-mwE SubCategory-active-Sxz NavigationBar-subcategory-2m5">
-                  <select {...props}>
-                  
-                  </select>
+                  <select {...props}></select>
                 </div>
               </a>
             </li>
@@ -356,6 +382,9 @@ const HomePage = (props) => {
                         placeholder="Search…"
                         aria-label="Search "
                         className="SearchTypeahead-searchInput-1qk e2e-SearchInput-input"
+                        onChange={(e) => {
+                         setSearchTerm(e.target.value);
+                          }}
                       />
                     </label>
                   </form>
@@ -376,13 +405,8 @@ const HomePage = (props) => {
 
         {renderProductDetailsModal()}
         {renderProduct()}
-<<<<<<< HEAD
-      </div> */}
-=======
       </div>
-      {renderProductDetailsModal()}
->>>>>>> 21b9c8099e76bde718e022ccc21fb36c7d0a7456
-    </>
+      </>
   );
 };
 
